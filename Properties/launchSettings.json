@@ -1,0 +1,7 @@
+{
+  "profiles": {
+    "PnP.PowerShell.Core": {
+      "commandName": "Project"
+    }
+  }
+}

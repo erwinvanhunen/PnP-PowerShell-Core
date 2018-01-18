@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+     <CopyLocalLockFileAssemblies>true</CopyLocalLockFileAssemblies>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="newtonsoft.json" Version="10.0.3" />
+    <PackageReference Include="PowerShellStandard.Library" Version="3.0.0-preview-01" />
+  </ItemGroup>
+
+  <!--
+    Used for help-related custom attributes; you can leave it out if you don't need it
+  -->
+  <ItemGroup>
+    <None Update="SharePointPnP.PowerShell.Core.Format.ps1xml" CopyToOutputDirectory="PreserveNewest" />
+      <None Update="SharePointPnPPowerShellCore.psd1" CopyToOutputDirectory="PreserveNewest" />
+      <None Update="Tools\creds.exe">
+        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+      </None>
+  </ItemGroup>
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="&quot;C:\Program Files\PowerShell\6.0.0\pwsh.exe&quot; -ExecutionPolicy bypass -NoLogo -NonInteractive -Command .'$(SolutionDir)PostBuild.ps1' -ProjectDir:'$(ProjectDir)' -ConfigurationName:'$(ConfigurationName)' -TargetDir:'$(TargetDir)' -TargetFileName:'$(TargetFileName)' -TargetName:'$(TargetName)' -SolutionDir:'$(SolutionDir)'" />
+  </Target>
+</Project>
