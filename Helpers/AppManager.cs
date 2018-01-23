@@ -8,6 +8,7 @@ using System.Net.Http.Headers;
 using System.Threading.Tasks;
 using SharePointPnP.PowerShell.Core.Model;
 using SharePointPnP.PowerShell.Core.Base;
+using System.Linq;
 
 namespace SharePointPnP.PowerShell.Core.Helpers
 {
@@ -584,6 +585,25 @@ namespace SharePointPnP.PowerShell.Core.Helpers
                 }
             }
             return await Task.Run(() => returnValue);
+        }
+
+        public static string GetAppCatalogUrl()
+        {
+            var result = new RestRequest("search/query?querytext='contentclass:STS_Site+AND+SiteTemplate:APPCATALOG'").Get();
+            var resultData = JsonConvert.DeserializeObject<dynamic>(result);
+            var rows = resultData["PrimaryQueryResult"]["RelevantResults"]["Table"]["Rows"];
+            if(rows.Count > 0)
+            {
+                var row = rows[0];
+                for(var q=0;q<row["Cells"].Count;q++)
+                {
+                    if(row["Cells"][q]["Key"] == "Path")
+                    {
+                        return row["Cells"][q]["Value"].Value as string;
+                    }
+                }
+            }
+            return null;
         }
 
         private async Task<AppMetadata> BaseAddRequest(byte[] file, string filename, bool overwrite = false)

@@ -53,18 +53,53 @@ namespace SharePointPnP.PowerShell.Core.Model
             return Helpers.RestHelper.ExecuteGetRequest<T>(_root, select, _filter, expands);
         }
 
-        public T Post<T>(string content = null)
+        public string Get()
         {
             var select = _selects.Any() ? string.Join(",", _selects) : null;
             var expands = _expands.Any() ? string.Join(",", _expands) : null;
-            return Helpers.RestHelper.ExecutePostRequest<T>(_root, content, select, _filter, expands);
+            return Helpers.RestHelper.ExecuteGetRequest(_root, select, _filter, expands);
+        }
+        
+        public T Post<T>(string content = null, string contentType = null)
+        {
+            var select = _selects.Any() ? string.Join(",", _selects) : null;
+            var expands = _expands.Any() ? string.Join(",", _expands) : null;
+            return Helpers.RestHelper.ExecutePostRequest<T>(_root, content, select, _filter, expands, contentType: contentType);
         }
 
-        public void Post(string content = null)
+        public void Post(string content = null, string contentType = null)
         {
             var select = _selects.Any() ? string.Join(",", _selects) : null;
             var expands = _expands.Any() ? string.Join(",", _expands) : null;
-            Helpers.RestHelper.ExecutePostRequest(_root, content, select, _filter, expands);
+            Helpers.RestHelper.ExecutePostRequest(_root, content, select, _filter, expands, contentType: contentType);
+        }
+
+         public T Put<T>(string content = null, string contentType = null)
+        {
+            var select = _selects.Any() ? string.Join(",", _selects) : null;
+            var expands = _expands.Any() ? string.Join(",", _expands) : null;
+            return Helpers.RestHelper.ExecutePutRequest<T>(_root, content, select, _filter, expands, contentType: contentType);
+        }
+
+        public void Put(string content = null, string contentType = null)
+        {
+            var select = _selects.Any() ? string.Join(",", _selects) : null;
+            var expands = _expands.Any() ? string.Join(",", _expands) : null;
+            Helpers.RestHelper.ExecutePutRequest(_root, content, select, _filter, expands, contentType: contentType);
+        }
+
+           public T Merge<T>(string content = null, string contentType = null)
+        {
+            var select = _selects.Any() ? string.Join(",", _selects) : null;
+            var expands = _expands.Any() ? string.Join(",", _expands) : null;
+            return Helpers.RestHelper.ExecuteMergeRequest<T>(_root, content, select, _filter, expands, contentType: contentType);
+        }
+
+        public void Merge(string content = null, string contentType = null)
+        {
+            var select = _selects.Any() ? string.Join(",", _selects) : null;
+            var expands = _expands.Any() ? string.Join(",", _expands) : null;
+            Helpers.RestHelper.ExecuteMergeRequest(_root, content, select, _filter, expands, contentType: contentType);
         }
     }
 }
