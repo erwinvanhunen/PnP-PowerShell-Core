@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using Newtonsoft.Json;
 
 namespace SharePointPnP.PowerShell.Core.Model
 {
@@ -59,7 +60,7 @@ namespace SharePointPnP.PowerShell.Core.Model
             var expands = _expands.Any() ? string.Join(",", _expands) : null;
             return Helpers.RestHelper.ExecuteGetRequest(_root, select, _filter, expands);
         }
-        
+
         public T Post<T>(string content = null, string contentType = null)
         {
             var select = _selects.Any() ? string.Join(",", _selects) : null;
@@ -74,7 +75,29 @@ namespace SharePointPnP.PowerShell.Core.Model
             Helpers.RestHelper.ExecutePostRequest(_root, content, select, _filter, expands, contentType: contentType);
         }
 
-         public T Put<T>(string content = null, string contentType = null)
+        public void Post(MetadataType metadataType, Dictionary<string, object> properties, string contentType = null)
+        {
+            var select = _selects.Any() ? string.Join(",", _selects) : null;
+            var expands = _expands.Any() ? string.Join(",", _expands) : null;
+            properties["__metadata"] = metadataType;
+            var content = JsonConvert.SerializeObject(properties);
+            Helpers.RestHelper.ExecutePostRequest(_root, content, select, _filter, expands, contentType: contentType);
+        }
+
+        public T Post<T>(MetadataType metadataType, Dictionary<string, object> properties, string contentType = "application/json;odata=verbose")
+        {
+            var select = _selects.Any() ? string.Join(",", _selects) : null;
+            var expands = _expands.Any() ? string.Join(",", _expands) : null;
+            properties["__metadata"] = metadataType;
+            var payload = new Dictionary<string, object>() {
+                { "parameters", properties}
+            };
+            var content = JsonConvert.SerializeObject(payload);
+
+            return Helpers.RestHelper.ExecutePostRequest<T>(_root, content, select, _filter, expands, contentType: contentType);
+        }
+
+        public T Put<T>(string content = null, string contentType = null)
         {
             var select = _selects.Any() ? string.Join(",", _selects) : null;
             var expands = _expands.Any() ? string.Join(",", _expands) : null;
@@ -88,11 +111,29 @@ namespace SharePointPnP.PowerShell.Core.Model
             Helpers.RestHelper.ExecutePutRequest(_root, content, select, _filter, expands, contentType: contentType);
         }
 
-           public T Merge<T>(string content = null, string contentType = null)
+        public T Merge<T>(string content = null, string contentType = null)
         {
             var select = _selects.Any() ? string.Join(",", _selects) : null;
             var expands = _expands.Any() ? string.Join(",", _expands) : null;
             return Helpers.RestHelper.ExecuteMergeRequest<T>(_root, content, select, _filter, expands, contentType: contentType);
+        }
+
+         public T Merge<T>(MetadataType metadataType, Dictionary<string, object> properties, string contentType = "application/json;odata=verbose")
+        {
+            var select = _selects.Any() ? string.Join(",", _selects) : null;
+            var expands = _expands.Any() ? string.Join(",", _expands) : null;
+            properties["__metadata"] = metadataType;
+            var content = JsonConvert.SerializeObject(properties);
+            return Helpers.RestHelper.ExecutePostRequest<T>(_root, content, select, _filter, expands, contentType: contentType);
+        }
+
+         public void Merge(MetadataType metadataType, Dictionary<string, object> properties, string contentType = "application/json;odata=verbose")
+        {
+            var select = _selects.Any() ? string.Join(",", _selects) : null;
+            var expands = _expands.Any() ? string.Join(",", _expands) : null;
+            properties["__metadata"] = metadataType;
+            var content = JsonConvert.SerializeObject(properties);
+            Helpers.RestHelper.ExecutePostRequest(_root, content, select, _filter, expands, contentType: contentType);
         }
 
         public void Merge(string content = null, string contentType = null)

@@ -28,3 +28,4 @@
 ### [Get-RequestAccessEmail](Get-RequestAccessEmail.md)
 ### [Get-SubWeb](Get-SubWeb.md)
 ### [Get-Web](Get-Web.md)
+### [New-Web](New-Web.md)

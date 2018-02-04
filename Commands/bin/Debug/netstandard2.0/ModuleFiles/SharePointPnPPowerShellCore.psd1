@@ -8,7 +8,7 @@
     PowerShellVersion = '6.0'
     ProcessorArchitecture = 'None'
     FunctionsToExport = '*'
-    CmdletsToExport = 'Add-App','Connect-Online','Disable-Feature','Enable-Feature','Get-App','Get-ContentType','Get-CustomAction','Get-EventReceiver','Get-Feature','Get-Field','Get-HomePage','Get-JavaScriptLink','Get-List','Get-MasterPage','Get-PropertyBag','Get-RequestAccessEmail','Get-SubWeb','Get-View','Get-Web','Send-RestRequest'
+    CmdletsToExport = 'Add-App','Connect-Online','Disable-Feature','Enable-Feature','Get-App','Get-ContentType','Get-CustomAction','Get-EventReceiver','Get-Feature','Get-Field','Get-HomePage','Get-JavaScriptLink','Get-List','Get-MasterPage','Get-PropertyBag','Get-RequestAccessEmail','Get-SubWeb','Get-View','Get-Web','New-Web','Send-RestRequest'
     VariablesToExport = '*'
 AliasesToExport = 'Get-SubWebs'
     FormatsToProcess = '.\SharePointPnP.PowerShell.Core.Format.ps1xml'
