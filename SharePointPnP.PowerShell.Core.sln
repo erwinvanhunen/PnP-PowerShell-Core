@@ -1,9 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
-VisualStudioVersion = 15.0.27130.2010
+VisualStudioVersion = 15.0.27130.2026
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharePointPnP.PowerShell.Core", "Commands\SharePointPnP.PowerShell.Core.csproj", "{B5FACCC2-415A-4FA3-B2FE-BD95F1870671}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharePointPnP.PowerShell.Core.Attributes", "Attributes\SharePointPnP.PowerShell.Core.Attributes.csproj", "{425F1002-0744-4E6C-9279-BBD3E4B65BE2}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SharePointPnP.PowerShell.Core.ModuleFilesGenerator", "ModuleFilesGenerator\SharePointPnP.PowerShell.Core.ModuleFilesGenerator.csproj", "{D6EAE561-2627-40AE-BD06-247F11378943}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +19,14 @@ Global
 		{B5FACCC2-415A-4FA3-B2FE-BD95F1870671}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B5FACCC2-415A-4FA3-B2FE-BD95F1870671}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B5FACCC2-415A-4FA3-B2FE-BD95F1870671}.Release|Any CPU.Build.0 = Release|Any CPU
+		{425F1002-0744-4E6C-9279-BBD3E4B65BE2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{425F1002-0744-4E6C-9279-BBD3E4B65BE2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{425F1002-0744-4E6C-9279-BBD3E4B65BE2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{425F1002-0744-4E6C-9279-BBD3E4B65BE2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D6EAE561-2627-40AE-BD06-247F11378943}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D6EAE561-2627-40AE-BD06-247F11378943}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D6EAE561-2627-40AE-BD06-247F11378943}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D6EAE561-2627-40AE-BD06-247F11378943}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
