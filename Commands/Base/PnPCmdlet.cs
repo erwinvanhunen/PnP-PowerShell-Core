@@ -16,6 +16,7 @@ namespace SharePointPnP.PowerShell.Core.Base
             {
                 throw new PSInvalidOperationException("A connection is required. Use Connect-PnPOnline to connect first.");
             }
+            //var expiresOn = SPOnlineConnection.ExpiresOn;
             // token expired?
             if (!string.IsNullOrEmpty(SPOnlineConnection.AccessToken) && DateTime.Now > SPOnlineConnection.ExpiresOn && !string.IsNullOrEmpty(SPOnlineConnection.RefreshToken))
             {
@@ -31,7 +32,7 @@ namespace SharePointPnP.PowerShell.Core.Base
                 var tokens = JsonConvert.DeserializeObject<Dictionary<string, string>>(result.Content.ReadAsStringAsync().GetAwaiter().GetResult());
                 SPOnlineConnection.AccessToken = tokens["access_token"];
                 SPOnlineConnection.RefreshToken = tokens["refresh_token"];
-                SPOnlineConnection.ExpiresOn = new System.DateTime(1970, 1, 1).AddSeconds(int.Parse(tokens["expires_on"]));
+                SPOnlineConnection.ExpiresOn = DateTime.Now.AddSeconds(int.Parse(tokens["expires_in"]));
                 var credmgr = new CredentialManager(MyInvocation.MyCommand.Module.ModuleBase);
                 credmgr.Add(SPOnlineConnection.Url, SPOnlineConnection.AccessToken, SPOnlineConnection.RefreshToken, SPOnlineConnection.ExpiresOn);
             }
@@ -43,7 +44,7 @@ namespace SharePointPnP.PowerShell.Core.Base
 
         public T ExecuteGetRequest<T>(string method, string select = null, string filter = null, string expand = null)
         {
-            return Helpers.RestHelper.ExecuteGetRequest<T>(method,select,filter,expand);
+            return Helpers.RestHelper.ExecuteGetRequest<T>(method, select, filter, expand);
         }
 
         public string ExecuteGetRequest(string method, string select = null, string filter = null, string expand = null)

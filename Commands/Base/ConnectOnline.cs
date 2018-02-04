@@ -63,7 +63,7 @@ namespace SharePointPnP.PowerShell.Core.Base
                     var tokens = JsonConvert.DeserializeObject<Dictionary<string, string>>(tokenResult.Content.ReadAsStringAsync().GetAwaiter().GetResult());
                     SPOnlineConnection.AccessToken = tokens["access_token"];
                     SPOnlineConnection.RefreshToken = tokens["refresh_token"];
-                    SPOnlineConnection.ExpiresOn = new System.DateTime(1970, 1, 1).AddSeconds(int.Parse(tokens["expires_on"]));
+                    SPOnlineConnection.ExpiresOn = DateTime.Now.AddSeconds(int.Parse(tokens["expires_in"]));
                     SPOnlineConnection.Url = Url;
                     credManager.Add(Url, SPOnlineConnection.AccessToken, SPOnlineConnection.RefreshToken, SPOnlineConnection.ExpiresOn);
                 }

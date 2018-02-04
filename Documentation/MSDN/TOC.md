@@ -25,6 +25,7 @@
 ### [Send-RestRequest](Send-RestRequest.md)
 ## [Webs](Webs-category.md)
 ### [Get-PropertyBag](Get-PropertyBag.md)
+### [Set-PropertyBagValue](Set-PropertyBagValue.md)
 ### [Get-RequestAccessEmail](Get-RequestAccessEmail.md)
 ### [Get-SubWeb](Get-SubWeb.md)
 ### [Get-Web](Get-Web.md)

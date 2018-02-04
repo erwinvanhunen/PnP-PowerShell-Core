@@ -6,7 +6,6 @@ using System.Threading.Tasks;
 
 namespace SharePointPnP.PowerShell.Core.Attributes
 {
-    [Obsolete]
     [AttributeUsage(AttributeTargets.Class,
                      AllowMultiple = true)]
     public sealed class CmdletAliasAttribute : Attribute

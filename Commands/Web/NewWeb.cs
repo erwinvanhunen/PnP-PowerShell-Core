@@ -45,7 +45,6 @@ namespace SharePointPnP.PowerShell.Core.Web
             properties["WebTemplate"] = Template;
             properties["Language"] = Locale;
             properties["UseSamePermissionsAsParentSite"] = !BreakInheritance.IsPresent;
-            //properties["InheritNavigation"] = InheritNavigation.IsPresent;
 
             var web = new RestRequest("Web/Webs/add").Post<Model.Web>(new MetadataType("SP.WebCreationInformation"), properties);
 
