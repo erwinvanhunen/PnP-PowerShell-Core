@@ -183,6 +183,9 @@
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
       "projectUniqueName": "C:\\repos\\PnP-PowerShell-Core\\Attributes\\SharePointPnP.PowerShell.Core.Attributes.csproj",
       "projectName": "SharePointPnP.PowerShell.Core.Attributes",
@@ -223,7 +226,7 @@
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.0",
+            "version": "[2.0.0, )",
             "autoReferenced": true
           }
         },

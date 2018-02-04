@@ -49,7 +49,7 @@ namespace SharePointPnP.PowerShell.Core.ModuleFilesGenerator
             }
             // Generate PSM1 file
             var aliasesToExport = new List<string>();
-            var psm1Path = $"{new FileInfo(_assemblyPath).Directory}\\ModuleFiles\\SharePointPnPPowerShell{spVersion}Aliases.psm1";
+            var psm1Path = $"{new FileInfo(_assemblyPath).Directory}\\ModuleFiles\\SharePointPnPPowerShellCoreAliases.psm1";
             var aliasBuilder = new StringBuilder();
             foreach (var cmdlet in _cmdlets.Where(c => c.Aliases.Any()))
             {
@@ -87,7 +87,7 @@ namespace SharePointPnP.PowerShell.Core.ModuleFilesGenerator
                 nestedModules = $"{Environment.NewLine}@('SharePointPnPPowerShellCoreAliases.psm1')";
             }
             var manifest = $@"@{{
-    ModuleToProcess = 'SharePointPnPPowerShellOnlineAliases.psm1'
+    ModuleToProcess = 'SharePointPnPPowerShellCoreAliases.psm1'
     NestedModules = 'SharePointPnP.PowerShell.Core.dll'
     #RootModule = 'SharePointPnP.PowerShell.Core.dll'
     ModuleVersion = '{_assemblyVersion}'

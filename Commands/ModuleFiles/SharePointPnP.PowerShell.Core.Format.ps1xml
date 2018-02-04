@@ -506,9 +506,9 @@
       </TableControl>
     </View>
     <View>
-      <Name>WebTemplate</Name>
+      <Name>TenantWebTemplate</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.Online.SharePoint.TenantAdministration.SPOTenantWebTemplate</TypeName>
+        <TypeName>SharePointPnP.PowerShell.Core.Model.TenantWebTemplate</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

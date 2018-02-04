@@ -3608,6 +3608,9 @@
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
       "projectUniqueName": "C:\\repos\\PnP-PowerShell-Core\\ModuleFilesGenerator\\SharePointPnP.PowerShell.Core.ModuleFilesGenerator.csproj",
       "projectName": "SharePointPnP.PowerShell.Core.ModuleFilesGenerator",
@@ -3651,20 +3654,20 @@
         "dependencies": {
           "Microsoft.NETCore.App": {
             "target": "Package",
-            "version": "2.0",
+            "version": "[2.0.0, )",
             "autoReferenced": true
-          },
-          "System.Reflection": {
-            "target": "Package",
-            "version": "4.3.0"
-          },
-          "newtonsoft.json": {
-            "target": "Package",
-            "version": "10.0.3"
           },
           "PowerShellStandard.Library": {
             "target": "Package",
-            "version": "3.0.0-preview-01"
+            "version": "[3.0.0-preview-01, )"
+          },
+          "System.Reflection": {
+            "target": "Package",
+            "version": "[4.3.0, )"
+          },
+          "newtonsoft.json": {
+            "target": "Package",
+            "version": "[10.0.3, )"
           }
         },
         "imports": [

@@ -3125,6 +3125,9 @@
   },
   "project": {
     "version": "1.0.0",
+    "restoreSettings": {
+      "hideWarningsAndErrors": true
+    },
     "restore": {
       "projectUniqueName": "C:\\repos\\PnP-PowerShell-Core\\Commands\\SharePointPnP.PowerShell.Core.csproj",
       "projectName": "SharePointPnP.PowerShell.Core",
@@ -3137,7 +3140,6 @@
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
       ],
       "configFilePaths": [
-        "C:\\repos\\PnP-PowerShell-Core\\Commands\\NuGet.Config",
         "C:\\Users\\erwin\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.Fallback.config"
@@ -3147,10 +3149,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "https://api.nuget.org/v3/index.json": {},
-        "https://dotnet.myget.org/F/dotnet-core/api/v3/index.json": {},
-        "https://powershell.myget.org/F/powershell-core/api/v3/index.json": {},
-        "https://www.myget.org/F/ps-reptile/api/v3/index.json": {}
+        "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
         "netstandard2.0": {
@@ -3173,16 +3172,16 @@
           "NETStandard.Library": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "2.0.0",
+            "version": "[2.0.0, )",
             "autoReferenced": true
-          },
-          "newtonsoft.json": {
-            "target": "Package",
-            "version": "10.0.3"
           },
           "PowerShellStandard.Library": {
             "target": "Package",
-            "version": "3.0.0-preview-01"
+            "version": "[3.0.0-preview-01, )"
+          },
+          "newtonsoft.json": {
+            "target": "Package",
+            "version": "[10.0.3, )"
           }
         },
         "imports": [

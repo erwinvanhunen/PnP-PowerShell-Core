@@ -10,8 +10,12 @@ namespace SharePointPnP.PowerShell.Core.Helpers
 {
     public static class RestHelper
     {
-        public static async Task<string> GetRequestDigest()
+        public static async Task<string> GetRequestDigest(string url = null)
         {
+            if(url == null)
+            {
+                url = SPOnlineConnection.Url;
+            }
             using (var handler = new HttpClientHandler())
             {
                 string responseString = string.Empty;
@@ -19,7 +23,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
 
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
-                    string requestUrl = String.Format("{0}/_api/contextinfo", SPOnlineConnection.Url);
+                    string requestUrl = String.Format("{0}/_api/contextinfo", url);
                     HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
                     request.Headers.Add("accept", "application/json;odata=verbose");
                     if (!string.IsNullOrEmpty(accessToken))

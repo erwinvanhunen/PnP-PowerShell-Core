@@ -9,6 +9,7 @@ using System.Threading.Tasks;
 using SharePointPnP.PowerShell.Core.Model;
 using SharePointPnP.PowerShell.Core.Base;
 using System.Linq;
+using SharePointPnP.PowerShell.Core.Model.ClientSvc;
 
 namespace SharePointPnP.PowerShell.Core.Helpers
 {
@@ -589,28 +590,12 @@ namespace SharePointPnP.PowerShell.Core.Helpers
 
         public static string GetAppCatalogUrl()
         {
-            var result = new RestRequest("search/query?querytext='contentclass:STS_Site+AND+SiteTemplate:APPCATALOG'").Get();
-            var resultData = JsonConvert.DeserializeObject<dynamic>(result);
-            var rows = resultData["PrimaryQueryResult"]["RelevantResults"]["Table"]["Rows"];
-            if(rows.Count > 0)
-            {
-                var row = rows[0];
-                for(var q=0;q<row["Cells"].Count;q++)
-                {
-                    if(row["Cells"][q]["Key"] == "Path")
-                    {
-                        return row["Cells"][q]["Value"].Value as string;
-                    }
-                }
-            }
-            return null;
-        }
-
-        public static string GetAppCatalogUrl2()
-        {
             var query = @"<Request AddExpandoFieldTypeSuffix=""true"" SchemaVersion=""15.0.0.0"" LibraryVersion=""16.0.0.0"" ApplicationName=""SharePoint PnP PowerShell Library"" xmlns=""http://schemas.microsoft.com/sharepoint/clientquery/2009""><Actions><ObjectPath Id=""4"" ObjectPathId=""3"" /><Query Id=""1"" ObjectPathId=""3""><Query SelectAllProperties=""false""><Properties><Property Name=""CorporateCatalogUrl"" ScalarProperty=""true"" /></Properties></Query></Query></Actions><ObjectPaths><StaticProperty Id=""3"" TypeId=""{e9a11c41-0667-4c14-a4a5-e0d6cf67f6fa}"" Name=""Current"" /></ObjectPaths></Request>";
             var result = new ClientRequestHelper().Send(query);
-            return result;
+
+            var deserialized = JsonConvert.DeserializeObject<JArray>(result);
+            var url = deserialized[4]["CorporateCatalogUrl"].Value<string>();
+            return url;
         }
 
         private async Task<AppMetadata> BaseAddRequest(byte[] file, string filename, bool overwrite = false)

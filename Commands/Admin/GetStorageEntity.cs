@@ -14,9 +14,8 @@ using System.Linq;
 
 namespace SharePointPnP.PowerShell.Core.Admin
 {
-    [OutputType(typeof(List<StorageEntity>))]
     [Cmdlet(VerbsCommon.Get, "StorageEntity", SupportsShouldProcess = true)]
-    [CmdletHelp(@"Retrieve Storage Entities / Farm Properties.",
+    [CmdletHelp(VerbsCommon.Get,"StorageEntity",@"Retrieve Storage Entities / Farm Properties.",
         Category = CmdletHelpCategory.TenantAdmin,
         SupportedPlatform = CmdletSupportedPlatform.Online)]
     [CmdletExample(Code = @"PS:> Get-PnPStorageEntity", Remarks = "Returns all site storage entities/farm properties", SortOrder = 1)]
