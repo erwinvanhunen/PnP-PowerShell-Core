@@ -9,6 +9,18 @@
             "type": "coreclr",
             "request": "attach",
             "processId": "${command:pickProcess}"
-        }
+        },
+        {
+            "name": "Debug Generators",
+            "type": "coreclr",
+            "request": "launch",
+            "preLaunchTask": "build",
+            "program": "${workspaceFolder}/ModuleFilesGenerator/bin/Debug/netcoreapp2.0/sharepointpnp.powershell.core.modulefilesgenerator.dll",
+            "args": ["c:\\repos\\pnp-powershell-core\\commands\\bin\\debug\\netstandard2.0\\sharepointpnp.powershell.core.dll","Debug","c:\\repos\\PnP-PowerShell-Core"],
+            "cwd": "${workspaceFolder}",
+            "console": "internalConsole",
+            "stopAtEntry": false,
+            "internalConsoleOptions": "openOnSessionStart"
+        },
     ]
 }

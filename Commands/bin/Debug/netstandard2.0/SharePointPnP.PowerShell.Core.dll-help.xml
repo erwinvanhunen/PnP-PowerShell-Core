@@ -1,0 +1,2164 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<helpItems schema="maml" xmlns="http://msh">
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Add-App</command:name>
+      <maml:description>
+        <maml:para>* Supported in: SharePoint Online.
+
+Add/uploads an available app to the app catalog</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Add</command:verb>
+      <command:noun>App</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Add-App</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>Path</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Publish</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>SkipFeatureDeployment</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Overwrite</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Overwrite</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Path</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Publish</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>SkipFeatureDeployment</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>SharePointPnP.PowerShell.Core.Model.AppMetadata</maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Add-PnPApp -Path ./myapp.sppkg</dev:code>
+        <maml:remarks>
+          <maml:para>This will upload the specified app package to the app catalog</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Add-PnPApp -Path ./myapp.sppkg -Publish</dev:code>
+        <maml:remarks>
+          <maml:para>This will upload the specified app package to the app catalog and deploy/trust it at the same time.</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Connect-Online</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Connects to your tenant</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Connect</command:verb>
+      <command:noun>Online</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax />
+    <command:parameters />
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples />
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Disable-Feature</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Disables a feature</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Disable</command:verb>
+      <command:noun>Feature</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Disable-Feature</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>Identity</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">GuidPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Scope</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">FeatureScope</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Identity</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">GuidPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>GuidPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Scope</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">FeatureScope</command:parameterValue>
+        <dev:type>
+          <maml:name>FeatureScope</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Disable-PnPFeature -Identity 99a00f6e-fb81-4dc7-8eac-e09c6f9132fe</dev:code>
+        <maml:remarks>
+          <maml:para>This will disable the feature with the id "99a00f6e-fb81-4dc7-8eac-e09c6f9132fe"</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Disable-PnPFeature -Identity 99a00f6e-fb81-4dc7-8eac-e09c6f9132fe -Scope Site</dev:code>
+        <maml:remarks>
+          <maml:para>This will disable the feature with the id "99a00f6e-fb81-4dc7-8eac-e09c6f9132fe" with the site scope.</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Enable-Feature</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Enables a feature</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Enable</command:verb>
+      <command:noun>Feature</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Enable-Feature</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>Identity</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">GuidPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Scope</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">FeatureScope</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Identity</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">GuidPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>GuidPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Scope</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">FeatureScope</command:parameterValue>
+        <dev:type>
+          <maml:name>FeatureScope</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Enable-PnPFeature -Identity 99a00f6e-fb81-4dc7-8eac-e09c6f9132fe</dev:code>
+        <maml:remarks>
+          <maml:para>This will enable the feature with the id "99a00f6e-fb81-4dc7-8eac-e09c6f9132fe"</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Enable-PnPFeature -Identity 99a00f6e-fb81-4dc7-8eac-e09c6f9132fe -Scope Site</dev:code>
+        <maml:remarks>
+          <maml:para>This will enable the feature with the id "99a00f6e-fb81-4dc7-8eac-e09c6f9132fe" with the site scope.</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Get-App</command:name>
+      <maml:description>
+        <maml:para>* Supported in: SharePoint Online.
+
+Returns the available apps from the app catalog</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>App</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-App</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>Identity</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">GuidPipeBind</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Identity</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">GuidPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>GuidPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>List&lt;SharePointPnP.PowerShell.Core.Model.AppMetadata&gt;</maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPApp</dev:code>
+        <maml:remarks>
+          <maml:para>This will return all available app metadata from the tenant app catalog. It will list the installed version in the current site.</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPApp -Identity 2646ccc3-6a2b-46ef-9273-81411cbbb60f</dev:code>
+        <maml:remarks>
+          <maml:para>This will the specific app metadata from the app catalog.</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Get-ContentType</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Retrieves a content type</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>ContentType</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-ContentType</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>Identity</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ContentTypePipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>List</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ListPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>InSiteHierarchy</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Identity</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ContentTypePipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>ContentTypePipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>InSiteHierarchy</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>List</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ListPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>ListPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>SharePointPnP.PowerShell.Core.Model.ContentType</maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPContentType </dev:code>
+        <maml:remarks>
+          <maml:para>This will get a listing of all available content types within the current web</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPContentType -InSiteHierarchy</dev:code>
+        <maml:remarks>
+          <maml:para>This will get a listing of all available content types within the site collection</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 3---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPContentType -Identity "Project Document"</dev:code>
+        <maml:remarks>
+          <maml:para>This will get the content type with the name "Project Document" within the current context</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 4---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPContentType -List "Documents"</dev:code>
+        <maml:remarks>
+          <maml:para>This will get a listing of all available content types within the list "Documents"</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Get-CustomAction</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Retrieves custom actions</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>CustomAction</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-CustomAction</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>Identity</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">GuidPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Scope</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">CustomActionScope</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Identity</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">GuidPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>GuidPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Scope</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">CustomActionScope</command:parameterValue>
+        <dev:type>
+          <maml:name>CustomActionScope</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples />
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Get-EventReceiver</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Return registered eventreceivers</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>EventReceiver</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-EventReceiver</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>List</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ListPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Identity</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">EventReceiverPipeBind</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Identity</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">EventReceiverPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>EventReceiverPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>List</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ListPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>ListPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPEventReceiver</dev:code>
+        <maml:remarks>
+          <maml:para>This will return all registered event receivers on the current web</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPEventReceiver -Identity fb689d0e-eb99-4f13-beb3-86692fd39f22</dev:code>
+        <maml:remarks>
+          <maml:para>This will return the event receiver with the provided ReceiverId "fb689d0e-eb99-4f13-beb3-86692fd39f22" from the current web</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 3---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPEventReceiver -Identity MyReceiver</dev:code>
+        <maml:remarks>
+          <maml:para>This will return the event receiver with the provided ReceiverName "MyReceiver" from the current web</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 4---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPEventReceiver -List "ProjectList"</dev:code>
+        <maml:remarks>
+          <maml:para>This will return all registered event receivers in the provided "ProjectList" list</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 5---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPEventReceiver -List "ProjectList" -Identity fb689d0e-eb99-4f13-beb3-86692fd39f22</dev:code>
+        <maml:remarks>
+          <maml:para>This will return the event receiver in the provided "ProjectList" list with with the provided ReceiverId "fb689d0e-eb99-4f13-beb3-86692fd39f22"</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 6---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPEventReceiver -List "ProjectList" -Identity MyReceiver</dev:code>
+        <maml:remarks>
+          <maml:para>This will return the event receiver in the "ProjectList" list with the provided ReceiverName "MyReceiver"</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Get-Feature</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Returns all activated or a specific activated feature</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>Feature</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-Feature</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>Identity</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">GuidPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Scope</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">FeatureScope</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Identity</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">GuidPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>GuidPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Scope</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">FeatureScope</command:parameterValue>
+        <dev:type>
+          <maml:name>FeatureScope</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>List&lt;SharePointPnP.PowerShell.Core.Model.Feature&gt;</maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPFeature</dev:code>
+        <maml:remarks>
+          <maml:para>This will return all activated web scoped features</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPFeature -Scope Site</dev:code>
+        <maml:remarks>
+          <maml:para>This will return all activated site scoped features</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 3---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPFeature -Identity fb689d0e-eb99-4f13-beb3-86692fd39f22</dev:code>
+        <maml:remarks>
+          <maml:para>This will return a specific activated web scoped feature</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 4---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPFeature -Identity fb689d0e-eb99-4f13-beb3-86692fd39f22 -Scope Site</dev:code>
+        <maml:remarks>
+          <maml:para>This will return a specific activated site scoped feature</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Get-Field</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Returns a field from a list or site</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>Field</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-Field</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>List</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ListPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Identity</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">FieldPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Group</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Group</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Identity</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">FieldPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>FieldPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>List</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ListPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>ListPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>SharePointPnP.PowerShell.Core.Model.Field</maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPField</dev:code>
+        <maml:remarks>
+          <maml:para>Gets all the fields from the current site</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPField -List "Demo list" -Identity "Speakers"</dev:code>
+        <maml:remarks>
+          <maml:para>Gets the speakers field from the list Demo list</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Get-HomePage</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Returns the URL to the page set as home page</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>HomePage</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax />
+    <command:parameters />
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>System.String</maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPHomePage</dev:code>
+        <maml:remarks>
+          <maml:para>Will return the URL of the home page of the web.</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Get-JavaScriptLink</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Returns all or a specific custom action(s) with location type ScriptLink</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>JavaScriptLink</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-JavaScriptLink</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>Name</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Scope</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">CustomActionScope</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Name</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Scope</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">CustomActionScope</command:parameterValue>
+        <dev:type>
+          <maml:name>CustomActionScope</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>SharePointPnP.PowerShell.Core.Model.UserCustomAction</maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPJavaScriptLink</dev:code>
+        <maml:remarks>
+          <maml:para>Returns all web scoped JavaScript links</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPJavaScriptLink -Scope All</dev:code>
+        <maml:remarks>
+          <maml:para>Returns all web and site scoped JavaScript links</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 3---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPJavaScriptLink -Scope Web</dev:code>
+        <maml:remarks>
+          <maml:para>Returns all Web scoped JavaScript links</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 4---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPJavaScriptLink -Scope Site</dev:code>
+        <maml:remarks>
+          <maml:para>Returns all Site scoped JavaScript links</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 5---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPJavaScriptLink -Name Test</dev:code>
+        <maml:remarks>
+          <maml:para>Returns the web scoped JavaScript link named Test</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Get-List</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Returns a List object</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>List</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-List</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>Identity</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ListPipeBind</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Identity</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ListPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>ListPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>SharePointPnP.PowerShell.Core.Model.List</maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPList</dev:code>
+        <maml:remarks>
+          <maml:para>Returns all lists in the current web</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPList -Identity 99a00f6e-fb81-4dc7-8eac-e09c6f9132fe</dev:code>
+        <maml:remarks>
+          <maml:para>Returns a list with the given id.</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 3---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPList -Identity Lists/Announcements</dev:code>
+        <maml:remarks>
+          <maml:para>Returns a list with the given url.</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Get-MasterPage</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Returns the URLs of the default Master Page and the custom Master Page.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>MasterPage</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax />
+    <command:parameters />
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples />
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Get-PropertyBag</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Returns the property bag values.</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>PropertyBag</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-PropertyBag</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>Key</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Folder</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Folder</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Key</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPPropertyBag</dev:code>
+        <maml:remarks>
+          <maml:para>This will return all web property bag values</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPPropertyBag -Key MyKey</dev:code>
+        <maml:remarks>
+          <maml:para>This will return the value of the key MyKey from the web property bag</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 3---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPPropertyBag -Folder /MyFolder</dev:code>
+        <maml:remarks>
+          <maml:para>This will return all property bag values for the folder MyFolder which is located in the root of the current web</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 4---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPPropertyBag -Folder /MyFolder -Key vti_mykey</dev:code>
+        <maml:remarks>
+          <maml:para>This will return the value of the key vti_mykey from the folder MyFolder which is located in the root of the current web</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 5---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPPropertyBag -Folder / -Key vti_mykey</dev:code>
+        <maml:remarks>
+          <maml:para>This will return the value of the key vti_mykey from the root folder of the current web</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Get-RequestAccessEmail</command:name>
+      <maml:description>
+        <maml:para>* Supported in: SharePoint Online.
+
+Returns the request access e-mail addresses</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>RequestAccessEmail</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax />
+    <command:parameters />
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPRequestAccessEmails</dev:code>
+        <maml:remarks>
+          <maml:para>This will return all the request access e-mail addresses for the current web</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Get-SubWeb</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Returns the subwebs of the current web</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>SubWeb</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-SubWeb</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>Recurse</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Recurse</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPSubWebs</dev:code>
+        <maml:remarks>
+          <maml:para>This will return all sub webs for the current web</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPSubWebs -recurse</dev:code>
+        <maml:remarks>
+          <maml:para>This will return all sub webs for the current web and its sub webs</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Get-View</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Returns one or all views from a list</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>View</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-View</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>List</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ListPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Identity</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ViewPipeBind</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Identity</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ViewPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>ViewPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>List</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ListPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>ListPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>SharePointPnP.PowerShell.Core.Model.View</maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>Get-PnPView -List "Demo List"</dev:code>
+        <maml:remarks>
+          <maml:para>Returns all views associated from the specified list</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>Get-PnPView -List "Demo List" -Identity "Demo View"</dev:code>
+        <maml:remarks>
+          <maml:para>Returns the view called "Demo View" from the specified list</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 3---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>Get-PnPView -List "Demo List" -Identity "5275148a-6c6c-43d8-999a-d2186989a661"</dev:code>
+        <maml:remarks>
+          <maml:para>Returns the view with the specified ID from the specified list</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Get-Web</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Returns the current web object</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>Web</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax />
+    <command:parameters />
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPWeb</dev:code>
+        <maml:remarks>
+          <maml:para>This will return the current web</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Send-RestRequest</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Executes a REST request</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Send</command:verb>
+      <command:noun>RestRequest</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Send-RestRequest</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>EndPoint</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Select</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Filter</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Expand</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Method</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">HttpMethod</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Content</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Content</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>EndPoint</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Expand</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Filter</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Method</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">HttpMethod</command:parameterValue>
+        <dev:type>
+          <maml:name>HttpMethod</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Select</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples />
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+</helpItems>

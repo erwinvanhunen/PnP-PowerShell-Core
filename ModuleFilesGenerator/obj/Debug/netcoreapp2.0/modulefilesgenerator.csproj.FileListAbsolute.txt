@@ -1,0 +1,15 @@
+C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\obj\Debug\netcoreapp2.0\modulefilesgenerator.csproj.CoreCompileInputs.cache
+C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\obj\Debug\netcoreapp2.0\modulefilesgenerator.AssemblyInfoInputs.cache
+C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\obj\Debug\netcoreapp2.0\modulefilesgenerator.AssemblyInfo.cs
+C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\bin\Debug\netcoreapp2.0\SharePointPnP.PowerShell.Core.Format.ps1xml
+C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\bin\Debug\netcoreapp2.0\SharePointPnPPowerShellCore.psd1
+C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\bin\Debug\netcoreapp2.0\Tools\creds.exe
+C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\bin\Debug\netcoreapp2.0\modulefilesgenerator.deps.json
+C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\bin\Debug\netcoreapp2.0\modulefilesgenerator.runtimeconfig.json
+C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\bin\Debug\netcoreapp2.0\modulefilesgenerator.runtimeconfig.dev.json
+C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\bin\Debug\netcoreapp2.0\modulefilesgenerator.dll
+C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\bin\Debug\netcoreapp2.0\modulefilesgenerator.pdb
+C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\bin\Debug\netcoreapp2.0\SharePointPnP.PowerShell.Core.dll
+C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\bin\Debug\netcoreapp2.0\SharePointPnP.PowerShell.Core.pdb
+C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\obj\Debug\netcoreapp2.0\modulefilesgenerator.dll
+C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\obj\Debug\netcoreapp2.0\modulefilesgenerator.pdb

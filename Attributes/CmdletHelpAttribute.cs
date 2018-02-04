@@ -9,6 +9,8 @@ namespace SharePointPnP.PowerShell.Core.Attributes
                        AllowMultiple = false)]
     public sealed class CmdletHelpAttribute : Attribute
     {
+        public string Verb { get; set; }
+        public string Noun { get; set; }
         [Obsolete("Is not used. Use DetailedDescription instead.")]
         public string Details { get; set; }
 
@@ -67,6 +69,31 @@ namespace SharePointPnP.PowerShell.Core.Attributes
             DetailedDescription = detailedDescription;
             SupportedPlatform = supportedPlatform;
         }
+
+        public CmdletHelpAttribute(string verb, string noun, string description)
+        {
+            Verb = verb;
+            Noun = noun;
+            Description = description;
+        }
+
+        public CmdletHelpAttribute(string verb, string noun, string description, CmdletSupportedPlatform supportedPlatform = CmdletSupportedPlatform.All)
+        {
+            Verb = verb;
+            Noun = noun;
+            Description = description;
+            SupportedPlatform = supportedPlatform;
+        }
+
+        public CmdletHelpAttribute(string verb, string noun, string description, string detailedDescription, CmdletSupportedPlatform supportedPlatform = CmdletSupportedPlatform.All)
+        {
+            Verb = verb;
+            Noun = noun;
+            Description = description;
+            DetailedDescription = detailedDescription;
+            SupportedPlatform = supportedPlatform;
+        }
+
 
     }
 

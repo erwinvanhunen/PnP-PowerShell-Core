@@ -1,0 +1,8 @@
+C:\repos\PnP-PowerShell-Core\Attributes\bin\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.Attributes.deps.json
+C:\repos\PnP-PowerShell-Core\Attributes\bin\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.Attributes.dll
+C:\repos\PnP-PowerShell-Core\Attributes\bin\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.Attributes.pdb
+C:\repos\PnP-PowerShell-Core\Attributes\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.Attributes.csproj.CoreCompileInputs.cache
+C:\repos\PnP-PowerShell-Core\Attributes\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.Attributes.AssemblyInfoInputs.cache
+C:\repos\PnP-PowerShell-Core\Attributes\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.Attributes.AssemblyInfo.cs
+C:\repos\PnP-PowerShell-Core\Attributes\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.Attributes.dll
+C:\repos\PnP-PowerShell-Core\Attributes\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.Attributes.pdb

@@ -1,0 +1,8 @@
+C:\repos\PnP-PowerShell-Core\Attributes\bin\Debug\netstandard2.0\Attributes.deps.json
+C:\repos\PnP-PowerShell-Core\Attributes\bin\Debug\netstandard2.0\Attributes.dll
+C:\repos\PnP-PowerShell-Core\Attributes\bin\Debug\netstandard2.0\Attributes.pdb
+C:\repos\PnP-PowerShell-Core\Attributes\obj\Debug\netstandard2.0\Attributes.csproj.CoreCompileInputs.cache
+C:\repos\PnP-PowerShell-Core\Attributes\obj\Debug\netstandard2.0\Attributes.AssemblyInfoInputs.cache
+C:\repos\PnP-PowerShell-Core\Attributes\obj\Debug\netstandard2.0\Attributes.AssemblyInfo.cs
+C:\repos\PnP-PowerShell-Core\Attributes\obj\Debug\netstandard2.0\Attributes.dll
+C:\repos\PnP-PowerShell-Core\Attributes\obj\Debug\netstandard2.0\Attributes.pdb
