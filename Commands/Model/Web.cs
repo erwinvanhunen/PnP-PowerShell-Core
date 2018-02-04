@@ -253,7 +253,7 @@ namespace SharePointPnP.PowerShell.Core.Model
             }
         }
 
-        public int Language { get; set; }
+        public uint Language { get; set; }
         public DateTime LastItemModifiedDate { get; set; }
         public DateTime LastItemUserModifiedDate { get; set; }
         public string MasterUrl { get; set; }

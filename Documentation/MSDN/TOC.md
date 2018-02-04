@@ -23,6 +23,7 @@
 ### [Get-CustomAction](Get-CustomAction.md)
 ### [Connect-Online](Connect-Online.md)
 ### [Send-RestRequest](Send-RestRequest.md)
+### [New-Site](New-Site.md)
 ## [Webs](Webs-category.md)
 ### [Get-PropertyBag](Get-PropertyBag.md)
 ### [Set-PropertyBagValue](Set-PropertyBagValue.md)
