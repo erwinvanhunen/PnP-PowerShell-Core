@@ -6,7 +6,7 @@ using SharePointPnP.PowerShell.Core.Base;
 using SharePointPnP.PowerShell.Core.Base.PipeBinds;
 using SharePointPnP.PowerShell.Core.Model;
 
-namespace SharePointPnP.PowerShell.Commands.Fields
+namespace SharePointPnP.PowerShell.Core.Fields
 {
     [Cmdlet(VerbsCommon.Get, "Field")]
     [CmdletHelp(VerbsCommon.Get, "Field", "Returns a field from a list or site",

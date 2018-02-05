@@ -537,14 +537,22 @@ namespace SharePointPnP.PowerShell.Core.Helpers
         #region Private Methods
         private async Task<bool> BaseRequest(Guid id, string method, bool appCatalog = false, Dictionary<string, object> postObject = null)
         {
+            var context = _context;
+
             var returnValue = false;
             var accessToken = _context.AccessToken;
 
+            if (appCatalog == true)
+            {
+                // switch context to appcatalog
+                var appcatalogUri = GetAppCatalogUrl(_context);
+                context = _context.Clone(appcatalogUri);
+            }
             using (var handler = new HttpClientHandler())
             {
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
-                    string requestUrl = $"{_context.Url}/_api/web/tenantappcatalog/AvailableApps/GetByID('{id}')/{method}";
+                    string requestUrl = $"{context.Url}/_api/web/tenantappcatalog/AvailableApps/GetByID('{id}')/{method}";
 
                     HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
                     request.Headers.Add("accept", "application/json;odata=nometadata");
@@ -552,7 +560,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
                     {
                         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
                     }
-                    request.Headers.Add("X-RequestDigest", await RestHelper.GetRequestDigest(_context));
+                    request.Headers.Add("X-RequestDigest", await RestHelper.GetRequestDigest(context));
 
                     if (postObject != null)
                     {
@@ -601,9 +609,17 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             return url;
         }
 
-        private async Task<AppMetadata> BaseAddRequest(byte[] file, string filename, bool overwrite = false)
+        private async Task<AppMetadata> BaseAddRequest(byte[] file, string filename, bool overwrite = false, bool appCatalog = true)
         {
+            var context = _context;
             AppMetadata returnValue = null;
+
+            if (appCatalog == true)
+            {
+                // switch context to appcatalog
+                var appcatalogUri = GetAppCatalogUrl(context);
+                context = context.Clone(appcatalogUri);
+            }
 
             using (var handler = new HttpClientHandler())
             {
@@ -613,7 +629,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
                     var requestUrl = $"web/tenantappcatalog/Add(overwrite={(overwrite.ToString().ToLower())}, url='{filename}')";
                     var additionalHeaders = new Dictionary<string, string>();
                     additionalHeaders.Add("binaryStringRequestBody", "true");
-                    var response = Helpers.RestHelper.ExecutePostRequest(_context, requestUrl, file, additionalHeaders: additionalHeaders);
+                    var response = Helpers.RestHelper.ExecutePostRequest(context, requestUrl, file, additionalHeaders: additionalHeaders);
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -622,9 +638,9 @@ namespace SharePointPnP.PowerShell.Core.Helpers
                         if (responseString != null)
                         {
                             var responseJson = JObject.Parse(responseString);
-                            var id = responseJson["d"]["UniqueId"].ToString();
+                            var id = responseJson["UniqueId"].Value<string>();
                             var metadataRequestUrl = $"web/tenantappcatalog/AvailableApps/GetById('{id}')";
-                            var metadataResponse = Helpers.RestHelper.ExecutePostRequest(_context, metadataRequestUrl);
+                            var metadataResponse = Helpers.RestHelper.ExecutePostRequest(context, metadataRequestUrl);
 
                             if (metadataResponse.IsSuccessStatusCode)
                             {
@@ -632,9 +648,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
                                 var metadataResponseString = await metadataResponse.Content.ReadAsStringAsync();
                                 if (metadataResponseString != null)
                                 {
-                                    var metadataResponseJson = JObject.Parse(metadataResponseString);
-                                    var returnedAddins = metadataResponseJson["d"];
-                                    returnValue = JsonConvert.DeserializeObject<AppMetadata>(returnedAddins.ToString());
+                                    returnValue = JsonConvert.DeserializeObject<AppMetadata>(metadataResponseString);
                                 }
                             }
                             else

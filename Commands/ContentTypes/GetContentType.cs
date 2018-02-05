@@ -7,7 +7,7 @@ using System.Linq;
 using System.Collections.Generic;
 using SharePointPnP.PowerShell.Core.Attributes;
 
-namespace SharePointPnP.PowerShell.Commands.ContentTypes
+namespace SharePointPnP.PowerShell.Core.ContentTypes
 {
     [Cmdlet(VerbsCommon.Get, "ContentType")]
     [CmdletHelp(VerbsCommon.Get, "ContentType", "Retrieves a content type",

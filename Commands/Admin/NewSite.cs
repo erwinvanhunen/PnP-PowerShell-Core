@@ -7,7 +7,7 @@ using SharePointPnP.PowerShell.Core.Base.PipeBinds;
 using SharePointPnP.PowerShell.Core.Model;
 using SharePointPnP.PowerShell.Core.Helpers;
 
-namespace SharePointPnP.PowerShell.Commands
+namespace SharePointPnP.PowerShell.Core.Admin
 {
     [Cmdlet(VerbsCommon.New, "Site")]
     [CmdletHelp(VerbsCommon.New, "Site", "Creates a new site collection",
@@ -98,7 +98,7 @@ namespace SharePointPnP.PowerShell.Commands
             {
                 if (!MyInvocation.BoundParameters.ContainsKey("Lcid"))
                 {
-                    var web = new RestRequest(Context, "Web").Select("Language").Get<Web>();
+                    var web = new RestRequest(Context, "Web").Select("Language").Get<Model.Web>();
                     _communicationSiteParameters.Lcid = web.Language;
                 }
                 var creationInformation = new CommunicationSiteCollectionCreationInformation();

@@ -42,7 +42,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
                         builder.Append(Convert.ToChar(intValue));
                     }
                     var d = JsonConvert.DeserializeObject<Dictionary<string, string>>(builder.ToString());
-                    var context = new SPOnlineConnection();
+                    var context = new SPOnlineConnection(path);
                     context.AccessToken = d["accesstoken"];
                     context.RefreshToken = d["refreshtoken"];
                     context.ExpiresIn = new DateTime(long.Parse(d["expiration"]));

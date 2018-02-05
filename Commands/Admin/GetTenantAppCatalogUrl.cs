@@ -6,7 +6,7 @@ using SharePointPnP.PowerShell.Core.Attributes;
 using SharePointPnP.PowerShell.Core.Base;
 using SharePointPnP.PowerShell.Core.Helpers;
 
-namespace SharePointPnP.PowerShell.Commands
+namespace SharePointPnP.PowerShell.Core.Admin
 {
     [Cmdlet(VerbsCommon.Get, "TenantAppCatalogUrl", SupportsShouldProcess = true)]
     [CmdletHelp(VerbsCommon.Get,"TenantAppCatalogUrl","Retrieves the url of the tenant scoped app catalog.",

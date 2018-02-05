@@ -58,13 +58,18 @@ namespace SharePointPnP.PowerShell.Core.Base
                     tokenResult = client.PostAsync("https://login.microsoftonline.com/common/oauth2/token", body).GetAwaiter().GetResult();
                 }
                 var tokens = JsonConvert.DeserializeObject<Dictionary<string, string>>(tokenResult.Content.ReadAsStringAsync().GetAwaiter().GetResult());
-                var connection = new SPOnlineConnection();
+                var connection = new SPOnlineConnection(MyInvocation.MyCommand.Module.ModuleBase);
                 connection.AccessToken = tokens["access_token"];
                 connection.RefreshToken = tokens["refresh_token"];
                 connection.ExpiresIn = DateTime.Now.AddSeconds(int.Parse(tokens["expires_in"]));
                 connection.Url = Url;
                 credManager.Add(Url, connection.AccessToken, connection.RefreshToken, connection.ExpiresIn);
                 SPOnlineConnection.CurrentConnection = connection;
+
+            }
+            if(ReturnConnection)
+            {
+                WriteObject(SPOnlineConnection.CurrentConnection);
             }
         }
 

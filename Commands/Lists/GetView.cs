@@ -8,7 +8,7 @@ using SharePointPnP.PowerShell.Core.Base;
 using SharePointPnP.PowerShell.Core.Base.PipeBinds;
 using SharePointPnP.PowerShell.Core.Model;
 
-namespace SharePointPnP.PowerShell.Commands.Lists
+namespace SharePointPnP.PowerShell.Core.Lists
 {
     [Cmdlet(VerbsCommon.Get, "View")]
     [CmdletHelp(VerbsCommon.Get, "View", "Returns one or all views from a list",
