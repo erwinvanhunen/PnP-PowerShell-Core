@@ -133,7 +133,7 @@ namespace SharePointPnP.PowerShell.Core.Model
             var expands = _expands.Any() ? string.Join(",", _expands) : null;
             properties["__metadata"] = metadataType;
             var content = JsonConvert.SerializeObject(properties);
-            Helpers.RestHelper.ExecutePostRequest(_root, content, select, _filter, expands, contentType: contentType);
+            Helpers.RestHelper.ExecuteMergeRequest(_root, content, select, _filter, expands, contentType: contentType);
         }
 
         public void Merge(string content = null, string contentType = null)

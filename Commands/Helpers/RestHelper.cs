@@ -334,6 +334,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
             client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", SPOnlineConnection.AccessToken);
+            client.DefaultRequestHeaders.Add("IF-MATCH","*");
             client.DefaultRequestHeaders.Add("X-RequestDigest", GetRequestDigest().GetAwaiter().GetResult());
             client.DefaultRequestHeaders.Add("X-HTTP-Method", "MERGE");
             if (additionalHeaders != null)

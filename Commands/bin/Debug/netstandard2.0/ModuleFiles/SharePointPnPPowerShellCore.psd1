@@ -10,7 +10,7 @@
     PowerShellVersion = '6.0'
     ProcessorArchitecture = 'None'
     FunctionsToExport = '*'
-    CmdletsToExport = 'Add-App','Add-CustomAction','Connect-Online','Disable-Feature','Enable-Feature','Get-App','Get-ContentType','Get-CustomAction','Get-EventReceiver','Get-Feature','Get-Field','Get-HomePage','Get-JavaScriptLink','Get-List','Get-MasterPage','Get-PropertyBag','Get-RequestAccessEmail','Get-StorageEntity','Get-SubWeb','Get-TenantAppCatalogUrl','Get-View','Get-Web','Get-WebTemplate','New-Site','New-Web','Remove-CustomAction','Send-RestRequest','Set-PropertyBagValue'
+    CmdletsToExport = 'Add-App','Add-CustomAction','Connect-Online','Disable-Feature','Enable-Feature','Get-App','Get-ContentType','Get-CustomAction','Get-EventReceiver','Get-Feature','Get-Field','Get-HomePage','Get-JavaScriptLink','Get-List','Get-MasterPage','Get-PropertyBag','Get-RequestAccessEmail','Get-StorageEntity','Get-SubWeb','Get-TenantAppCatalogUrl','Get-View','Get-Web','Get-WebTemplate','New-Site','New-Web','Remove-CustomAction','Send-RestRequest','Set-HomePage','Set-PropertyBagValue'
     VariablesToExport = '*'
 AliasesToExport = 'Get-SubWebs','Get-WebTemplates'
     FormatsToProcess = '.\SharePointPnP.PowerShell.Core.Format.ps1xml'

@@ -6,6 +6,7 @@
 ### [Add-CustomAction](Add-CustomAction.md)
 ### [Remove-CustomAction](Remove-CustomAction.md)
 ### [Get-HomePage](Get-HomePage.md)
+### [Set-HomePage](Set-HomePage.md)
 ### [Get-JavaScriptLink](Get-JavaScriptLink.md)
 ### [Get-MasterPage](Get-MasterPage.md)
 ## [Content Types](ContentTypes-category.md)

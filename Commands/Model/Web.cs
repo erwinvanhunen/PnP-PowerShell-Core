@@ -70,6 +70,8 @@ namespace SharePointPnP.PowerShell.Core.Model
         [JsonProperty("ServerRelativeUrl")]
         private string _serverRelativeUrl { get; set; }
 
+        [JsonProperty("RootFolder")]
+        private Folder _rootFolder { get; set; }
         #endregion
 
         #region CONSTRUCTOR
@@ -262,7 +264,14 @@ namespace SharePointPnP.PowerShell.Core.Model
         public ResourcePath ResourcePath { get; set; }
         public bool QuickLaunchEnabled { get; set; }
         public bool RecycleBinEnabled { get; set; }
-        public Folder RootFolder { get; }
+
+        [JsonIgnore]
+        public Folder RootFolder {
+            get
+            {
+                return _rootFolder;
+            }
+        }
 
         [JsonIgnore]
         public string ServerRelativeUrl
