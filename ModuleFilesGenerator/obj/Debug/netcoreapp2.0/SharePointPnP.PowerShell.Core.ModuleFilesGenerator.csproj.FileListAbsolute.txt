@@ -11,3 +11,4 @@ C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\bin\Debug\netcoreapp2.0\ShareP
 C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\bin\Debug\netcoreapp2.0\SharePointPnP.PowerShell.Core.Attributes.pdb
 C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\obj\Debug\netcoreapp2.0\SharePointPnP.PowerShell.Core.ModuleFilesGenerator.dll
 C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\obj\Debug\netcoreapp2.0\SharePointPnP.PowerShell.Core.ModuleFilesGenerator.pdb
+C:\repos\PnP-PowerShell-Core\ModuleFilesGenerator\obj\Debug\netcoreapp2.0\SharePointPnP.PowerShell.Core.ModuleFilesGenerator.csprojResolveAssemblyReference.cache

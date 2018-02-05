@@ -30,9 +30,9 @@ C:\repos\PnP-PowerShell-Core\Commands\bin\Debug\netstandard2.0\System.Xml.Reader
 C:\repos\PnP-PowerShell-Core\Commands\bin\Debug\netstandard2.0\System.Xml.XmlDocument.dll
 C:\repos\PnP-PowerShell-Core\Commands\bin\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.Attributes.dll
 C:\repos\PnP-PowerShell-Core\Commands\bin\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.Attributes.pdb
+C:\repos\PnP-PowerShell-Core\Commands\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.csprojResolveAssemblyReference.cache
 C:\repos\PnP-PowerShell-Core\Commands\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.csproj.CoreCompileInputs.cache
 C:\repos\PnP-PowerShell-Core\Commands\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.AssemblyInfoInputs.cache
 C:\repos\PnP-PowerShell-Core\Commands\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.AssemblyInfo.cs
 C:\repos\PnP-PowerShell-Core\Commands\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.dll
 C:\repos\PnP-PowerShell-Core\Commands\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.pdb
-C:\repos\PnP-PowerShell-Core\Commands\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.csprojResolveAssemblyReference.cache

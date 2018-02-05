@@ -1,7 +1,7 @@
 ﻿@{
-    ModuleToProcess = 'SharePointPnPPowerShellOnlineAliases.psm1'
-    NestedModules = 'SharePointPnP.PowerShell.Core.dll'
-    #RootModule = 'SharePointPnP.PowerShell.Core.dll'
+    #ModuleToProcess = 'SharePointPnPPowerShellCoreAliases.psm1'
+    #NestedModules = 'SharePointPnP.PowerShell.Core.dll'
+    RootModule = 'SharePointPnP.PowerShell.Core.dll'
     ModuleVersion = '1.0.0.0'
     Description = 'SharePoint Patterns and Practices PowerShell Cmdlets for SharePoint Online'
     GUID = '0b0430ce-d799-4f3b-a565-f0dca1f31e17'
@@ -12,7 +12,7 @@
     FunctionsToExport = '*'
     CmdletsToExport = 'Add-App','Add-CustomAction','Connect-Online','Disable-Feature','Enable-Feature','Get-App','Get-ContentType','Get-CustomAction','Get-EventReceiver','Get-Feature','Get-Field','Get-HomePage','Get-JavaScriptLink','Get-List','Get-MasterPage','Get-PropertyBag','Get-RequestAccessEmail','Get-StorageEntity','Get-SubWeb','Get-TenantAppCatalogUrl','Get-View','Get-Web','Get-WebTemplate','New-Site','New-Web','Remove-CustomAction','Send-RestRequest','Set-HomePage','Set-MasterPage','Set-PropertyBagValue'
     VariablesToExport = '*'
-AliasesToExport = 'Get-SubWebs','Get-WebTemplates'
+AliasesToExport = 'Get-Subwebs','Get-WebTemplates'
     FormatsToProcess = '.\SharePointPnP.PowerShell.Core.Format.ps1xml'
     DefaultCommandPrefix = 'PnP'
     PrivateData = @{

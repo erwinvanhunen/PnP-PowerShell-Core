@@ -87,9 +87,9 @@ namespace SharePointPnP.PowerShell.Core.ModuleFilesGenerator
                 nestedModules = $"{Environment.NewLine}@('SharePointPnPPowerShellCoreAliases.psm1')";
             }
             var manifest = $@"@{{
-    ModuleToProcess = 'SharePointPnPPowerShellCoreAliases.psm1'
-    NestedModules = 'SharePointPnP.PowerShell.Core.dll'
-    #RootModule = 'SharePointPnP.PowerShell.Core.dll'
+    #ModuleToProcess = 'SharePointPnPPowerShellCoreAliases.psm1'
+    #NestedModules = 'SharePointPnP.PowerShell.Core.dll'
+    RootModule = 'SharePointPnP.PowerShell.Core.dll'
     ModuleVersion = '{_assemblyVersion}'
     Description = 'SharePoint Patterns and Practices PowerShell Cmdlets for SharePoint {spVersion}'
     GUID = '0b0430ce-d799-4f3b-a565-f0dca1f31e17'
