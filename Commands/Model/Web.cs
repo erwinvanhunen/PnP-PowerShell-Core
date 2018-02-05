@@ -72,6 +72,30 @@ namespace SharePointPnP.PowerShell.Core.Model
 
         [JsonProperty("RootFolder")]
         private Folder _rootFolder { get; set; }
+
+        [JsonProperty("MasterUrl")]
+        private string _masterUrl { get; set; }
+
+        [JsonProperty("Language")]
+        private uint _language { get; set; }
+
+        [JsonProperty("NoCrawl")]
+        private bool _nocrawl { get; set; }
+
+        [JsonProperty("LastItemModifiedDate")]
+        private DateTime _lastItemModifiedDate { get; set; }
+
+        [JsonProperty("LastItemUserModifiedDate")]
+        private DateTime _lastItemUserModifiedDate { get; set; }
+
+        [JsonProperty("RecycleBinEnabled")]
+        private bool _recycleBinEnabled { get; set; }
+
+        [JsonProperty("QuickLaunchEnabled")]
+        private bool _quickLaunchEnabled { get; set; }
+
+        [JsonProperty("SiteLogoUrl")]
+        private string _siteLogoUrl { get; set; }
         #endregion
 
         #region CONSTRUCTOR
@@ -255,18 +279,96 @@ namespace SharePointPnP.PowerShell.Core.Model
             }
         }
 
-        public uint Language { get; set; }
-        public DateTime LastItemModifiedDate { get; set; }
-        public DateTime LastItemUserModifiedDate { get; set; }
-        public string MasterUrl { get; set; }
-        public bool NoCrawl { get; set; }
-        public bool OverwriteTranslationsOnChange { get; set; }
-        public ResourcePath ResourcePath { get; set; }
-        public bool QuickLaunchEnabled { get; set; }
-        public bool RecycleBinEnabled { get; set; }
+        [JsonIgnore]
+        public uint Language
+        {
+            get
+            {
+                return _language;
+            }
+        }
 
         [JsonIgnore]
-        public Folder RootFolder {
+        public DateTime LastItemModifiedDate
+        {
+            get
+            {
+                return _lastItemModifiedDate;
+            }
+        }
+
+        [JsonIgnore]
+        public DateTime LastItemUserModifiedDate
+        {
+            get
+            {
+                return _lastItemUserModifiedDate;
+            }
+        }
+
+        [JsonIgnore]
+        public string MasterUrl
+        {
+            get
+            {
+                return _masterUrl;
+            }
+            set
+            {
+                _masterUrl = value;
+                base.ObjectProperties["MasterUrl"] = value;
+            }
+        }
+
+        [JsonIgnore]
+        public bool NoCrawl
+        {
+            get
+            {
+                return _nocrawl;
+            }
+            set
+            {
+                _nocrawl = value;
+                base.ObjectProperties["NoCrawl"] = value;
+
+            }
+        }
+
+        public bool OverwriteTranslationsOnChange { get; set; }
+        public ResourcePath ResourcePath { get; set; }
+
+        [JsonIgnore]
+        public bool QuickLaunchEnabled
+        {
+            get
+            {
+                return _quickLaunchEnabled;
+            }
+            set {
+                _quickLaunchEnabled = value;
+                base.ObjectProperties["QuickLaunchEnabled"] = value;
+            }
+        }
+
+        [JsonIgnore]
+        public bool RecycleBinEnabled
+        {
+            get
+            {
+                return _recycleBinEnabled;
+            }
+            set {
+                _recycleBinEnabled = value;
+                base.ObjectProperties["RecycleBinEnabled"] = value;
+            }
+        }
+
+
+
+        [JsonIgnore]
+        public Folder RootFolder
+        {
             get
             {
                 return _rootFolder;
@@ -281,8 +383,21 @@ namespace SharePointPnP.PowerShell.Core.Model
                 return _serverRelativeUrl;
             }
         }
-        
-        public object SiteLogoUrl { get; set; }
+
+        [JsonIgnore]
+        public string SiteLogoUrl
+        {
+            get
+            {
+                return _siteLogoUrl;
+            }
+            set
+            {
+                _siteLogoUrl = value;
+                base.ObjectProperties["SiteLogoUrl"] = value;
+            }
+        }
+
         public bool SyndicationEnabled { get; set; }
 
         [JsonIgnore]

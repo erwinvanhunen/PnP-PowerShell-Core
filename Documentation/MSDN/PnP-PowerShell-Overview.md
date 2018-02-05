@@ -95,6 +95,7 @@ Cmdlet|Description|Platform
 **[Set&#8209;HomePage](Set-HomePage.md)** |Sets the home page of the current web.|
 **[Get&#8209;JavaScriptLink](Get-JavaScriptLink.md)** |Returns all or a specific custom action(s) with location type ScriptLink|
 **[Get&#8209;MasterPage](Get-MasterPage.md)** |Returns the URLs of the default Master Page and the custom Master Page.|
+**[Set&#8209;MasterPage](Set-MasterPage.md)** |Set the masterpage|All
 
 
 ### Content Types 

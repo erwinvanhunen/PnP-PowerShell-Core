@@ -9,6 +9,7 @@
 ### [Set-HomePage](Set-HomePage.md)
 ### [Get-JavaScriptLink](Get-JavaScriptLink.md)
 ### [Get-MasterPage](Get-MasterPage.md)
+### [Set-MasterPage](Set-MasterPage.md)
 ## [Content Types](ContentTypes-category.md)
 ### [Get-ContentType](Get-ContentType.md)
 ## [Event Receivers](EventReceivers-category.md)
