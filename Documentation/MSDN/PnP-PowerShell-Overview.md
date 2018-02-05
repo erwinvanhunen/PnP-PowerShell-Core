@@ -11,7 +11,7 @@ _**Applies to:** SharePoint Online | SharePoint 2016 | SharePoint 2013_
 There are 3 ways to install the cmdlets. We recommend, where possible, to install them from the [PowerShell Gallery](https://www.powershellgallery.com). Alternatively you can download the setup files or run a PowerShell script to download the PowerShellGet module and install the cmdlets subsequently.
 
 ### PowerShell Gallery ###
-If you main OS is Windows 10, of if you have [PowerShellGet](https://github.com/powershell/powershellget) installed, you can run the following commands to install the PowerShell cmdlets:
+If you main OS is Windows 10, or if you have [PowerShellGet](https://github.com/powershell/powershellget) installed, you can run the following commands to install the PowerShell cmdlets:
 
 |**SharePoint Version**|**Command to install**|
 |------------------|------------------|
@@ -102,11 +102,17 @@ Cmdlet|Description|Platform
 **[Get&#8209;JavaScriptLink](Get-JavaScriptLink.md)** |Returns all or a specific custom action(s) with location type ScriptLink|
 **[Get&#8209;MasterPage](Get-MasterPage.md)** |Returns the URLs of the default Master Page and the custom Master Page.|
 **[Set&#8209;MasterPage](Set-MasterPage.md)** |Set the masterpage|All
+**[Set&#8209;MinimalDownloadStrategy](Set-MinimalDownloadStrategy.md)** |Activates or deactivates the minimal downloading strategy.|All
+**[Add&#8209;NavigationNode](Add-NavigationNode.md)** |Adds an item to a navigation element|All
+**[Get&#8209;NavigationNode](Get-NavigationNode.md)** |Returns navigation nodes for a web|
+**[Remove&#8209;NavigationNode](Remove-NavigationNode.md)** |Returns navigation nodes for a web|
+**[Set&#8209;NavigationNode](Set-NavigationNode.md)** |Sets the home page of the current web.|
 
 
 ### Content Types 
 Cmdlet|Description|Platform
 :-----|:----------|:-------
+**[Add&#8209;ContentType](Add-ContentType.md)** |Adds a new content type|
 **[Get&#8209;ContentType](Get-ContentType.md)** |Retrieves a content type|
 
 

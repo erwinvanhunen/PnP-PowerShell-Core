@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -6,10 +7,27 @@ namespace SharePointPnP.PowerShell.Core.Model
 {
     public class ContentTypeId
     {
+        [JsonProperty("__metadata")]
+        public MetadataType MetadataType
+        {
+            get
+            {
+                return new MetadataType("SP.ContentTypeId");
+            }
+        }
         public string StringValue { get; set; }
     }
     public class ContentType : ClientSideObject
     {
+        [JsonProperty("__metadata")]
+        public MetadataType MetadataType
+        {
+            get
+            {
+                return new MetadataType("SP.ContentType");
+            }
+        }
+
         public string Description { get; set; }
         public string DisplayFormTemplateName { get; set; }
         public string DisplayFormUrl { get; set; }

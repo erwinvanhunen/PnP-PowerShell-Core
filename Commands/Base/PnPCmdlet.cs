@@ -28,31 +28,11 @@ namespace SharePointPnP.PowerShell.Core.Base
         protected override void ProcessRecord()
         {
             var cmdletConnection = Connection ?? SPOnlineConnection.CurrentConnection;
-            if (cmdletConnection.AccessToken.Length == 0)
+            if (string.IsNullOrEmpty(cmdletConnection.AccessToken))
             {
                 throw new PSInvalidOperationException("A connection is required. Use Connect-PnPOnline to connect first.");
             }
             
-            //var expiresOn = SPOnlineConnection.ExpiresOn;
-            // token expired?
-            //if (!string.IsNullOrEmpty(cmdletConnection.AccessToken) && DateTime.Now > cmdletConnection.ExpiresIn && !string.IsNullOrEmpty(cmdletConnection.RefreshToken))
-            //{
-            //    // Expired token
-            //    var client = new HttpClient();
-            //    var uri = new Uri(cmdletConnection.Url);
-            //    var url = $"{uri.Scheme}://{uri.Host}";
-            //    var body = new StringContent($"resource={url}&client_id={SPOnlineConnection.AppId}&grant_type=refresh_token&refresh_token={cmdletConnection.RefreshToken}");
-            //    body.Headers.ContentType.MediaType = "application/x-www-form-urlencoded";
-            //    client.DefaultRequestHeaders.Accept.Clear();
-            //    client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            //    var result = client.PostAsync("https://login.microsoftonline.com/common/oauth2/token", body).GetAwaiter().GetResult();
-            //    var tokens = JsonConvert.DeserializeObject<Dictionary<string, string>>(result.Content.ReadAsStringAsync().GetAwaiter().GetResult());
-            //    cmdletConnection.AccessToken = tokens["access_token"];
-            //    cmdletConnection.RefreshToken = tokens["refresh_token"];
-            //    cmdletConnection.ExpiresIn = DateTime.Now.AddSeconds(int.Parse(tokens["expires_in"]));
-            //    var credmgr = new CredentialManager(MyInvocation.MyCommand.Module.ModuleBase);
-            //    credmgr.Add(cmdletConnection.Url, cmdletConnection.AccessToken, cmdletConnection.RefreshToken, cmdletConnection.ExpiresIn);
-            //}
             ExecuteCmdlet();
         }
 

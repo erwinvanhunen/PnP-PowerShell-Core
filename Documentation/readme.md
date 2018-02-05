@@ -26,9 +26,15 @@ Cmdlet|Description|Platforms
 **[Get&#8209;JavaScriptLink](Get-JavaScriptLink.md)** |Returns all or a specific custom action(s) with location type ScriptLink|
 **[Get&#8209;MasterPage](Get-MasterPage.md)** |Returns the URLs of the default Master Page and the custom Master Page.|
 **[Set&#8209;MasterPage](Set-MasterPage.md)** |Set the masterpage|All
+**[Set&#8209;MinimalDownloadStrategy](Set-MinimalDownloadStrategy.md)** |Activates or deactivates the minimal downloading strategy.|All
+**[Add&#8209;NavigationNode](Add-NavigationNode.md)** |Adds an item to a navigation element|All
+**[Get&#8209;NavigationNode](Get-NavigationNode.md)** |Returns navigation nodes for a web|
+**[Remove&#8209;NavigationNode](Remove-NavigationNode.md)** |Returns navigation nodes for a web|
+**[Set&#8209;NavigationNode](Set-NavigationNode.md)** |Sets the home page of the current web.|
 ## Content Types
 Cmdlet|Description|Platforms
 :-----|:----------|:--------
+**[Add&#8209;ContentType](Add-ContentType.md)** |Adds a new content type|
 **[Get&#8209;ContentType](Get-ContentType.md)** |Retrieves a content type|
 ## Event Receivers
 Cmdlet|Description|Platforms
