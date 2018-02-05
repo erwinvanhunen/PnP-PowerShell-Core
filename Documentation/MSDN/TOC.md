@@ -3,6 +3,8 @@
 ### [Add-App](Add-App.md)
 ### [Get-App](Get-App.md)
 ## [Branding](Branding-category.md)
+### [Add-CustomAction](Add-CustomAction.md)
+### [Remove-CustomAction](Remove-CustomAction.md)
 ### [Get-HomePage](Get-HomePage.md)
 ### [Get-JavaScriptLink](Get-JavaScriptLink.md)
 ### [Get-MasterPage](Get-MasterPage.md)

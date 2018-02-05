@@ -92,7 +92,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             return JsonConvert.DeserializeObject<T>(returnValue.Content.ReadAsStringAsync().GetAwaiter().GetResult());
         }
 
-        public static T ExecutePostRequest<T>(string url, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = null)
+        public static T ExecutePostRequest<T>(string url, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = "application/json")
         {
             HttpContent stringContent = new StringContent(content);
             if (contentType != null)
@@ -116,7 +116,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             return ExecutePostRequestInternal(endPointUrl, null, select, filter, expand, additionalHeaders);
         }
 
-        public static HttpResponseMessage ExecutePostRequest(string endPointUrl, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = null)
+        public static HttpResponseMessage ExecutePostRequest(string endPointUrl, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = "application/json")
         {
             HttpContent stringContent = null;
             if (!string.IsNullOrEmpty(content))
@@ -344,6 +344,56 @@ namespace SharePointPnP.PowerShell.Core.Helpers
                 }
             }
             var returnValue = client.PostAsync(url, content).GetAwaiter().GetResult();
+            return returnValue;
+        }
+        #endregion
+
+        #region DELETE
+
+        public static HttpResponseMessage ExecuteDeleteRequest(string endPointUrl, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        {
+            return ExecuteDeleteRequestInternal(endPointUrl, select, filter, expand, additionalHeaders);
+        }
+
+        private static HttpResponseMessage ExecuteDeleteRequestInternal(string endPointUrl, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        {
+            var url = endPointUrl;
+            if (!url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
+            {
+                url = SPOnlineConnection.Url + "/_api/" + endPointUrl;
+            }
+            var restparams = new System.Collections.Generic.List<string>();
+            if (!string.IsNullOrEmpty(select))
+            {
+                restparams.Add($"$select={select}");
+            }
+            if (!string.IsNullOrEmpty(filter))
+            {
+                restparams.Add($"$filter=({filter})");
+            }
+            if (!string.IsNullOrEmpty(expand))
+            {
+                restparams.Add($"$expand={expand}");
+            }
+            if (restparams.Any())
+            {
+                url += $"?{string.Join("&", restparams)}";
+            }
+
+            var client = new HttpClient();
+            client.DefaultRequestHeaders.Accept.Clear();
+            client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", SPOnlineConnection.AccessToken);
+            client.DefaultRequestHeaders.Add("X-RequestDigest", GetRequestDigest().GetAwaiter().GetResult());
+            client.DefaultRequestHeaders.Add("X-HTTP-Method", "DELETE");
+            if (additionalHeaders != null)
+            {
+                foreach (var key in additionalHeaders.Keys)
+                {
+                    client.DefaultRequestHeaders.Add(key, additionalHeaders[key]);
+                }
+            }
+            var returnValue = client.DeleteAsync(url).GetAwaiter().GetResult();
             return returnValue;
         }
         #endregion

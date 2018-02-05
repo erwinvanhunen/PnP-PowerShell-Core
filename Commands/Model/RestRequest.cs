@@ -75,7 +75,7 @@ namespace SharePointPnP.PowerShell.Core.Model
             Helpers.RestHelper.ExecutePostRequest(_root, content, select, _filter, expands, contentType: contentType);
         }
 
-        public void Post(MetadataType metadataType, Dictionary<string, object> properties, string contentType = null)
+        public void Post(MetadataType metadataType, Dictionary<string, object> properties, string contentType = "application/json; odata=verbose")
         {
             var select = _selects.Any() ? string.Join(",", _selects) : null;
             var expands = _expands.Any() ? string.Join(",", _expands) : null;
@@ -84,7 +84,7 @@ namespace SharePointPnP.PowerShell.Core.Model
             Helpers.RestHelper.ExecutePostRequest(_root, content, select, _filter, expands, contentType: contentType);
         }
 
-        public T Post<T>(MetadataType metadataType, Dictionary<string, object> properties, string contentType = "application/json;odata=verbose")
+        public T Post<T>(MetadataType metadataType, Dictionary<string, object> properties, string contentType = "application/json; odata=verbose")
         {
             var select = _selects.Any() ? string.Join(",", _selects) : null;
             var expands = _expands.Any() ? string.Join(",", _expands) : null;
@@ -141,6 +141,13 @@ namespace SharePointPnP.PowerShell.Core.Model
             var select = _selects.Any() ? string.Join(",", _selects) : null;
             var expands = _expands.Any() ? string.Join(",", _expands) : null;
             Helpers.RestHelper.ExecuteMergeRequest(_root, content, select, _filter, expands, contentType: contentType);
+        }
+
+        public void Delete(string content = null, string contentType = "application/json;odata=version")
+        {
+            var select = _selects.Any() ? string.Join(",", _selects) : null;
+            var expands = _expands.Any() ? string.Join(",", _expands) : null;
+            Helpers.RestHelper.ExecuteDeleteRequest(_root, content, select, _filter);
         }
     }
 }

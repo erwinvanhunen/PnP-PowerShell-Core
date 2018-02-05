@@ -8,16 +8,16 @@
         /// <summary>
         /// Sites
         /// </summary>
-        Web,
+        Web  = 3,
 
         /// <summary>
         /// Site collections
         /// </summary>
-        Site,
+        Site  = 2,
 
         /// <summary>
         /// Sites collections and sites
         /// </summary>
-        All
+        All = 0
     }
 }
