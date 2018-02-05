@@ -2,7 +2,7 @@ using Newtonsoft.Json;
 
 namespace SharePointPnP.PowerShell.Core.Model
 {
-    public class BasePermissions
+    public class BasePermissions : ClientSideObject
     {
         [JsonProperty("High")]
         private uint _high { get; set; }

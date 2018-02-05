@@ -44,7 +44,7 @@ namespace SharePointPnP.PowerShell.Core.Web
         {
             if (string.IsNullOrEmpty(Folder))
             {
-                var properties = new RestRequest("Web/AllProperties").Get<Dictionary<string, string>>().Where(k => !k.Key.StartsWith("odata.")).Select(p => new PropertyBagValue() { Key = p.Key.Replace("_x005f_", "_").Replace("OData_", ""), Value = p.Value });
+                var properties = new RestRequest(Context, "Web/AllProperties").Get<ClientSideDictionary<string, string>>().Where(k => !k.Key.StartsWith("odata.")).Select(p => new PropertyBagValue() { Key = p.Key.Replace("_x005f_", "_").Replace("OData_", ""), Value = p.Value });
                 if (!string.IsNullOrEmpty(Key))
                 {
                     WriteObject(properties.FirstOrDefault(p => p.Key == Key));
@@ -58,13 +58,13 @@ namespace SharePointPnP.PowerShell.Core.Web
             {
                 // Folder Property Bag
 
-                var web = new RestRequest("Web").Select("ServerRelativeUrl").Get<Model.Web>();
+                var web = new RestRequest(Context, "Web").Select("ServerRelativeUrl").Get<Model.Web>();
 
                 var serverRelativeUrl = web.ServerRelativeUrl;
 
                 var folderUrl = UrlUtility.Combine(serverRelativeUrl, Folder);
 
-                var folderProperties = new RestRequest($"Web/GetFolderByServerRelativePath(decodedurl='/{folderUrl}')/Properties").Get<Dictionary<string, string>>()
+                var folderProperties = new RestRequest(Context, $"Web/GetFolderByServerRelativePath(decodedurl='/{folderUrl}')/Properties").Get<ClientSideDictionary<string, string>>()
                     .Where(k => !k.Key.StartsWith("odata."))
                     .Select(p => new PropertyBagValue() { Key = p.Key.Replace("_x005f_", "_").Replace("OData_", ""), Value = p.Value });
 

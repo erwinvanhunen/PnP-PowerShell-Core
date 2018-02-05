@@ -9,7 +9,7 @@ using System.Collections.Generic;
 namespace SharePointPnP.PowerShell.Core.Branding
 {
     [Cmdlet(VerbsCommon.Get, "Feature")]
-    [CmdletHelp(VerbsCommon.Get,"Feature","Returns all activated or a specific activated feature",
+    [CmdletHelp(VerbsCommon.Get, "Feature", "Returns all activated or a specific activated feature",
        Category = CmdletHelpCategory.Features,
        OutputType = typeof(IEnumerable<Feature>),
        OutputTypeLink = "https://msdn.microsoft.com/en-us/library/microsoft.sharepoint.client.feature.aspx")]
@@ -47,7 +47,7 @@ namespace SharePointPnP.PowerShell.Core.Branding
                 baseUrl = $"{(Scope == FeatureScope.Web ? "Web" : "Site")}/Features";
             }
 
-            WriteObject(new RestRequest(baseUrl).Expand("DisplayName").Get<ResponseCollection<Feature>>().Items, true);
+            WriteObject(new RestRequest(Context, baseUrl).Expand("DisplayName").Get<ResponseCollection<Feature>>().Items, true);
         }
 
     }

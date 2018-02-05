@@ -8,15 +8,15 @@ namespace SharePointPnP.PowerShell.Core.Helpers
 {
     public static class ClientSvcHelper
     {
-        public static string Execute(string payload, bool isAdmin = false)
+        public static string Execute(SPOnlineConnection context, string payload, bool isAdmin = false)
         {
-            var response = ExecuteInternalAsync(payload, isAdmin).GetAwaiter().GetResult();
+            var response = ExecuteInternalAsync(context, payload, isAdmin).GetAwaiter().GetResult();
             return response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
         }
 
-        public static Task<HttpResponseMessage> ExecuteInternalAsync(string payload, bool isAdmin)
+        public static Task<HttpResponseMessage> ExecuteInternalAsync(SPOnlineConnection context, string payload, bool isAdmin)
         {
-            var hostUrl = SPOnlineConnection.Url;
+            var hostUrl = context.Url;
             if(isAdmin && !hostUrl.Contains("-admin.sharepoint."))
             {
                 var uri = new Uri(hostUrl.ToLower().Replace(".sharepoint.","-admin.sharepoint."));
@@ -26,8 +26,8 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             var client = new HttpClient();
             client.DefaultRequestHeaders.Accept.Clear();
             client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
-            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", SPOnlineConnection.AccessToken);
-            client.DefaultRequestHeaders.Add("X-RequestDigest", RestHelper.GetRequestDigest(isAdmin ? hostUrl : null).GetAwaiter().GetResult());
+            client.DefaultRequestHeaders.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", context.AccessToken);
+            client.DefaultRequestHeaders.Add("X-RequestDigest", RestHelper.GetRequestDigest(context,isAdmin ? hostUrl : null).GetAwaiter().GetResult());
             var url = $"{hostUrl}/_vti_bin/client.svc/ProcessQuery";
             var returnValue = client.PostAsync(url, content);
             return returnValue;

@@ -7,7 +7,7 @@ using SharePointPnP.PowerShell.Core.Attributes;
 namespace SharePointPnP.PowerShell.Core.Branding
 {
     [Cmdlet(VerbsCommon.Get, "EventReceiver")]
-    [CmdletHelp(VerbsCommon.Get, "EventReceiver", "Return registered eventreceivers",   
+    [CmdletHelp(VerbsCommon.Get, "EventReceiver", "Return registered eventreceivers",
         Category = CmdletHelpCategory.EventReceivers)]
     [CmdletExample(
       Code = @"PS:> Get-PnPEventReceiver",
@@ -39,13 +39,13 @@ namespace SharePointPnP.PowerShell.Core.Branding
         {
             if (ParameterSetName == "List")
             {
-                var list = List.GetList();
+                var list = List.GetList(Context);
 
                 if (list != null)
                 {
                     if (!MyInvocation.BoundParameters.ContainsKey("Identity"))
                     {
-                        WriteObject(ExecuteGetRequest<ResponseCollection<EventReceiver>>($"Web/Lists/GetById(guid'{list.Id}')/EventReceivers").Items, true);
+                        WriteObject(new RestRequest(Context, $"Web/Lists/GetById(guid'{list.Id}')/EventReceivers").Get<ResponseCollection<EventReceiver>>().Items, true);
                     }
                     else
                     {
@@ -57,12 +57,12 @@ namespace SharePointPnP.PowerShell.Core.Branding
             {
                 if (!MyInvocation.BoundParameters.ContainsKey("Identity"))
                 {
-                    WriteObject(ExecuteGetRequest<ResponseCollection<EventReceiver>>($"Web/EventReceivers").Items, true);
+                    WriteObject(new RestRequest(Context,$"Web/EventReceivers").Get<ResponseCollection<EventReceiver>>().Items, true);
 
                 }
                 else
                 {
-                    WriteObject(Identity.GetEventReceiverOnWeb());
+                    WriteObject(Identity.GetEventReceiverOnWeb(Context));
                 }
             }
         }

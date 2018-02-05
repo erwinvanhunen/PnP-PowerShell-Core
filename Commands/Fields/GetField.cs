@@ -9,7 +9,7 @@ using SharePointPnP.PowerShell.Core.Model;
 namespace SharePointPnP.PowerShell.Commands.Fields
 {
     [Cmdlet(VerbsCommon.Get, "Field")]
-    [CmdletHelp(VerbsCommon.Get,"Field","Returns a field from a list or site",
+    [CmdletHelp(VerbsCommon.Get, "Field", "Returns a field from a list or site",
         Category = CmdletHelpCategory.Fields,
         OutputType = typeof(Field),
         OutputTypeLink = "https://msdn.microsoft.com/en-us/library/microsoft.sharepoint.client.field.aspx")]
@@ -35,28 +35,28 @@ namespace SharePointPnP.PowerShell.Commands.Fields
         protected override void ExecuteCmdlet()
         {
             string groupFilter = null;
-            var expands = new string[] { "ClientSideComponentProperties", "CustomFormatter","OutputType"};
+            var expands = new string[] { "ClientSideComponentProperties", "CustomFormatter", "OutputType" };
             if (!string.IsNullOrEmpty(Group))
             {
                 groupFilter = $"tolower(Group) eq '{Group.ToLower()}'";
             }
             if (List != null)
             {
-                var list = List.GetList();
+                var list = List.GetList(Context);
 
                 if (list != null)
                 {
                     if (Identity.Id != Guid.Empty)
                     {
-                        WriteObject(new RestRequest($"Web/Lists(guid'{list.Id.ToString("D")}')/Fields(guid'{Identity.Id}')", groupFilter).Expand(expands).Get<Field>());
+                        WriteObject(new RestRequest(Context, $"Web/Lists(guid'{list.Id.ToString("D")}')/Fields(guid'{Identity.Id}')", groupFilter).Expand(expands).Get<Field>());
                     }
                     else if (!string.IsNullOrEmpty(Identity.Name))
                     {
-                        WriteObject(new RestRequest($"Web/Lists(guid'{list.Id.ToString("D")}')/Fields/GetByInternalNameOrTitle('{Identity.Name}')", groupFilter).Expand(expands).Get<Field>());
+                        WriteObject(new RestRequest(Context, $"Web/Lists(guid'{list.Id.ToString("D")}')/Fields/GetByInternalNameOrTitle('{Identity.Name}')", groupFilter).Expand(expands).Get<Field>());
                     }
                     else
                     {
-                        WriteObject(new RestRequest($"Web/Lists(guid'{list.Id.ToString("D")}')/Fields", groupFilter).Expand(expands).Get<ResponseCollection<Field>>().Items, true);
+                        WriteObject(new RestRequest(Context, $"Web/Lists(guid'{list.Id.ToString("D")}')/Fields", groupFilter).Expand(expands).Get<ResponseCollection<Field>>().Items, true);
                     }
                 }
 
@@ -66,18 +66,18 @@ namespace SharePointPnP.PowerShell.Commands.Fields
 
                 if (Identity.Id == Guid.Empty && string.IsNullOrEmpty(Identity.Name))
                 {
-                    WriteObject(new RestRequest($"Web/Fields", groupFilter).Expand(expands).Get<ResponseCollection<Field>>().Items, true);
+                    WriteObject(new RestRequest(Context, $"Web/Fields", groupFilter).Expand(expands).Get<ResponseCollection<Field>>().Items, true);
                 }
                 else
                 {
                     if (Identity.Id != Guid.Empty)
                     {
-                        WriteObject(new RestRequest($"Web/Fields(guid'{Identity.Id}')", groupFilter).Expand(expands).Get<Field>());
+                        WriteObject(new RestRequest(Context, $"Web/Fields(guid'{Identity.Id}')", groupFilter).Expand(expands).Get<Field>());
 
                     }
                     else if (!string.IsNullOrEmpty(Identity.Name))
                     {
-                        WriteObject(new RestRequest($"Web/Fields/GetByInternalNameOrTitle('{Identity.Name}')", groupFilter).Expand(expands).Get<Field>());
+                        WriteObject(new RestRequest(Context, $"Web/Fields/GetByInternalNameOrTitle('{Identity.Name}')", groupFilter).Expand(expands).Get<Field>());
                     }
                 }
             }

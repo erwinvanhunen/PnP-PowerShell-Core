@@ -15,6 +15,7 @@ Removes a custom action
 Remove-CustomAction [-Identity <UserCustomActionPipeBind>]
                     [-Scope <CustomActionScope>]
                     [-Force [<SwitchParameter>]]
+                    [-Connection <SPOnlineConnection>]
 ```
 
 ## EXAMPLES
@@ -78,6 +79,18 @@ Accept pipeline input: False
 
 ```yaml
 Type: CustomActionScope
+Parameter Sets: 
+
+Required: False
+Position: 0
+Accept pipeline input: False
+```
+
+### -Connection
+
+
+```yaml
+Type: SPOnlineConnection
 Parameter Sets: 
 
 Required: False

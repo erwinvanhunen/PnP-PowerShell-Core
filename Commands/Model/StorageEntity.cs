@@ -6,7 +6,7 @@ namespace SharePointPnP.PowerShell.Core.Model
 
     using Newtonsoft.Json;
 
-    public class StorageEntity
+    public class StorageEntity : ClientSideObject
     {
         public string Key {get;set;}
 

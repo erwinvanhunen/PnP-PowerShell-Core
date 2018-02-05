@@ -1,35 +1,36 @@
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using SharePointPnP.PowerShell.Core.Base;
 
 namespace SharePointPnP.PowerShell.Core.Model
 {
-    public class ClientSideObject
+    public class ClientSideObject : IClientSideObject
     {
-        private string apiEndPoint;
-
-        [JsonIgnore]
-        protected internal Dictionary<string, object> ObjectProperties;
-
-        [JsonIgnore]
-        protected internal MetadataType metadataType { get; }
+        private SPOnlineConnection _context;
 
         public ClientSideObject()
         {
-            this.ObjectProperties = new Dictionary<string, object>();
         }
 
         public ClientSideObject(string endPoint, string type)
         {
-            this.apiEndPoint = endPoint;
-            this.metadataType = new MetadataType(type);
-            this.ObjectProperties = new Dictionary<string, object>();
         }
-        public void Update()
+
+        public ClientSideObject(SPOnlineConnection context)
         {
-            var props = this.ObjectProperties;
-            props["__metadata"] = metadataType;
-            var content = JsonConvert.SerializeObject(props);
-            new RestRequest($"{apiEndPoint}").Merge(content, contentType: "application/json;odata=verbose");
+            _context = context;
+        }
+
+        public SPOnlineConnection Context
+        {
+            get
+            {
+                return _context;
+            }
+            set
+            {
+                _context = value;
+            }
         }
     }
 }

@@ -15,7 +15,7 @@ using System.Linq;
 namespace SharePointPnP.PowerShell.Core.Admin
 {
     [Cmdlet(VerbsCommon.Get, "StorageEntity", SupportsShouldProcess = true)]
-    [CmdletHelp(VerbsCommon.Get,"StorageEntity",@"Retrieve Storage Entities / Farm Properties.",
+    [CmdletHelp(VerbsCommon.Get, "StorageEntity", @"Retrieve Storage Entities / Farm Properties.",
         Category = CmdletHelpCategory.TenantAdmin,
         SupportedPlatform = CmdletSupportedPlatform.Online)]
     [CmdletExample(Code = @"PS:> Get-PnPStorageEntity", Remarks = "Returns all site storage entities/farm properties", SortOrder = 1)]
@@ -34,7 +34,7 @@ namespace SharePointPnP.PowerShell.Core.Admin
         {
             if (MyInvocation.BoundParameters.ContainsKey("Key"))
             {
-                var entity = new RestRequest($"web/GetStorageEntity(Key='{Key}')").Get<StorageEntity>();
+                var entity = new RestRequest(Context, $"web/GetStorageEntity(Key='{Key}')").Get<StorageEntity>();
                 if (entity != null)
                 {
                     entity.Key = Key;
@@ -46,9 +46,9 @@ namespace SharePointPnP.PowerShell.Core.Admin
                 var appCatalogUrl = AppCatalogUrl;
                 if (string.IsNullOrEmpty(AppCatalogUrl))
                 {
-                    appCatalogUrl = AppManager.GetAppCatalogUrl();
+                    appCatalogUrl = AppManager.GetAppCatalogUrl(Context);
                 }
-                var properties = new RestRequest($"{appCatalogUrl}/_api/Web/AllProperties").Get<Dictionary<string, string>>();
+                var properties = new RestRequest(Context, $"{appCatalogUrl}/_api/Web/AllProperties").Get<ClientSideDictionary<string, string>>();
                 if (properties.ContainsKey("storageentitiesindex"))
                 {
                     var storageEntitiesDict = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(properties["storageentitiesindex"]);

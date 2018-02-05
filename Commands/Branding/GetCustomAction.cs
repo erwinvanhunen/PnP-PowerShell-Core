@@ -10,7 +10,7 @@ using SharePointPnP.PowerShell.Core.Attributes;
 namespace SharePointPnP.PowerShell.Core.Branding
 {
     [Cmdlet(VerbsCommon.Get, "CustomAction")]
-    [CmdletHelp(VerbsCommon.Get,"CustomAction","Retrieves custom actions")]
+    [CmdletHelp(VerbsCommon.Get, "CustomAction", "Retrieves custom actions")]
     public class GetCustomAction : PnPCmdlet
     {
         [Parameter(Mandatory = false, HelpMessage = "Identity of the CustomAction to return. Omit to return all CustomActions.")]
@@ -25,11 +25,11 @@ namespace SharePointPnP.PowerShell.Core.Branding
 
             if (Scope == CustomActionScope.All || Scope == CustomActionScope.Web)
             {
-                actions.AddRange(new RestRequest("Web/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items);
+                actions.AddRange(new RestRequest(Context, "Web/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items);
             }
             if (Scope == CustomActionScope.All || Scope == CustomActionScope.Site)
             {
-                actions.AddRange(new RestRequest("Site/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items);
+                actions.AddRange(new RestRequest(Context, "Site/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items);
             }
 
             if (Identity != null)

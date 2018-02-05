@@ -48,7 +48,7 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
             return Name ?? Id.ToString();
         }
 
-        internal EventReceiver GetEventReceiverOnWeb()
+        internal EventReceiver GetEventReceiverOnWeb(SPOnlineConnection context)
         {
             if (_eventReceiver != null)
             {
@@ -57,11 +57,11 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
 
             if (_id != Guid.Empty)
             {
-                return Helpers.RestHelper.ExecuteGetRequest<EventReceiver>($"Web/EventReceivers/GetById(guid'{_id}')");
-            }
+                return new RestRequest(context, $"Web/EventReceivers/GetById(guid'{_id}')").Get<EventReceiver>();
+                            }
             else if (!string.IsNullOrEmpty(Name))
             {
-                return Helpers.RestHelper.ExecuteGetRequest<ResponseCollection<EventReceiver>>($"Web/EventReceivers')").Items.FirstOrDefault(e => e.ReceiverName == Name);
+                return new RestRequest(context, $"Web/EventReceivers").Get<ResponseCollection<EventReceiver>>().Items.FirstOrDefault(e => e.ReceiverName == Name);
             }
             return null;
         }
@@ -75,11 +75,11 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
 
             if (_id != Guid.Empty)
             {
-                return Helpers.RestHelper.ExecuteGetRequest<EventReceiver>($"Web/Lists/GetById(guid'{list.Id}')/EventReceivers/GetById(guid'{_id}')");
+                return new RestRequest(list.Context, $"Web/Lists/GetById(guid'{list.Id}')/EventReceivers/GetById(guid'{_id}')").Get<EventReceiver>();
             }
             else if (!string.IsNullOrEmpty(Name))
             {
-                return Helpers.RestHelper.ExecuteGetRequest<ResponseCollection<EventReceiver>>($"Web/Lists/GetById(guid'{list.Id}')/EventReceivers')").Items.FirstOrDefault(e => e.ReceiverName == Name);
+                return new RestRequest(list.Context, $"Web/Lists/GetById(guid'{list.Id}')/EventReceivers')").Get<ResponseCollection<EventReceiver>>().Items.FirstOrDefault(e => e.ReceiverName == Name);
             }
             return null;
         }

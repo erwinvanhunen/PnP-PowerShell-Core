@@ -6,7 +6,7 @@ using SharePointPnP.PowerShell.Core.Attributes;
 namespace SharePointPnP.PowerShell.Core.Web
 {
     [Cmdlet(VerbsCommon.Get, "RequestAccessEmail")]
-     [CmdletHelp(VerbsCommon.Get,"RequestAccessEmail","Returns the request access e-mail addresses",
+    [CmdletHelp(VerbsCommon.Get, "RequestAccessEmail", "Returns the request access e-mail addresses",
         SupportedPlatform = CmdletSupportedPlatform.Online,
         Category = CmdletHelpCategory.Webs)]
     [CmdletExample(
@@ -17,8 +17,8 @@ namespace SharePointPnP.PowerShell.Core.Web
     {
         protected override void ExecuteCmdlet()
         {
-            var web = new RestRequest("Web").Expand("RequestAccessEmail").Get<Model.Web>();
-            WriteObject(web.RequestAccessEmail.Split(new char[] {','}),true);
+            var web = new RestRequest(Context, "Web").Expand("RequestAccessEmail").Get<Model.Web>();
+            WriteObject(web.RequestAccessEmail.Split(new char[] { ',' }), true);
         }
     }
 }

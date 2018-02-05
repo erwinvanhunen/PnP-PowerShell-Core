@@ -19,6 +19,7 @@ New-Web [-Title <String>]
         [-Template <String>]
         [-BreakInheritance [<SwitchParameter>]]
         [-InheritNavigation [<SwitchParameter>]]
+        [-Connection <SPOnlineConnection>]
 ```
 
 ## EXAMPLES
@@ -109,6 +110,18 @@ Accept pipeline input: False
 
 ```yaml
 Type: String
+Parameter Sets: 
+
+Required: False
+Position: 0
+Accept pipeline input: False
+```
+
+### -Connection
+
+
+```yaml
+Type: SPOnlineConnection
 Parameter Sets: 
 
 Required: False

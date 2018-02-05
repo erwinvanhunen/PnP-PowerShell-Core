@@ -14,6 +14,7 @@ Returns the property bag values.
 ```powershell
 Get-PropertyBag [-Key <String>]
                 [-Folder <String>]
+                [-Connection <SPOnlineConnection>]
 ```
 
 ## EXAMPLES
@@ -72,6 +73,18 @@ Accept pipeline input: False
 
 ```yaml
 Type: String
+Parameter Sets: 
+
+Required: False
+Position: 0
+Accept pipeline input: False
+```
+
+### -Connection
+
+
+```yaml
+Type: SPOnlineConnection
 Parameter Sets: 
 
 Required: False

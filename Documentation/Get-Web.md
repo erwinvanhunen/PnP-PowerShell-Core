@@ -8,6 +8,13 @@ schema: 2.0.0
 ## SYNOPSIS
 Returns the current web object
 
+## SYNTAX 
+
+### 
+```powershell
+Get-Web [-Connection <SPOnlineConnection>]
+```
+
 ## EXAMPLES
 
 ### ------------------EXAMPLE 1------------------
@@ -16,6 +23,20 @@ PS:> Get-PnPWeb
 ```
 
 This will return the current web
+
+## PARAMETERS
+
+### -Connection
+
+
+```yaml
+Type: SPOnlineConnection
+Parameter Sets: 
+
+Required: False
+Position: 0
+Accept pipeline input: False
+```
 
 ## RELATED LINKS
 

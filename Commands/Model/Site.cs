@@ -2,7 +2,7 @@ using System;
 
 namespace SharePointPnP.PowerShell.Core.Model
 {
-    public class Site
+    public class Site : ClientSideObject
     {
         public bool AllowCreateDeclarativeWorkflow { get; set; }
         public bool AllowDesigner { get; set; }

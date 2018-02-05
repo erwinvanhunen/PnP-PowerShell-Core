@@ -56,7 +56,7 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
 
         public ContentType ContentType => _contentType;
 
-        public ContentType GetContentType(bool inSiteHierarchy)
+        public ContentType GetContentType(SPOnlineConnection context, bool inSiteHierarchy)
         {
             if (ContentType != null)
             {
@@ -67,24 +67,24 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
             {
                 if (inSiteHierarchy)
                 {
-                    ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>($"Site/RootWeb/ContentTypes('{Id}')");
+                    ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>(context, $"Site/RootWeb/ContentTypes('{Id}')");
                 }
                 else
                 {
-                    ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>($"Web/ContentTypes('{Id}')");
+                    ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>(context, $"Web/ContentTypes('{Id}')");
                 }
             }
             else
             {
                 if (inSiteHierarchy)
                 {
-                    var cts = Helpers.RestHelper.ExecuteGetRequest<ResponseCollection<ContentType>>($"Site/RootWeb/ContentTypes", "Name,Id").Items.FirstOrDefault(c => c.Name == Name);
-                    ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>($"Site/RootWeb/ContentTypes('{cts.Id.StringValue}')");
+                    var cts = new RestRequest(context, $"Site/RootWeb/ContentTypes").Select("Name", "Id").Get<ResponseCollection<ContentType>>().Items.FirstOrDefault(c => c.Name == Name);
+                    ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>(context, $"Site/RootWeb/ContentTypes('{cts.Id.StringValue}')");
                 }
                 else
                 {
-                    var cts = Helpers.RestHelper.ExecuteGetRequest<ResponseCollection<ContentType>>($"Web/ContentTypes", "Name,Id").Items.FirstOrDefault(c => c.Name == Name);
-                    ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>($"Web/ContentTypes('{cts.Id.StringValue}')");
+                    var cts = new RestRequest(context, $"Web/ContentTypes").Select("Name", "Id").Get<ResponseCollection<ContentType>>().Items.FirstOrDefault(c => c.Name == Name);
+                    ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>(context, $"Web/ContentTypes('{cts.Id.StringValue}')");
                 }
             }
 

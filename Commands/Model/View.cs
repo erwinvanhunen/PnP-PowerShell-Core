@@ -1,6 +1,6 @@
 namespace SharePointPnP.PowerShell.Core.Model
 {
-    public class View
+    public class View : ClientSideObject
     {
         public object Aggregations { get; set; }
         public object AggregationsStatus { get; set; }

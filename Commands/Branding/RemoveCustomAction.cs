@@ -12,7 +12,7 @@ using System.Text;
 namespace SharePointPnP.PowerShell.Core.Branding
 {
     [Cmdlet(VerbsCommon.Remove, "CustomAction", ConfirmImpact = ConfirmImpact.High, SupportsShouldProcess = true)]
-    [CmdletHelp(VerbsCommon.Remove,"CustomAction","Removes a custom action",
+    [CmdletHelp(VerbsCommon.Remove, "CustomAction", "Removes a custom action",
         Category = CmdletHelpCategory.Branding)]
     [CmdletExample(Code = @"PS:> Remove-PnPCustomAction -Identity aa66f67e-46c0-4474-8a82-42bf467d07f2",
                    Remarks = @"Removes the custom action with the id 'aa66f67e-46c0-4474-8a82-42bf467d07f2'.",
@@ -50,11 +50,11 @@ namespace SharePointPnP.PowerShell.Core.Branding
                 if (Scope == CustomActionScope.All || Scope == CustomActionScope.Web)
                 {
 
-                    actions.AddRange(new RestRequest("Web/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items);
+                    actions.AddRange(new RestRequest(Context, "Web/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items);
                 }
                 if (Scope == CustomActionScope.All || Scope == CustomActionScope.Site)
                 {
-                    actions.AddRange(new RestRequest("Site/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items);
+                    actions.AddRange(new RestRequest(Context, "Site/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items);
                 }
 
                 if (Identity != null)
@@ -79,11 +79,11 @@ namespace SharePointPnP.PowerShell.Core.Branding
                 switch (action.Scope)
                 {
                     case CustomActionScope.Web:
-                        new RestRequest($"Web/UserCustomActions(guid'{action.Id}')").Delete();
+                        new RestRequest(Context, $"Web/UserCustomActions(guid'{action.Id}')").Delete();
                         break;
 
                     case CustomActionScope.Site:
-                        new RestRequest($"Site/UserCustomActions(guid'{action.Id}')").Delete();
+                        new RestRequest(Context, $"Site/UserCustomActions(guid'{action.Id}')").Delete();
                         break;
                 }
             }

@@ -6,3 +6,4 @@ C:\repos\PnP-PowerShell-Core\Attributes\obj\Debug\netstandard2.0\SharePointPnP.P
 C:\repos\PnP-PowerShell-Core\Attributes\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.Attributes.AssemblyInfo.cs
 C:\repos\PnP-PowerShell-Core\Attributes\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.Attributes.dll
 C:\repos\PnP-PowerShell-Core\Attributes\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.Attributes.pdb
+C:\repos\PnP-PowerShell-Core\Attributes\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.Attributes.csprojResolveAssemblyReference.cache

@@ -6,7 +6,7 @@ using SharePointPnP.PowerShell.Core.Attributes;
 namespace SharePointPnP.PowerShell.Core.Web
 {
     [Cmdlet(VerbsCommon.Get, "Web")]
-    [CmdletHelp(VerbsCommon.Get,"Web","Returns the current web object",
+    [CmdletHelp(VerbsCommon.Get, "Web", "Returns the current web object",
         Category = CmdletHelpCategory.Webs)]
     [CmdletExample(
         Code = @"PS:> Get-PnPWeb",
@@ -16,7 +16,7 @@ namespace SharePointPnP.PowerShell.Core.Web
     {
         protected override void ExecuteCmdlet()
         {
-            WriteObject(new RestRequest("Web").Expand("AllowAutomaticASPXPageIndexing", "AllowCreateDeclarativeWorkflowForCurrentUser","RequestAccessEmail","ServerRelativeUrl","SiteLogoUrl").Get<Model.Web>());
+            WriteObject(new RestRequest(Context, "Web").Expand("AllowAutomaticASPXPageIndexing", "AllowCreateDeclarativeWorkflowForCurrentUser", "RequestAccessEmail", "ServerRelativeUrl", "SiteLogoUrl").Get<Model.Web>());
         }
     }
 }

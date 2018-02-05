@@ -17,7 +17,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             path = moduleBase;
         }
 
-        public bool Get(string url)
+        public SPOnlineConnection Get(string url)
         {
             var uri = new Uri(url);
             var entryKey = $"PnPPS_{uri.Host}";
@@ -42,14 +42,15 @@ namespace SharePointPnP.PowerShell.Core.Helpers
                         builder.Append(Convert.ToChar(intValue));
                     }
                     var d = JsonConvert.DeserializeObject<Dictionary<string, string>>(builder.ToString());
-                    SPOnlineConnection.AccessToken = d["accesstoken"];
-                    SPOnlineConnection.RefreshToken = d["refreshtoken"];
-                    SPOnlineConnection.ExpiresOn = new DateTime(long.Parse(d["expiration"]));
-                    SPOnlineConnection.Url = url;
-                    return true;
+                    var context = new SPOnlineConnection();
+                    context.AccessToken = d["accesstoken"];
+                    context.RefreshToken = d["refreshtoken"];
+                    context.ExpiresIn = new DateTime(long.Parse(d["expiration"]));
+                    context.Url = url;
+                    return context;
                 }
             }
-            return false;
+            return null;
         }
         public void Add(string url, string accessToken, string refreshToken, DateTime expiration)
         {

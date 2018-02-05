@@ -10,7 +10,7 @@ namespace SharePointPnP.PowerShell.Core.Model
 
 
 
-    public class Web : ClientSideObject
+    public class Web : UpdatableClientSideObject
     {
         #region PRIVATE
         [JsonProperty("Url")]

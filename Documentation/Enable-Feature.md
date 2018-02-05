@@ -14,6 +14,7 @@ Enables a feature
 ```powershell
 Enable-Feature [-Identity <GuidPipeBind>]
                [-Scope <FeatureScope>]
+               [-Connection <SPOnlineConnection>]
 ```
 
 ## EXAMPLES
@@ -51,6 +52,18 @@ Accept pipeline input: False
 
 ```yaml
 Type: FeatureScope
+Parameter Sets: 
+
+Required: False
+Position: 0
+Accept pipeline input: False
+```
+
+### -Connection
+
+
+```yaml
+Type: SPOnlineConnection
 Parameter Sets: 
 
 Required: False

@@ -14,6 +14,7 @@ Returns all or a specific custom action(s) with location type ScriptLink
 ```powershell
 Get-JavaScriptLink [-Name <String>]
                    [-Scope <CustomActionScope>]
+                   [-Connection <SPOnlineConnection>]
 ```
 
 ## EXAMPLES
@@ -72,6 +73,18 @@ Accept pipeline input: False
 
 ```yaml
 Type: CustomActionScope
+Parameter Sets: 
+
+Required: False
+Position: 0
+Accept pipeline input: False
+```
+
+### -Connection
+
+
+```yaml
+Type: SPOnlineConnection
 Parameter Sets: 
 
 Required: False

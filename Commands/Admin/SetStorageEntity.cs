@@ -35,8 +35,8 @@ namespace SharePointPnP.PowerShell.Core.Admin
 
         protected override void ExecuteCmdlet()
         {
-            var appcatalogurl = AppManager.GetAppCatalogUrl();
-            new RestRequest($"{appcatalogurl}/_api/Web/SetStorageEntity(key='{Key}',value='{Value}',comments='{Comment}',description='{Description}')").Post();
+            var appcatalogurl = AppManager.GetAppCatalogUrl(Context);
+            new RestRequest(Context, $"{appcatalogurl}/_api/Web/SetStorageEntity(key='{Key}',value='{Value}',comments='{Comment}',description='{Description}')").Post();
         }
     }
 }

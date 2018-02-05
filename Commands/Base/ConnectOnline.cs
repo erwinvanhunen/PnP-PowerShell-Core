@@ -15,62 +15,56 @@ namespace SharePointPnP.PowerShell.Core.Base
     /// </summary>
 	[OutputType(typeof(string))]
     [Cmdlet(VerbsCommunications.Connect, "Online")]
-    [CmdletHelp(VerbsCommunications.Connect,"Online","Connects to your tenant")]
+    [CmdletHelp(VerbsCommunications.Connect, "Online", "Connects to your tenant")]
     public class ConnectOnline : PSCmdlet
     {
-
-        /// <summary>
-        ///     The name of the person to greet.
-        /// </summary>
         [ValidateNotNullOrEmpty]
         [Parameter(Mandatory = true, Position = 0, HelpMessage = "Url")]
-        public string Url { get; set; }
+        public string Url;
 
         [Parameter(Mandatory = false)]
-        public string AppId { get; set; }
+        public string AppId;
 
-        /// <summary>
-        ///  Perform Cmdlet processing.
-        /// </summary>
+        [Parameter(Mandatory = false)]
+        public SwitchParameter ReturnConnection; 
+
         protected override void ProcessRecord()
         {
-            if (string.IsNullOrEmpty(SPOnlineConnection.AccessToken))
+            var credManager = new CredentialManager(MyInvocation.MyCommand.Module.ModuleBase);
+            var credManagerContext = credManager.Get(Url);
+            if(credManagerContext != null)
             {
-                var credManager = new CredentialManager(MyInvocation.MyCommand.Module.ModuleBase);
-                if (!credManager.Get(Url))
+                SPOnlineConnection.CurrentConnection = credManagerContext;
+            } else { 
+                var connectionUri = new Uri(Url);
+
+                HttpClient client = new HttpClient();
+                var result = client.GetStringAsync($"https://login.microsoftonline.com/common/oauth2/devicecode?resource={connectionUri.Scheme}://{connectionUri.Host}&client_id={SPOnlineConnection.AppId}").GetAwaiter().GetResult();
+                var returnData = JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
+
+                WriteObject(returnData["message"]);
+
+                OpenBrowser(returnData["verification_url"]);
+
+                //waiting for token
+
+                var body = new StringContent($"resource={connectionUri.Scheme}://{connectionUri.Host}&client_id={SPOnlineConnection.AppId}&grant_type=device_code&code={returnData["device_code"]}");
+                body.Headers.ContentType.MediaType = "application/x-www-form-urlencoded";
+
+                var tokenResult = client.PostAsync("https://login.microsoftonline.com/common/oauth2/token", body).GetAwaiter().GetResult();
+                while (!tokenResult.IsSuccessStatusCode)
                 {
-                    var connectionUri = new Uri(Url);
-
-                    HttpClient client = new HttpClient();
-                    var result = client.GetStringAsync($"https://login.microsoftonline.com/common/oauth2/devicecode?resource={connectionUri.Scheme}://{connectionUri.Host}&client_id={SPOnlineConnection.AppId}").GetAwaiter().GetResult();
-                    var returnData = JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
-
-                    WriteObject(returnData["message"]);
-
-                    OpenBrowser(returnData["verification_url"]);
-
-                    //waiting for token
-
-                    var body = new StringContent($"resource={connectionUri.Scheme}://{connectionUri.Host}&client_id={SPOnlineConnection.AppId}&grant_type=device_code&code={returnData["device_code"]}");
-                    body.Headers.ContentType.MediaType = "application/x-www-form-urlencoded";
-
-                    var tokenResult = client.PostAsync("https://login.microsoftonline.com/common/oauth2/token", body).GetAwaiter().GetResult();
-                    while (!tokenResult.IsSuccessStatusCode)
-                    {
-                        System.Threading.Thread.Sleep(1000);
-                        tokenResult = client.PostAsync("https://login.microsoftonline.com/common/oauth2/token", body).GetAwaiter().GetResult();
-                    }
-                    var tokens = JsonConvert.DeserializeObject<Dictionary<string, string>>(tokenResult.Content.ReadAsStringAsync().GetAwaiter().GetResult());
-                    SPOnlineConnection.AccessToken = tokens["access_token"];
-                    SPOnlineConnection.RefreshToken = tokens["refresh_token"];
-                    SPOnlineConnection.ExpiresOn = DateTime.Now.AddSeconds(int.Parse(tokens["expires_in"]));
-                    SPOnlineConnection.Url = Url;
-                    credManager.Add(Url, SPOnlineConnection.AccessToken, SPOnlineConnection.RefreshToken, SPOnlineConnection.ExpiresOn);
+                    System.Threading.Thread.Sleep(1000);
+                    tokenResult = client.PostAsync("https://login.microsoftonline.com/common/oauth2/token", body).GetAwaiter().GetResult();
                 }
-            }
-            else
-            {
-                SPOnlineConnection.Url = Url;
+                var tokens = JsonConvert.DeserializeObject<Dictionary<string, string>>(tokenResult.Content.ReadAsStringAsync().GetAwaiter().GetResult());
+                var connection = new SPOnlineConnection();
+                connection.AccessToken = tokens["access_token"];
+                connection.RefreshToken = tokens["refresh_token"];
+                connection.ExpiresIn = DateTime.Now.AddSeconds(int.Parse(tokens["expires_in"]));
+                connection.Url = Url;
+                credManager.Add(Url, connection.AccessToken, connection.RefreshToken, connection.ExpiresIn);
+                SPOnlineConnection.CurrentConnection = connection;
             }
         }
 

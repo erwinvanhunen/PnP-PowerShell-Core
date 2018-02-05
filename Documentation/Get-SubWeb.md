@@ -13,6 +13,7 @@ Returns the subwebs of the current web
 ### 
 ```powershell
 Get-SubWeb [-Recurse [<SwitchParameter>]]
+           [-Connection <SPOnlineConnection>]
 ```
 
 ## EXAMPLES
@@ -38,6 +39,18 @@ This will return all sub webs for the current web and its sub webs
 
 ```yaml
 Type: SwitchParameter
+Parameter Sets: 
+
+Required: False
+Position: 0
+Accept pipeline input: False
+```
+
+### -Connection
+
+
+```yaml
+Type: SPOnlineConnection
 Parameter Sets: 
 
 Required: False

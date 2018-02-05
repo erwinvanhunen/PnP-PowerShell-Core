@@ -8,7 +8,7 @@ namespace SharePointPnP.PowerShell.Core.Model
     {
         public string StringValue { get; set; }
     }
-    public class ContentType
+    public class ContentType : ClientSideObject
     {
         public string Description { get; set; }
         public string DisplayFormTemplateName { get; set; }

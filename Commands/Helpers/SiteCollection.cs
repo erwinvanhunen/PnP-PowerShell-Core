@@ -24,15 +24,15 @@ namespace SharePointPnP.PowerShell.Core.Helpers
         /// <param name="clientContext">ClientContext object of a regular site</param>
         /// <param name="siteCollectionCreationInformation">information about the site to create</param>
         /// <returns>ClientContext object for the created site collection</returns>
-        public static async Task<string> CreateAsync(CommunicationSiteCollectionCreationInformation siteCollectionCreationInformation)
+        public static async Task<string> CreateAsync(SPOnlineConnection context, CommunicationSiteCollectionCreationInformation siteCollectionCreationInformation)
         {
-            var accessToken = SPOnlineConnection.AccessToken;
+            var accessToken = context.AccessToken;
             var responseUrl = "";
             using (var handler = new HttpClientHandler())
             {
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
-                    string requestUrl = String.Format("{0}/_api/sitepages/communicationsite/create", SPOnlineConnection.Url);
+                    string requestUrl = String.Format("{0}/_api/sitepages/communicationsite/create", context.Url);
 
                     var siteDesignId = GetSiteDesignId(siteCollectionCreationInformation);
 
@@ -68,7 +68,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
                         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                     }
 
-                    requestBody.Headers.Add("X-RequestDigest", await RestHelper.GetRequestDigest());
+                    requestBody.Headers.Add("X-RequestDigest", await RestHelper.GetRequestDigest(context));
 
                     // Perform actual post operation
                     HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
@@ -113,20 +113,20 @@ namespace SharePointPnP.PowerShell.Core.Helpers
         /// <param name="clientContext">ClientContext object of a regular site</param>
         /// <param name="siteCollectionCreationInformation">information about the site to create</param>
         /// <returns>ClientContext object for the created site collection</returns>
-        public static async Task<string> CreateAsync(TeamSiteCollectionCreationInformation siteCollectionCreationInformation)
+        public static async Task<string> CreateAsync(SPOnlineConnection context, TeamSiteCollectionCreationInformation siteCollectionCreationInformation)
         {
             var responseUrl = "";
             if (siteCollectionCreationInformation.Alias.Contains(" "))
             {
                 throw new ArgumentException("Alias cannot contain spaces", "Alias");
             }
-            var accessToken = SPOnlineConnection.AccessToken;
+            var accessToken = context.AccessToken;
 
             using (var handler = new HttpClientHandler())
             {
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
-                    string requestUrl = String.Format("{0}/_api/GroupSiteManager/CreateGroupEx", SPOnlineConnection.Url);
+                    string requestUrl = String.Format("{0}/_api/GroupSiteManager/CreateGroupEx", context.Url);
 
                     Dictionary<string, object> payload = new Dictionary<string, object>();
                     payload.Add("displayName", siteCollectionCreationInformation.DisplayName);
@@ -158,7 +158,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
                         request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
                     }
 
-                    requestBody.Headers.Add("X-RequestDigest", await RestHelper.GetRequestDigest());
+                    requestBody.Headers.Add("X-RequestDigest", await RestHelper.GetRequestDigest(context));
 
                     // Perform actual post operation
                     HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());

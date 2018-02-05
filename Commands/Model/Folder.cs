@@ -2,7 +2,7 @@ using System;
 
 namespace SharePointPnP.PowerShell.Core.Model
 {
-    public class Folder
+    public class Folder : ClientSideObject
     {
         public bool Exists { get; set; }
         public bool IsWOPIEnabled { get; set; }

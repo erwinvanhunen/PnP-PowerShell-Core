@@ -9,7 +9,7 @@ using SharePointPnP.PowerShell.Core.Attributes;
 namespace SharePointPnP.PowerShell.Core.Branding
 {
     [Cmdlet(VerbsCommon.Get, "JavaScriptLink")]
-    [CmdletHelp(VerbsCommon.Get, "JavaScriptLink","Returns all or a specific custom action(s) with location type ScriptLink", 
+    [CmdletHelp(VerbsCommon.Get, "JavaScriptLink", "Returns all or a specific custom action(s) with location type ScriptLink",
         Category = CmdletHelpCategory.Branding,
         OutputType = typeof(UserCustomAction),
         OutputTypeLink = "https://msdn.microsoft.com/en-us/library/microsoft.sharepoint.client.usercustomaction.aspx")]
@@ -42,11 +42,11 @@ namespace SharePointPnP.PowerShell.Core.Branding
 
             if (Scope == CustomActionScope.All || Scope == CustomActionScope.Web)
             {
-                actions.AddRange(new RestRequest("Web/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items.Where(c => c.Location == "ScriptLink"));
+                actions.AddRange(new RestRequest(Context, "Web/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items.Where(c => c.Location == "ScriptLink"));
             }
             if (Scope == CustomActionScope.All || Scope == CustomActionScope.Site)
             {
-                actions.AddRange(new RestRequest("Site/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items.Where(c => c.Location == "ScriptLink"));
+                actions.AddRange(new RestRequest(Context, "Site/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items.Where(c => c.Location == "ScriptLink"));
             }
 
             if (!string.IsNullOrEmpty(Name))

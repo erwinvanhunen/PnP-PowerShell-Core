@@ -26,7 +26,7 @@ namespace SharePointPnP.PowerShell.Core.Web
 
         protected override void ExecuteCmdlet()
         {
-            var webs = new RestRequest("Web/Webs").Expand("AllowAutomaticASPXPageIndexing", "AllowCreateDeclarativeWorkflowForCurrentUser", "RequestAccessEmail", "ServerRelativeUrl").Get<ResponseCollection<Model.Web>>().Items;
+            var webs = new RestRequest(Context, "Web/Webs").Expand("AllowAutomaticASPXPageIndexing", "AllowCreateDeclarativeWorkflowForCurrentUser", "RequestAccessEmail", "ServerRelativeUrl").Get<ResponseCollection<Model.Web>>().Items;
             if (!Recurse)
             {
                 WriteObject(webs, true);
@@ -46,7 +46,7 @@ namespace SharePointPnP.PowerShell.Core.Web
         private System.Collections.Generic.List<Model.Web> GetSubWebsInternal(Model.Web subweb)
         {
             var subwebs = new System.Collections.Generic.List<Model.Web>();
-            var webs = new RestRequest($"{subweb.Url}/_api/Web/Webs").Get<ResponseCollection<Model.Web>>().Items;
+            var webs = new RestRequest(Context, $"{subweb.Url}/_api/Web/Webs").Get<ResponseCollection<Model.Web>>().Items;
             if (webs.Any())
             {
                 subwebs.AddRange(webs);

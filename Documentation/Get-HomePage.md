@@ -8,6 +8,13 @@ schema: 2.0.0
 ## SYNOPSIS
 Returns the URL to the page set as home page
 
+## SYNTAX 
+
+### 
+```powershell
+Get-HomePage [-Connection <SPOnlineConnection>]
+```
+
 ## EXAMPLES
 
 ### ------------------EXAMPLE 1------------------
@@ -16,6 +23,20 @@ PS:> Get-PnPHomePage
 ```
 
 Will return the URL of the home page of the web.
+
+## PARAMETERS
+
+### -Connection
+
+
+```yaml
+Type: SPOnlineConnection
+Parameter Sets: 
+
+Required: False
+Position: 0
+Accept pipeline input: False
+```
 
 ## OUTPUTS
 

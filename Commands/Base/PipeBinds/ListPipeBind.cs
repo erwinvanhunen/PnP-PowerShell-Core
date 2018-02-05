@@ -45,7 +45,7 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
             return Title ?? Id.ToString();
         }
 
-        internal List GetList()
+        internal List GetList(SPOnlineConnection context)
         {
             List list = null;
             if (List != null)
@@ -54,11 +54,11 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
             }
             else if (Id != Guid.Empty)
             {
-                list = Helpers.RestHelper.ExecuteGetRequest<List>($"Lists(guid'{Id.ToString("D")}')",expand:"RootFolder/ServerRelativeUrl");
+                list = new RestRequest(context, $"Lists(guid'{Id.ToString("D")}')").Expand("RootFolder/ServerRelativeUrl").Get<List>();
             }
             else if (!string.IsNullOrEmpty(Title))
             {
-                list = Helpers.RestHelper.ExecuteGetRequest<List>($"Lists/GetByTitle('{Title}')", expand: "RootFolder/ServerRelativeUrl");
+                list = new RestRequest(context, $"Lists/GetByTitle('{Title}')").Expand("RootFolder/ServerRelativeUrl").Get<List>();
             }
             return list;
         }

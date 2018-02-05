@@ -98,7 +98,7 @@ namespace SharePointPnP.PowerShell.Commands
             {
                 if (!MyInvocation.BoundParameters.ContainsKey("Lcid"))
                 {
-                    var web = new RestRequest("Web").Select("Language").Get<Web>();
+                    var web = new RestRequest(Context, "Web").Select("Language").Get<Web>();
                     _communicationSiteParameters.Lcid = web.Language;
                 }
                 var creationInformation = new CommunicationSiteCollectionCreationInformation();
@@ -116,7 +116,7 @@ namespace SharePointPnP.PowerShell.Commands
                 {
                     creationInformation.SiteDesign = _communicationSiteParameters.SiteDesign;
                 }
-                var results = SiteCollection.CreateAsync(creationInformation);
+                var results = SiteCollection.CreateAsync(Context, creationInformation);
                 var returnedUrl = results.GetAwaiter().GetResult();
                 WriteObject(returnedUrl);
             }
@@ -129,7 +129,7 @@ namespace SharePointPnP.PowerShell.Commands
                 creationInformation.Description = _teamSiteParameters.Description;
                 creationInformation.IsPublic = _teamSiteParameters.IsPublic;
 
-                var results = SiteCollection.CreateAsync(creationInformation);
+                var results = SiteCollection.CreateAsync(Context, creationInformation);
                 var returnedUrl = results.GetAwaiter().GetResult();
                 WriteObject(returnedUrl);
             }
@@ -158,7 +158,7 @@ namespace SharePointPnP.PowerShell.Commands
             public SwitchParameter AllowFileSharingForGuestUsers;
 
             [Parameter(Mandatory = false, ParameterSetName = ParameterSet_COMMUNICATIONBUILTINDESIGN)]
-            public  CommunicationSiteDesign SiteDesign = CommunicationSiteDesign.Topic;
+            public CommunicationSiteDesign SiteDesign = CommunicationSiteDesign.Topic;
 
             [Parameter(Mandatory = true, ParameterSetName = ParameterSet_COMMUNICATIONCUSTOMDESIGN)]
             public GuidPipeBind SiteDesignId;

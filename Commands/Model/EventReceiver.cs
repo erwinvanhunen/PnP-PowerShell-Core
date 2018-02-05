@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SharePointPnP.PowerShell.Core.Model
 {
-    public class EventReceiver
+    public class EventReceiver : ClientSideObject
     {
         public string ReceiverAssembly { get; set; }
         public string ReceiverClass { get; set; }

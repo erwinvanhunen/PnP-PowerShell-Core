@@ -17,7 +17,7 @@ namespace SharePointPnP.PowerShell.Core.Lists
     /// </summary>
 	[OutputType(typeof(List<List>))]
     [Cmdlet(VerbsCommon.Get, "List")]
-     [CmdletHelp(VerbsCommon.Get,"List","Returns a List object",
+    [CmdletHelp(VerbsCommon.Get, "List", "Returns a List object",
         Category = CmdletHelpCategory.Lists,
         OutputType = typeof(List),
         OutputTypeLink = "https://msdn.microsoft.com/en-us/library/microsoft.sharepoint.client.list.aspx")]
@@ -35,15 +35,17 @@ namespace SharePointPnP.PowerShell.Core.Lists
         SortOrder = 3)]
     public class GetList : PnPCmdlet
     {
-          [Parameter(Mandatory = false, ValueFromPipeline = true, Position = 0, HelpMessage = "The ID, name or Url (Lists/MyList) of the list.")]
+        [Parameter(Mandatory = false, ValueFromPipeline = true, Position = 0, HelpMessage = "The ID, name or Url (Lists/MyList) of the list.")]
         public ListPipeBind Identity;
         protected override void ExecuteCmdlet()
         {
-            if(MyInvocation.BoundParameters.ContainsKey("Identity"))
+            if (MyInvocation.BoundParameters.ContainsKey("Identity"))
             {
-                WriteObject(Identity.GetList());
-            } else {
-                WriteObject(new RestRequest("Lists").Expand("RootFolder/ServerRelativeUrl","OnQuickLaunch","DefaultViewUrl").Get<ResponseCollection<List>>().Items,true);
+                WriteObject(Identity.GetList(Context));
+            }
+            else
+            {
+                WriteObject(new RestRequest(Context, "Lists").Expand("RootFolder/ServerRelativeUrl", "OnQuickLaunch", "DefaultViewUrl").Get<ResponseCollection<List>>().Items, true);
                 //WriteObject(ExecuteGetRequest<ListCollection>("Lists", expand:"RootFolder/ServerRelativeUrl,OnQuickLaunch,DefaultViewUrl").value,true);
             }
         }

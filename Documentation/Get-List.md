@@ -13,6 +13,7 @@ Returns a List object
 ### 
 ```powershell
 Get-List [-Identity <ListPipeBind>]
+         [-Connection <SPOnlineConnection>]
 ```
 
 ## EXAMPLES
@@ -45,6 +46,18 @@ Returns a list with the given url.
 
 ```yaml
 Type: ListPipeBind
+Parameter Sets: 
+
+Required: False
+Position: 0
+Accept pipeline input: False
+```
+
+### -Connection
+
+
+```yaml
+Type: SPOnlineConnection
 Parameter Sets: 
 
 Required: False

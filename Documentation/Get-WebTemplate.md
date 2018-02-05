@@ -14,6 +14,7 @@ Returns the available web templates.
 ```powershell
 Get-WebTemplate [-Lcid <UInt32>]
                 [-CompatibilityLevel <Int>]
+                [-Connection <SPOnlineConnection>]
 ```
 
 ## DESCRIPTION
@@ -61,6 +62,18 @@ Accept pipeline input: False
 
 ```yaml
 Type: UInt32
+Parameter Sets: 
+
+Required: False
+Position: 0
+Accept pipeline input: False
+```
+
+### -Connection
+
+
+```yaml
+Type: SPOnlineConnection
 Parameter Sets: 
 
 Required: False

@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace SharePointPnP.PowerShell.Core.Model
 {
-    public class Field
+    public class Field : ClientSideObject
     {
         public bool AutoIndexed { get; set; }
         public bool CanBeDeleted { get; set; }

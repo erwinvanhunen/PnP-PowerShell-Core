@@ -18,14 +18,17 @@ namespace SharePointPnP.PowerShell.Core.Helpers
     /// </summary>
     public class AppManager
     {
+        private SPOnlineConnection _context;
         private string _appCatalogUrl;
+
         /// <summary>
         /// 
         /// </summary>
         /// <param name="context"></param>
         /// <param name="appCatalogUrl">Optional full url to the appcatalog site, e.g. https://yourtenant.sharepoint.com/sites/apps </param>
-        public AppManager(string appCatalogUrl = null)
+        public AppManager(SPOnlineConnection context, string appCatalogUrl = null)
         {
+            _context = context;
             if (!string.IsNullOrEmpty(appCatalogUrl))
             {
                 Uri uriResult;
@@ -473,16 +476,16 @@ namespace SharePointPnP.PowerShell.Core.Helpers
         {
             dynamic addins = null;
 
-            var accessToken = SPOnlineConnection.AccessToken;
+            var accessToken = _context.AccessToken;
 
             using (var handler = new HttpClientHandler())
             {
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
-                    string requestUrl = $"{SPOnlineConnection.Url}/_api/web/tenantappcatalog/AvailableApps";
+                    string requestUrl = $"{_context.Url}/_api/web/tenantappcatalog/AvailableApps";
                     if (Guid.Empty != id)
                     {
-                        requestUrl = $"{SPOnlineConnection.Url}/_api/web/tenantappcatalog/AvailableApps/GetById('{id}')";
+                        requestUrl = $"{_context.Url}/_api/web/tenantappcatalog/AvailableApps/GetById('{id}')";
                     }
                     HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
                     request.Headers.Add("accept", "application/json;odata=verbose");
@@ -490,7 +493,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
                     {
                         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
                     }
-                    request.Headers.Add("X-RequestDigest", await RestHelper.GetRequestDigest());
+                    request.Headers.Add("X-RequestDigest", await RestHelper.GetRequestDigest(_context));
 
                     // Perform actual post operation
                     HttpResponseMessage response = await httpClient.SendAsync(request, new System.Threading.CancellationToken());
@@ -535,13 +538,13 @@ namespace SharePointPnP.PowerShell.Core.Helpers
         private async Task<bool> BaseRequest(Guid id, string method, bool appCatalog = false, Dictionary<string, object> postObject = null)
         {
             var returnValue = false;
-            var accessToken = SPOnlineConnection.AccessToken;
+            var accessToken = _context.AccessToken;
 
             using (var handler = new HttpClientHandler())
             {
                 using (var httpClient = new PnPHttpProvider(handler))
                 {
-                    string requestUrl = $"{SPOnlineConnection.Url}/_api/web/tenantappcatalog/AvailableApps/GetByID('{id}')/{method}";
+                    string requestUrl = $"{_context.Url}/_api/web/tenantappcatalog/AvailableApps/GetByID('{id}')/{method}";
 
                     HttpRequestMessage request = new HttpRequestMessage(HttpMethod.Post, requestUrl);
                     request.Headers.Add("accept", "application/json;odata=nometadata");
@@ -549,7 +552,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
                     {
                         request.Headers.Authorization = new System.Net.Http.Headers.AuthenticationHeaderValue("Bearer", accessToken);
                     }
-                    request.Headers.Add("X-RequestDigest", await RestHelper.GetRequestDigest());
+                    request.Headers.Add("X-RequestDigest", await RestHelper.GetRequestDigest(_context));
 
                     if (postObject != null)
                     {
@@ -588,10 +591,10 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             return await Task.Run(() => returnValue);
         }
 
-        public static string GetAppCatalogUrl()
+        public static string GetAppCatalogUrl(SPOnlineConnection context)
         {
             var query = @"<Request AddExpandoFieldTypeSuffix=""true"" SchemaVersion=""15.0.0.0"" LibraryVersion=""16.0.0.0"" ApplicationName=""SharePoint PnP PowerShell Library"" xmlns=""http://schemas.microsoft.com/sharepoint/clientquery/2009""><Actions><ObjectPath Id=""4"" ObjectPathId=""3"" /><Query Id=""1"" ObjectPathId=""3""><Query SelectAllProperties=""false""><Properties><Property Name=""CorporateCatalogUrl"" ScalarProperty=""true"" /></Properties></Query></Query></Actions><ObjectPaths><StaticProperty Id=""3"" TypeId=""{e9a11c41-0667-4c14-a4a5-e0d6cf67f6fa}"" Name=""Current"" /></ObjectPaths></Request>";
-            var result = new ClientRequestHelper().Send(query);
+            var result = new ClientRequestHelper().Send(context, query);
 
             var deserialized = JsonConvert.DeserializeObject<JArray>(result);
             var url = deserialized[4]["CorporateCatalogUrl"].Value<string>();
@@ -610,7 +613,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
                     var requestUrl = $"web/tenantappcatalog/Add(overwrite={(overwrite.ToString().ToLower())}, url='{filename}')";
                     var additionalHeaders = new Dictionary<string, string>();
                     additionalHeaders.Add("binaryStringRequestBody", "true");
-                    var response = Helpers.RestHelper.ExecutePostRequest(requestUrl, file, additionalHeaders: additionalHeaders);
+                    var response = Helpers.RestHelper.ExecutePostRequest(_context, requestUrl, file, additionalHeaders: additionalHeaders);
 
                     if (response.IsSuccessStatusCode)
                     {
@@ -621,7 +624,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
                             var responseJson = JObject.Parse(responseString);
                             var id = responseJson["d"]["UniqueId"].ToString();
                             var metadataRequestUrl = $"web/tenantappcatalog/AvailableApps/GetById('{id}')";
-                            var metadataResponse = Helpers.RestHelper.ExecutePostRequest(metadataRequestUrl);
+                            var metadataResponse = Helpers.RestHelper.ExecutePostRequest(_context, metadataRequestUrl);
 
                             if (metadataResponse.IsSuccessStatusCode)
                             {

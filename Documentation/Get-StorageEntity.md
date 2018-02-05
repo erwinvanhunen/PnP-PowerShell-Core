@@ -14,6 +14,7 @@ Retrieve Storage Entities / Farm Properties.
 ```powershell
 Get-StorageEntity [-Key <String>]
                   [-AppCatalogUrl <String>]
+                  [-Connection <SPOnlineConnection>]
 ```
 
 ## EXAMPLES
@@ -51,6 +52,18 @@ Accept pipeline input: False
 
 ```yaml
 Type: String
+Parameter Sets: 
+
+Required: False
+Position: 0
+Accept pipeline input: False
+```
+
+### -Connection
+
+
+```yaml
+Type: SPOnlineConnection
 Parameter Sets: 
 
 Required: False

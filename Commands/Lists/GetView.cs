@@ -11,7 +11,7 @@ using SharePointPnP.PowerShell.Core.Model;
 namespace SharePointPnP.PowerShell.Commands.Lists
 {
     [Cmdlet(VerbsCommon.Get, "View")]
-    [CmdletHelp(VerbsCommon.Get,"View","Returns one or all views from a list",
+    [CmdletHelp(VerbsCommon.Get, "View", "Returns one or all views from a list",
         Category = CmdletHelpCategory.Lists,
         OutputType = typeof(View),
         OutputTypeLink = "https://msdn.microsoft.com/en-us/library/microsoft.sharepoint.client.view.aspx")]
@@ -38,23 +38,23 @@ namespace SharePointPnP.PowerShell.Commands.Lists
         protected override void ExecuteCmdlet()
         {
 
-            var list = List.GetList();
+            var list = List.GetList(Context);
             if (list != null)
             {
                 if (Identity != null)
                 {
                     if (Identity.Id != Guid.Empty)
                     {
-                        WriteObject(new RestRequest($"Web/Lists/GetById(guid'{list.Id}')/Views(guid'{Identity.Id}')").Get<View>());
+                        WriteObject(new RestRequest(Context, $"Web/Lists/GetById(guid'{list.Id}')/Views(guid'{Identity.Id}')").Get<View>());
                     }
                     else if (!string.IsNullOrEmpty(Identity.Title))
                     {
-                        WriteObject(new RestRequest($"Web/Lists/GetById(guid'{list.Id}')/Views/GetByTitle('{Identity.Title}')").Get<View>());
+                        WriteObject(new RestRequest(Context, $"Web/Lists/GetById(guid'{list.Id}')/Views/GetByTitle('{Identity.Title}')").Get<View>());
                     }
                 }
                 else
                 {
-                    WriteObject(new RestRequest($"Web/Lists/GetById(guid'{list.Id}')/Views").Get<ResponseCollection<View>>().Items,true);
+                    WriteObject(new RestRequest(Context, $"Web/Lists/GetById(guid'{list.Id}')/Views").Get<ResponseCollection<View>>().Items, true);
                 }
             }
         }

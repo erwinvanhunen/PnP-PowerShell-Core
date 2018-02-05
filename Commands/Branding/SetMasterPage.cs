@@ -49,7 +49,7 @@ namespace SharePointPnP.PowerShell.Core.Branding
 
         protected override void ExecuteCmdlet()
         {
-            var web = new RestRequest("Web").Get<Model.Web>();
+            var web = new RestRequest(Context,"Web").Get<Model.Web>();
             if (web.IsNoScriptSite())
             {
                 ThrowTerminatingError(new ErrorRecord(new Exception("Site has NoScript enabled, and setting custom master pages is not supported."), "NoScriptEnabled", ErrorCategory.InvalidOperation, this));

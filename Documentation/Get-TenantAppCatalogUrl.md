@@ -8,6 +8,13 @@ schema: 2.0.0
 ## SYNOPSIS
 Retrieves the url of the tenant scoped app catalog.
 
+## SYNTAX 
+
+### 
+```powershell
+Get-TenantAppCatalogUrl [-Connection <SPOnlineConnection>]
+```
+
 ## EXAMPLES
 
 ### ------------------EXAMPLE 1------------------
@@ -16,6 +23,20 @@ PS:> Get-PnPTenantAppCatalogUrl
 ```
 
 Returns the url of the tenant scoped app catalog site collection
+
+## PARAMETERS
+
+### -Connection
+
+
+```yaml
+Type: SPOnlineConnection
+Parameter Sets: 
+
+Required: False
+Position: 0
+Accept pipeline input: False
+```
 
 ## RELATED LINKS
 

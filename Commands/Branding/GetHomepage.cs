@@ -16,7 +16,7 @@ namespace SharePointPnP.PowerShell.Core.Branding
     {
         protected override void ExecuteCmdlet()
         {
-            var web = new RestRequest("Web").Expand("RootFolder/WelcomePage").Get<Model.Web>();
+            var web = new RestRequest(Context,"Web").Expand("RootFolder/WelcomePage").Get<Model.Web>();
 
             if (string.IsNullOrEmpty(web.RootFolder.WelcomePage))
             {

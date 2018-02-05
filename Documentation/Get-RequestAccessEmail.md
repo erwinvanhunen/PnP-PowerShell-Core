@@ -8,6 +8,13 @@ schema: 2.0.0
 ## SYNOPSIS
 Returns the request access e-mail addresses
 
+## SYNTAX 
+
+### 
+```powershell
+Get-RequestAccessEmail [-Connection <SPOnlineConnection>]
+```
+
 ## EXAMPLES
 
 ### ------------------EXAMPLE 1------------------
@@ -16,6 +23,20 @@ PS:> Get-PnPRequestAccessEmails
 ```
 
 This will return all the request access e-mail addresses for the current web
+
+## PARAMETERS
+
+### -Connection
+
+
+```yaml
+Type: SPOnlineConnection
+Parameter Sets: 
+
+Required: False
+Position: 0
+Accept pipeline input: False
+```
 
 ## RELATED LINKS
 

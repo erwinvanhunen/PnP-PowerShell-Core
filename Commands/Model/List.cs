@@ -20,7 +20,7 @@ namespace SharePointPnP.PowerShell.Core.Model
         public string DecodedUrl { get; set; }
     }
 
-    public class List
+    public class List : ClientSideObject
     {
         public bool AllowContentTypes { get; set; }
         public int BaseTemplate { get; set; }

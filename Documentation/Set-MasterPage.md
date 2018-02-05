@@ -16,6 +16,7 @@ Set-MasterPage [-MasterPageServerRelativeUrl <String>]
                [-CustomMasterPageServerRelativeUrl <String>]
                [-MasterPageSiteRelativeUrl <String>]
                [-CustomMasterPageSiteRelativeUrl <String>]
+               [-Connection <SPOnlineConnection>]
 ```
 
 ## DESCRIPTION
@@ -94,6 +95,18 @@ Accept pipeline input: False
 
 ```yaml
 Type: String
+Parameter Sets: 
+
+Required: False
+Position: 0
+Accept pipeline input: False
+```
+
+### -Connection
+
+
+```yaml
+Type: SPOnlineConnection
 Parameter Sets: 
 
 Required: False
