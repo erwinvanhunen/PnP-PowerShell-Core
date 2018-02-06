@@ -28,6 +28,9 @@ namespace SharePointPnP.PowerShell.Core.Model
         [JsonProperty("ContentTypesEnabled")]
         private bool _contentTypesEnabled { get; set; }
 
+        [JsonProperty("Title")]
+        private string _title { get; set; }
+
         public List<ContentType> ContentTypes;
 
         public bool AllowContentTypes { get; set; }
@@ -96,6 +99,19 @@ namespace SharePointPnP.PowerShell.Core.Model
         public bool ParserDisabled { get; set; }
         public bool ServerTemplateCanCreateFolders { get; set; }
         public string TemplateFeatureId { get; set; }
-        public string Title { get; set; }
+
+        [JsonIgnore]
+        public string Title
+        {
+            get
+            {
+                return _title;
+            }
+            set
+            {
+                _title = value;
+                base.ObjectProperties["Title"] = value;
+            }
+        }
     }
 }
