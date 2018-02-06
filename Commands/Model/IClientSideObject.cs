@@ -7,6 +7,6 @@ namespace SharePointPnP.PowerShell.Core.Model
 {
     public interface IClientSideObject
     {
-       SPOnlineConnection Context { get; set; }
+        SPOnlineConnection Context { get; set; }
     }
 }

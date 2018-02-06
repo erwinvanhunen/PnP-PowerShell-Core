@@ -54,11 +54,11 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
             }
             else if (Id != Guid.Empty)
             {
-                list = new RestRequest(context, $"Lists(guid'{Id.ToString("D")}')").Expand("RootFolder/ServerRelativeUrl").Get<List>();
+                list = new RestRequest(context, $"Lists(guid'{Id.ToString("D")}')").Expand("RootFolder/ServerRelativeUrl","ContentTypes").Get<List>();
             }
             else if (!string.IsNullOrEmpty(Title))
             {
-                list = new RestRequest(context, $"Lists/GetByTitle('{Title}')").Expand("RootFolder/ServerRelativeUrl").Get<List>();
+                list = new RestRequest(context, $"Lists/GetByTitle('{Title}')").Expand("RootFolder/ServerRelativeUrl","ContentTypes").Get<List>();
             }
             return list;
         }

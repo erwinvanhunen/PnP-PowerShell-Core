@@ -99,7 +99,7 @@ namespace SharePointPnP.PowerShell.Core.Model
         #endregion
 
         #region CONSTRUCTOR
-        public Web() : base("web", "SP.Web")
+        public Web() : base("SP.Web")
         { }
         #endregion
 

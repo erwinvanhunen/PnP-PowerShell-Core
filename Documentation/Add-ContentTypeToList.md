@@ -3,38 +3,37 @@ external help file:
 applicable: 
 schema: 2.0.0
 ---
-# Add-ContentType
+# Add-ContentTypeToList
 
 ## SYNOPSIS
-Adds a new content type
+Adds a new content type to a list
 
 ## SYNTAX 
 
 ### 
 ```powershell
-Add-ContentType [-Name <String>]
-                [-ContentTypeId <String>]
-                [-Description <String>]
-                [-Group <String>]
-                [-Connection <SPOnlineConnection>]
+Add-ContentTypeToList [-List <ListPipeBind>]
+                      [-ContentType <ContentTypePipeBind>]
+                      [-DefaultContentType [<SwitchParameter>]]
+                      [-Connection <SPOnlineConnection>]
 ```
 
 ## EXAMPLES
 
 ### ------------------EXAMPLE 1------------------
 ```powershell
-PS:> Add-PnPContentType -Name "Project Document" -Description "Use for Contoso projects" -Group "Contoso Content Types" -ParentContentType $ct
+PS:> Add-PnPContentTypeToList -List "Documents" -ContentType "Project Document" -DefaultContentType
 ```
 
-This will add a new content type based on the parent content type stored in the $ct variable.
+This will add an existing content type to a list and sets it as the default content type
 
 ## PARAMETERS
 
-### -ContentTypeId
+### -ContentType
 
 
 ```yaml
-Type: String
+Type: ContentTypePipeBind
 Parameter Sets: 
 
 Required: False
@@ -42,11 +41,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Description
+### -DefaultContentType
 
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: 
 
 Required: False
@@ -54,23 +53,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Group
+### -List
 
 
 ```yaml
-Type: String
-Parameter Sets: 
-
-Required: False
-Position: 0
-Accept pipeline input: False
-```
-
-### -Name
-
-
-```yaml
-Type: String
+Type: ListPipeBind
 Parameter Sets: 
 
 Required: False

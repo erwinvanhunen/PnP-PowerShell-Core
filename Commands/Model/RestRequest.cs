@@ -23,19 +23,24 @@ namespace SharePointPnP.PowerShell.Core.Model
             _filter = "";
         }
 
-        public RestRequest(SPOnlineConnection context, string root, string filter = null)
+        public RestRequest(SPOnlineConnection context, string root)
         {
             _context = context;
             _root = root;
             _expands = new List<string>();
             _selects = new List<string>();
-            _filter = filter;
+            //_filter = filter;
         }
 
-        public RestRequest Root(string root, string filter = null)
+        public RestRequest Filter(string filter)
+        {
+            _filter = filter;
+            return this;
+        }
+
+        public RestRequest Root(string root)
         {
             _root = root;
-            _filter = filter;
             return this;
         }
 
@@ -78,6 +83,18 @@ namespace SharePointPnP.PowerShell.Core.Model
             var select = _selects.Any() ? string.Join(",", _selects) : null;
             var expands = _expands.Any() ? string.Join(",", _expands) : null;
             Helpers.RestHelper.ExecutePostRequest(_context, _root, content, select, _filter, expands, contentType: contentType);
+        }
+
+        public void Post(ClientSideObject clientSideObject)
+        {
+            var content = JsonConvert.SerializeObject(clientSideObject, Newtonsoft.Json.Formatting.None,
+                            new JsonSerializerSettings
+                            {
+                                NullValueHandling = NullValueHandling.Ignore
+                            });
+            var select = _selects.Any() ? string.Join(",", _selects) : null;
+            var expands = _expands.Any() ? string.Join(",", _expands) : null;
+            Helpers.RestHelper.ExecutePostRequest(_context, _root, content, select, _filter, expands, null, contentType:"application/json;odata=verbose");
         }
 
         public void Post(MetadataType metadataType, Dictionary<string, object> properties, string contentType = "application/json; odata=verbose")

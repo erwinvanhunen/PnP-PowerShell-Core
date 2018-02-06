@@ -3,38 +3,38 @@ external help file:
 applicable: 
 schema: 2.0.0
 ---
-# Add-ContentType
+# Add-FieldToContentType
 
 ## SYNOPSIS
-Adds a new content type
+Adds an existing site column to a content type
 
 ## SYNTAX 
 
 ### 
 ```powershell
-Add-ContentType [-Name <String>]
-                [-ContentTypeId <String>]
-                [-Description <String>]
-                [-Group <String>]
-                [-Connection <SPOnlineConnection>]
+Add-FieldToContentType [-Field <FieldPipeBind>]
+                       [-ContentType <ContentTypePipeBind>]
+                       [-Required [<SwitchParameter>]]
+                       [-Hidden [<SwitchParameter>]]
+                       [-Connection <SPOnlineConnection>]
 ```
 
 ## EXAMPLES
 
 ### ------------------EXAMPLE 1------------------
 ```powershell
-PS:> Add-PnPContentType -Name "Project Document" -Description "Use for Contoso projects" -Group "Contoso Content Types" -ParentContentType $ct
+PS:> Add-PnPFieldToContentType -Field "Project_Name" -ContentType "Project Document"
 ```
 
-This will add a new content type based on the parent content type stored in the $ct variable.
+This will add an existing site column with an internal name of "Project_Name" to a content type called "Project Document"
 
 ## PARAMETERS
 
-### -ContentTypeId
+### -ContentType
 
 
 ```yaml
-Type: String
+Type: ContentTypePipeBind
 Parameter Sets: 
 
 Required: False
@@ -42,11 +42,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Description
+### -Field
 
 
 ```yaml
-Type: String
+Type: FieldPipeBind
 Parameter Sets: 
 
 Required: False
@@ -54,11 +54,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Group
+### -Hidden
 
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: 
 
 Required: False
@@ -66,11 +66,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Name
+### -Required
 
 
 ```yaml
-Type: String
+Type: SwitchParameter
 Parameter Sets: 
 
 Required: False

@@ -28,7 +28,7 @@ namespace SharePointPnP.PowerShell.Core.Base
         protected override void ProcessRecord()
         {
             var cmdletConnection = Connection ?? SPOnlineConnection.CurrentConnection;
-            if (string.IsNullOrEmpty(cmdletConnection.AccessToken))
+            if (cmdletConnection == null || string.IsNullOrEmpty(cmdletConnection.AccessToken))
             {
                 throw new PSInvalidOperationException("A connection is required. Use Connect-PnPOnline to connect first.");
             }

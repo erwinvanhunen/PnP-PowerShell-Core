@@ -20,12 +20,34 @@ namespace SharePointPnP.PowerShell.Core.Model
         public string DecodedUrl { get; set; }
     }
 
-    public class List : ClientSideObject
+    public class List : UpdatableClientSideObject
     {
+        public List() : base("SP.List")
+        { }
+
+        [JsonProperty("ContentTypesEnabled")]
+        private bool _contentTypesEnabled { get; set; }
+
+        public List<ContentType> ContentTypes;
+
         public bool AllowContentTypes { get; set; }
         public int BaseTemplate { get; set; }
         public int BaseType { get; set; }
-        public bool ContentTypesEnabled { get; set; }
+
+        [JsonIgnore]
+        public bool ContentTypesEnabled
+        {
+            get
+            {
+                return _contentTypesEnabled;
+            }
+            set
+            {
+                _contentTypesEnabled = value;
+                base.ObjectProperties["ContentTypesEnabled"] = value;
+            }
+        }
+
         public string DefaultViewUrl {get;set;}
         public Folder RootFolder { get; set; }
         public bool CrawlNonDefaultViews { get; set; }

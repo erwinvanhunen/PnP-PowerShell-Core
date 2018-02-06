@@ -10,7 +10,7 @@
     PowerShellVersion = '6.0'
     ProcessorArchitecture = 'None'
     FunctionsToExport = '*'
-    CmdletsToExport = 'Add-App','Add-ContentType','Add-CustomAction','Add-NavigationNode','Connect-Online','Disable-Feature','Enable-Feature','Get-App','Get-ContentType','Get-CustomAction','Get-EventReceiver','Get-Feature','Get-Field','Get-HomePage','Get-JavaScriptLink','Get-List','Get-MasterPage','Get-NavigationNode','Get-PropertyBag','Get-RequestAccessEmail','Get-StorageEntity','Get-SubWeb','Get-TenantAppCatalogUrl','Get-View','Get-Web','Get-WebTemplate','Install-App','New-Site','New-Web','Publish-App','Remove-App','Remove-CustomAction','Remove-NavigationNode','Send-RestRequest','Set-HomePage','Set-MasterPage','Set-MinimalDownloadStrategy','Set-NavigationNode','Set-PropertyBagValue','Uninstall-App','Unpublish-App','Update-App'
+    CmdletsToExport = 'Add-App','Add-ContentType','Add-ContentTypeToList','Add-CustomAction','Add-FieldToContentType','Add-NavigationNode','Connect-Online','Disable-Feature','Enable-Feature','Get-App','Get-ContentType','Get-CustomAction','Get-EventReceiver','Get-Feature','Get-Field','Get-HomePage','Get-JavaScriptLink','Get-List','Get-MasterPage','Get-NavigationNode','Get-PropertyBag','Get-RequestAccessEmail','Get-StorageEntity','Get-SubWeb','Get-TenantAppCatalogUrl','Get-View','Get-Web','Get-WebTemplate','Install-App','New-Site','New-Web','Publish-App','Remove-App','Remove-CustomAction','Remove-NavigationNode','Send-RestRequest','Set-HomePage','Set-MasterPage','Set-MinimalDownloadStrategy','Set-NavigationNode','Set-PropertyBagValue','Uninstall-App','Unpublish-App','Update-App'
     VariablesToExport = '*'
 AliasesToExport = 'Get-Subwebs','Get-WebTemplates'
     FormatsToProcess = '.\SharePointPnP.PowerShell.Core.Format.ps1xml'

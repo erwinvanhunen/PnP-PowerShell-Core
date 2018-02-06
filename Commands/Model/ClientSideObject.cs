@@ -6,32 +6,27 @@ namespace SharePointPnP.PowerShell.Core.Model
 {
     public abstract class ClientSideObject : IClientSideObject
     {
-        private MetadataType _metadataType;
         private SPOnlineConnection _context;
 
-        [JsonProperty("__metadata")]
-        public MetadataType MetadataType
+        [JsonProperty("odata.type")]
+        private string _objectType { set; get; }
+
+        [JsonProperty("__metadata", Order = 0)]
+        internal MetadataType MetadataType
         {
             get
             {
-                return _metadataType;
-            }
-            set
-            {
-                _metadataType = value;
+                return new MetadataType(_objectType);
             }
         }
+
         public ClientSideObject()
         {
         }
 
         public ClientSideObject(string type)
         {
-            _metadataType = new MetadataType(type);
-        }
-
-        public ClientSideObject(string endPoint, string type)
-        {
+            _objectType = type;
         }
 
         public ClientSideObject(SPOnlineConnection context)
@@ -39,6 +34,7 @@ namespace SharePointPnP.PowerShell.Core.Model
             _context = context;
         }
 
+        [JsonIgnore]
         public SPOnlineConnection Context
         {
             get

@@ -67,24 +67,29 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
             {
                 if (inSiteHierarchy)
                 {
-                    ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>(context, $"Site/RootWeb/ContentTypes('{Id}')");
+                    ct = new RestRequest(context, $"Web/AvailableContentTypes('{Id}')").Expand("FieldLinks").Get<ContentType>();
+                    //ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>(context, $"Web/AvailableContentTypes('{Id}')");
                 }
                 else
                 {
-                    ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>(context, $"Web/ContentTypes('{Id}')");
+                    ct = new RestRequest(context, $"Web/ContentTypes('{Id}')").Expand("FieldLinks").Get<ContentType>();
+                    //ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>(context, $"Web/ContentTypes('{Id}')");
                 }
             }
             else
             {
                 if (inSiteHierarchy)
                 {
-                    var cts = new RestRequest(context, $"Site/RootWeb/ContentTypes").Select("Name", "Id").Get<ResponseCollection<ContentType>>().Items.FirstOrDefault(c => c.Name == Name);
-                    ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>(context, $"Site/RootWeb/ContentTypes('{cts.Id.StringValue}')");
+                    //var cts = new RestRequest(context, $"Site/RootWeb/ContentTypes").Select("Name", "Id").Get<ResponseCollection<ContentType>>().Items.FirstOrDefault(c => c.Name == Name);
+                    ct = new RestRequest(context, $"Web/AvailableContentTypes").Filter($"Name eq '{Name}'").Expand("FieldLinks").Get<ResponseCollection<ContentType>>().Items.FirstOrDefault();
+                    //ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>(context, $"Web/AvailableContentTypes('{cts.Id.StringValue}')");
                 }
                 else
                 {
-                    var cts = new RestRequest(context, $"Web/ContentTypes").Select("Name", "Id").Get<ResponseCollection<ContentType>>().Items.FirstOrDefault(c => c.Name == Name);
-                    ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>(context, $"Web/ContentTypes('{cts.Id.StringValue}')");
+                    ct = new RestRequest(context, $"Web/ContentTypes").Filter($"Name eq '{Name}'").Expand("FieldLinks").Get<ResponseCollection<ContentType>>().Items.FirstOrDefault();
+                    //var cts = new RestRequest(context, $"Web/ContentTypes").Select("Name", "Id").Get<ResponseCollection<ContentType>>().Items.FirstOrDefault(c => c.Name == Name);
+                    //ct = new RestRequest(context, $"Web/ContentTypes('{cts.Id.StringValue}')").Expand("FieldLinks").Get<ContentType>();
+                    //ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>(context, $"Web/ContentTypes('{cts.Id.StringValue}')");
                 }
             }
 

@@ -9,7 +9,7 @@ using System.Net.Mime;
 namespace SharePointPnP.PowerShell.Core.ContentTypes
 {
     [Cmdlet(VerbsCommon.Add, "ContentType")]
-    [CmdletHelp(VerbsCommon.Add,"ContentType","Adds a new content type",
+    [CmdletHelp(VerbsCommon.Add, "ContentType", "Adds a new content type",
         Category = CmdletHelpCategory.ContentTypes)]
     [CmdletExample(
         Code = @"PS:> Add-PnPContentType -Name ""Project Document"" -Description ""Use for Contoso projects"" -Group ""Contoso Content Types"" -ParentContentType $ct",
@@ -29,32 +29,28 @@ namespace SharePointPnP.PowerShell.Core.ContentTypes
         [Parameter(Mandatory = false, HelpMessage = "Specifies the group of the new content type")]
         public string Group;
 
-        [Parameter(Mandatory = false, HelpMessage = "Specifies the parent of the new content type")]
-        public Model.ContentType ParentContentType;
+        //[Parameter(Mandatory = false, HelpMessage = "Specifies the parent of the new content type")]
+        //public Model.ContentType ParentContentType;
 
         protected override void ExecuteCmdlet()
         {
-            var dict = new Dictionary<string, object>()
+            Model.ContentType ct = new Model.ContentType();
+            ct.Name = Name;
+            
+            if (MyInvocation.BoundParameters.ContainsKey("ContentTypeId"))
             {
-                {"Name",Name }
-            };
-            if(MyInvocation.BoundParameters.ContainsKey("ContentTypeId"))
-            {
-                dict.Add("ContentTypeId", new ContentTypeId() { StringValue = ContentTypeId });
+                ct.Id = new Model.ContentTypeId() { StringValue = ContentTypeId };
             }
-            if(MyInvocation.BoundParameters.ContainsKey("Description"))
+            if (MyInvocation.BoundParameters.ContainsKey("Description"))
             {
-                dict.Add("Description", Description);
+                ct.Description = Description;
             }
             if (MyInvocation.BoundParameters.ContainsKey("Group"))
             {
-                dict.Add("Group", Group);
-            }
-            WriteObject(JsonConvert.SerializeObject(dict));
-            //var ct = SelectedWeb.CreateContentType(Name, Description, ContentTypeId, Group, ParentContentType);
-            //ClientContext.Load(ct);
-            //ClientContext.ExecuteQueryRetry();
-            //WriteObject(ct);
+                ct.Group = Group;
+            }          
+            new RestRequest(Context, "Web/ContentTypes").Post(ct);
+          
         }
 
 

@@ -52,7 +52,9 @@ namespace SharePointPnP.PowerShell.Core.Helpers
         public static T ExecuteGetRequest<T>(SPOnlineConnection context, string url, string select = null, string filter = null, string expand = null) where T : IClientSideObject
         {
             var returnValue = ExecuteGetRequest(context, url, select, filter, expand);
+
             dynamic returnObject = JsonConvert.DeserializeObject<T>(returnValue);
+
             if (returnObject.GetType().IsGenericType)
             {
                 foreach (var item in returnObject.Items)
@@ -66,13 +68,6 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             }
             return returnObject;
         }
-
-        //public static T ExecuteGetGenericRequest<T>(SPOnlineConnection context, string url, string select = null, string filter = null, string expand = null)
-        //{
-        //    var returnValue = ExecuteGetRequest(context, url, select, filter, expand);
-        //    var returnObject = JsonConvert.DeserializeObject<T>(returnValue);
-        //    return returnObject;
-        //}
 
         public static string ExecuteGetRequest(SPOnlineConnection context, string endPointUrl, string select = null, string filter = null, string expand = null)
         {
@@ -88,7 +83,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             }
             if (!string.IsNullOrEmpty(filter))
             {
-                restparams.Add($"$filter=({filter})");
+                restparams.Add($"$filter={filter}");
             }
             if (!string.IsNullOrEmpty(expand))
             {

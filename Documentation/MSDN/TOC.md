@@ -24,6 +24,8 @@
 ## [Content Types](ContentTypes-category.md)
 ### [Add-ContentType](Add-ContentType.md)
 ### [Get-ContentType](Get-ContentType.md)
+### [Add-ContentTypeToList](Add-ContentTypeToList.md)
+### [Add-FieldToContentType](Add-FieldToContentType.md)
 ## [Event Receivers](EventReceivers-category.md)
 ### [Get-EventReceiver](Get-EventReceiver.md)
 ## [Features](Features-category.md)

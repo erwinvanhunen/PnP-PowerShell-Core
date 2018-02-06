@@ -1,9 +1,13 @@
+using System;
 using System.Collections.Generic;
 
 namespace SharePointPnP.PowerShell.Core.Model
 {
     public class Field : ClientSideObject
     {
+        public Field() : base("SP.Field")
+        { }
+
         public bool AutoIndexed { get; set; }
         public bool CanBeDeleted { get; set; }
         public string ClientSideComponentId { get; set; }
@@ -19,7 +23,7 @@ namespace SharePointPnP.PowerShell.Core.Model
         public bool FromBaseType { get; set; }
         public string Group { get; set; }
         public bool Hidden { get; set; }
-        public string Id { get; set; }
+        public Guid Id { get; set; }
         public bool Indexed { get; set; }
         public string InternalName { get; set; }
         public string JSLink { get; set; }

@@ -6,7 +6,9 @@ namespace SharePointPnP.PowerShell.Core.Model
 {
     public class UpdatableClientSideObject : ClientSideObject
     {
-        private string apiEndPoint;
+        [JsonProperty("odata.editLink")]
+        private string _editLink { get; set; }
+
 
         [JsonIgnore]
         protected internal Dictionary<string, object> ObjectProperties;
@@ -19,9 +21,8 @@ namespace SharePointPnP.PowerShell.Core.Model
             this.ObjectProperties = new Dictionary<string, object>();
         }
 
-        public UpdatableClientSideObject(string endPoint, string type)
+        public UpdatableClientSideObject(string type)
         {
-            this.apiEndPoint = endPoint;
             this.metadataType = new MetadataType(type);
             this.ObjectProperties = new Dictionary<string, object>();
         }
@@ -35,7 +36,7 @@ namespace SharePointPnP.PowerShell.Core.Model
             var props = this.ObjectProperties;
             props["__metadata"] = metadataType;
             var content = JsonConvert.SerializeObject(props);
-            new RestRequest(Context, $"{apiEndPoint}").Merge(content, contentType: "application/json;odata=verbose");
+            new RestRequest(Context, _editLink).Merge(content, contentType: "application/json;odata=verbose");
         }
     }
 }

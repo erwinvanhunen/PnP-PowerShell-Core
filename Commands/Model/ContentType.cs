@@ -7,26 +7,14 @@ namespace SharePointPnP.PowerShell.Core.Model
 {
     public class ContentTypeId
     {
-        [JsonProperty("__metadata")]
-        public MetadataType MetadataType
-        {
-            get
-            {
-                return new MetadataType("SP.ContentTypeId");
-            }
-        }
         public string StringValue { get; set; }
     }
     public class ContentType : ClientSideObject
     {
-        [JsonProperty("__metadata")]
-        public MetadataType MetadataType
-        {
-            get
-            {
-                return new MetadataType("SP.ContentType");
-            }
-        }
+        public ContentType() : base("SP.ContentType")
+        { }
+
+        public List<FieldLink> FieldLinks { get; set; }
 
         public string Description { get; set; }
         public string DisplayFormTemplateName { get; set; }
