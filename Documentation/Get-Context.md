@@ -1,21 +1,21 @@
 ---
 external help file:
-applicable: SharePoint Online
+applicable: 
 schema: 2.0.0
 ---
-# Get-RequestAccessEmail
+# Get-Context
 
 ## SYNOPSIS
-Returns the request access e-mail addresses
+Returns the current context
 
 ## EXAMPLES
 
 ### ------------------EXAMPLE 1------------------
 ```powershell
-PS:> Get-PnPRequestAccessEmails
+PS:> $context = Get-PnPContext
 ```
 
-This will return all the request access e-mail addresses for the current web
+This will return the current context
 
 ## RELATED LINKS
 

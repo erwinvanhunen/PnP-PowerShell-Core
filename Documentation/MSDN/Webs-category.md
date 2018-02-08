@@ -1,6 +1,7 @@
 # Webs 
 Cmdlet|Description|Platform
 :-----|:----------|:-------
+**[Get&#8209;Context](Get-Context.md)** |Returns the current context|
 **[Get&#8209;PropertyBag](Get-PropertyBag.md)** |Returns the property bag values.|
 **[Set&#8209;PropertyBagValue](Set-PropertyBagValue.md)** |Sets a property bag value|
 **[Get&#8209;RequestAccessEmail](Get-RequestAccessEmail.md)** |Returns the request access e-mail addresses|SharePoint Online

@@ -42,11 +42,11 @@ namespace SharePointPnP.PowerShell.Core.Branding
 
             if (Scope == CustomActionScope.All || Scope == CustomActionScope.Web)
             {
-                actions.AddRange(new RestRequest(CurrentContext, "Web/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items.Where(c => c.Location == "ScriptLink"));
+                actions.AddRange(new RestRequest(Context, "Web/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items.Where(c => c.Location == "ScriptLink"));
             }
             if (Scope == CustomActionScope.All || Scope == CustomActionScope.Site)
             {
-                actions.AddRange(new RestRequest(CurrentContext, "Site/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items.Where(c => c.Location == "ScriptLink"));
+                actions.AddRange(new RestRequest(Context, "Site/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items.Where(c => c.Location == "ScriptLink"));
             }
 
             if (!string.IsNullOrEmpty(Name))

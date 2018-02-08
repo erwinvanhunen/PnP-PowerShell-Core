@@ -13,7 +13,6 @@ Uninstalls an available add-in from the site
 ### 
 ```powershell
 Uninstall-App [-Identity <AppMetadataPipeBind>]
-              [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -32,18 +31,6 @@ This will uninstall the specified app from the current site.
 
 ```yaml
 Type: AppMetadataPipeBind
-Parameter Sets: 
-
-Required: False
-Position: 0
-Accept pipeline input: False
-```
-
-### -Context
-
-
-```yaml
-Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

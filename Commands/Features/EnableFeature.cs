@@ -28,11 +28,11 @@ public class EnableFeature : PnPCmdlet
         var featureId = Identity.Id;
         if (Scope == FeatureScope.Web)
         {
-            new RestRequest(CurrentContext, $"Web/Features/Add(guid'{featureId}')").Post();
+            new RestRequest(Context, $"Web/Features/Add(guid'{featureId}')").Post();
         }
         else
         {
-            new RestRequest(CurrentContext, $"Site/Features/Add(guid'{featureId}')").Post();
+            new RestRequest(Context, $"Site/Features/Add(guid'{featureId}')").Post();
         }
     }
 }

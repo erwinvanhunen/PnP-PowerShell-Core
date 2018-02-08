@@ -113,6 +113,7 @@ Cmdlet|Description|Platform
 Cmdlet|Description|Platform
 :-----|:----------|:-------
 **[Get&#8209;AvailableClientSideComponents](Get-AvailableClientSideComponents.md)** |Gets the available client side components on a particular page|SharePoint Online
+**[Get&#8209;ClientSidePage](Get-ClientSidePage.md)** |Gets a Client-Side Page|SharePoint Online
 
 
 ### Content Types 
@@ -169,6 +170,7 @@ Cmdlet|Description|Platform
 ### Webs 
 Cmdlet|Description|Platform
 :-----|:----------|:-------
+**[Get&#8209;Context](Get-Context.md)** |Returns the current context|
 **[Get&#8209;PropertyBag](Get-PropertyBag.md)** |Returns the property bag values.|
 **[Set&#8209;PropertyBagValue](Set-PropertyBagValue.md)** |Sets a property bag value|
 **[Get&#8209;RequestAccessEmail](Get-RequestAccessEmail.md)** |Returns the request access e-mail addresses|SharePoint Online

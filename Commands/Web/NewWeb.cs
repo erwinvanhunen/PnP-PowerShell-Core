@@ -46,11 +46,11 @@ namespace SharePointPnP.PowerShell.Core.Web
             properties["Language"] = Locale;
             properties["UseSamePermissionsAsParentSite"] = !BreakInheritance.IsPresent;
 
-            var web = new RestRequest(CurrentContext, "Web/Webs/add").Post<Model.Web>(new MetadataType("SP.WebCreationInformation"), properties);
+            var web = new RestRequest(Context, "Web/Webs/add").Post<Model.Web>(new MetadataType("SP.WebCreationInformation"), properties);
 
             if (InheritNavigation == false)
             {
-                new RestRequest(CurrentContext, $"{web.Url}/_api/Navigation").Merge(new MetadataType("SP.Navigation"), new Dictionary<string, object>() {
+                new RestRequest(Context, $"{web.Url}/_api/Navigation").Merge(new MetadataType("SP.Navigation"), new Dictionary<string, object>() {
                 { "UseShared", false}});
             }
             WriteObject(web);

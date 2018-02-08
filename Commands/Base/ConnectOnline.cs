@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System;
 using SharePointPnP.PowerShell.Core.Helpers;
 using SharePointPnP.PowerShell.Core.Attributes;
+using SharePointPnP.PowerShell.Core.Model;
 
 namespace SharePointPnP.PowerShell.Core.Base
 {
@@ -61,9 +62,9 @@ namespace SharePointPnP.PowerShell.Core.Base
                 var connection = new SPOnlineContext(MyInvocation.MyCommand.Module.ModuleBase);
                 connection.AccessToken = tokens["access_token"];
                 connection.RefreshToken = tokens["refresh_token"];
-                connection.ExpiresIn = DateTime.Now.AddSeconds(int.Parse(tokens["expires_in"]));
+                connection.ExpiresOn = DateTime.Now.AddSeconds(int.Parse(tokens["expires_in"]));
                 connection.Url = Url;
-                credManager.Add(Url, connection.AccessToken, connection.RefreshToken, connection.ExpiresIn);
+                credManager.Add(Url, connection.AccessToken, connection.RefreshToken, connection.ExpiresOn);
                 SPOnlineContext.CurrentContext = connection;
 
             }

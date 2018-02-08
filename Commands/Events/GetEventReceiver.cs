@@ -39,13 +39,13 @@ namespace SharePointPnP.PowerShell.Core.Branding
         {
             if (ParameterSetName == "List")
             {
-                var list = List.GetList(CurrentContext);
+                var list = List.GetList(Context);
 
                 if (list != null)
                 {
                     if (!MyInvocation.BoundParameters.ContainsKey("Identity"))
                     {
-                        WriteObject(new RestRequest(CurrentContext, $"Web/Lists/GetById(guid'{list.Id}')/EventReceivers").Get<ResponseCollection<EventReceiver>>().Items, true);
+                        WriteObject(new RestRequest(Context, $"Web/Lists/GetById(guid'{list.Id}')/EventReceivers").Get<ResponseCollection<EventReceiver>>().Items, true);
                     }
                     else
                     {
@@ -57,12 +57,12 @@ namespace SharePointPnP.PowerShell.Core.Branding
             {
                 if (!MyInvocation.BoundParameters.ContainsKey("Identity"))
                 {
-                    WriteObject(new RestRequest(CurrentContext,$"Web/EventReceivers").Get<ResponseCollection<EventReceiver>>().Items, true);
+                    WriteObject(new RestRequest(Context,$"Web/EventReceivers").Get<ResponseCollection<EventReceiver>>().Items, true);
 
                 }
                 else
                 {
-                    WriteObject(Identity.GetEventReceiverOnWeb(CurrentContext));
+                    WriteObject(Identity.GetEventReceiverOnWeb(Context));
                 }
             }
         }

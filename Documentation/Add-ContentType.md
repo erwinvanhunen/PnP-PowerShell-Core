@@ -17,7 +17,6 @@ Add-ContentType [-Name <String>]
                 [-Description <String>]
                 [-Group <String>]
                 [-ParentContentType <ContentTypePipeBind>]
-                [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -84,18 +83,6 @@ Accept pipeline input: False
 
 ```yaml
 Type: ContentTypePipeBind
-Parameter Sets: 
-
-Required: False
-Position: 0
-Accept pipeline input: False
-```
-
-### -Context
-
-
-```yaml
-Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

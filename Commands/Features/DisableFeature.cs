@@ -28,11 +28,11 @@ public class DisableFeature : PnPCmdlet
         var featureId = Identity.Id;
         if (Scope == FeatureScope.Web)
         {
-            new RestRequest(CurrentContext, $"Web/Features/Remove(guid'{featureId}')").Post();
+            new RestRequest(Context, $"Web/Features/Remove(guid'{featureId}')").Post();
         }
         else
         {
-            new RestRequest(CurrentContext, $"Site/Features/Remove(guid'{featureId}')").Post();
+            new RestRequest(Context, $"Site/Features/Remove(guid'{featureId}')").Post();
         }
     }
 }

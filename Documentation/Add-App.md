@@ -16,7 +16,6 @@ Add-App [-Path <String>]
         [-Publish [<SwitchParameter>]]
         [-SkipFeatureDeployment [<SwitchParameter>]]
         [-Overwrite [<SwitchParameter>]]
-        [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -78,18 +77,6 @@ Accept pipeline input: False
 
 ```yaml
 Type: SwitchParameter
-Parameter Sets: 
-
-Required: False
-Position: 0
-Accept pipeline input: False
-```
-
-### -Context
-
-
-```yaml
-Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

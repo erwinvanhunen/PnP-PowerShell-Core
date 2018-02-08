@@ -13,7 +13,6 @@ Returns the available apps from the app catalog
 ### 
 ```powershell
 Get-App [-Identity <GuidPipeBind>]
-        [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -39,18 +38,6 @@ This will the specific app metadata from the app catalog.
 
 ```yaml
 Type: GuidPipeBind
-Parameter Sets: 
-
-Required: False
-Position: 0
-Accept pipeline input: False
-```
-
-### -Context
-
-
-```yaml
-Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

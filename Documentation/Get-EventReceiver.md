@@ -14,7 +14,6 @@ Return registered eventreceivers
 ```powershell
 Get-EventReceiver [-List <ListPipeBind>]
                   [-Identity <EventReceiverPipeBind>]
-                  [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -80,18 +79,6 @@ Accept pipeline input: False
 
 ```yaml
 Type: ListPipeBind
-Parameter Sets: 
-
-Required: False
-Position: 0
-Accept pipeline input: False
-```
-
-### -Context
-
-
-```yaml
-Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

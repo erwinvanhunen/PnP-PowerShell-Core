@@ -13,7 +13,6 @@ Sets the home page of the current web.
 ### 
 ```powershell
 Set-HomePage [-RootFolderRelativeUrl <String>]
-             [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -32,18 +31,6 @@ Sets the home page to the home.aspx file which resides in the SitePages library
 
 ```yaml
 Type: String
-Parameter Sets: 
-
-Required: False
-Position: 0
-Accept pipeline input: False
-```
-
-### -Context
-
-
-```yaml
-Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

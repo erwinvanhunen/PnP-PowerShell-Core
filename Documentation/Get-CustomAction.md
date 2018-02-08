@@ -14,7 +14,6 @@ Retrieves custom actions
 ```powershell
 Get-CustomAction [-Identity <GuidPipeBind>]
                  [-Scope <CustomActionScope>]
-                 [-Context <SPOnlineContext>]
 ```
 
 ## PARAMETERS
@@ -36,18 +35,6 @@ Accept pipeline input: False
 
 ```yaml
 Type: CustomActionScope
-Parameter Sets: 
-
-Required: False
-Position: 0
-Accept pipeline input: False
-```
-
-### -Context
-
-
-```yaml
-Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

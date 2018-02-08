@@ -31,10 +31,10 @@ namespace SharePointPnP.PowerShell.Core.ContentTypes
         {
             if (Force || ShouldContinue("Remove content type?", "Confirm"))
             {
-                Model.ContentType ct = Identity.GetContentType(CurrentContext,true);
+                Model.ContentType ct = Identity.GetContentType(Context,true);
                 if (ct != null)
                 {
-                    new RestRequest(CurrentContext, $"Web/ContentTypes('{ct.StringId}')").Delete();
+                    new RestRequest(Context, $"Web/ContentTypes('{ct.StringId}')").Delete();
                 }
 
             }

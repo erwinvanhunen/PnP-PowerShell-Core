@@ -13,7 +13,6 @@ Removes an app from the app catalog
 ### 
 ```powershell
 Remove-App [-Identity <AppMetadataPipeBind>]
-           [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -32,18 +31,6 @@ This will remove the specified app from the app catalog
 
 ```yaml
 Type: AppMetadataPipeBind
-Parameter Sets: 
-
-Required: False
-Position: 0
-Accept pipeline input: False
-```
-
-### -Context
-
-
-```yaml
-Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

@@ -17,7 +17,7 @@ namespace SharePointPnP.PowerShell.Core.Web
     {
         protected override void ExecuteCmdlet()
         {
-            var web = new RestRequest(CurrentContext, "Web").Expand("RequestAccessEmail").Get<Model.Web>();
+            var web = new RestRequest(Context, "Web").Expand("RequestAccessEmail").Get<Model.Web>();
             WriteObject(web.RequestAccessEmail.Split(new char[] { ',' }), true);
         }
     }

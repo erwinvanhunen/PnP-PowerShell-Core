@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SharePointPnP.PowerShell.Core.Base;
+using SharePointPnP.PowerShell.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
@@ -45,7 +46,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
                     var context = new SPOnlineContext(path);
                     context.AccessToken = d["accesstoken"];
                     context.RefreshToken = d["refreshtoken"];
-                    context.ExpiresIn = new DateTime(long.Parse(d["expiration"]));
+                    context.ExpiresOn = new DateTime(long.Parse(d["expiration"]));
                     context.Url = url;
                     return context;
                 }

@@ -1,8 +1,7 @@
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using System.Xml.Linq;
-using SharePointPnP.PowerShell.Core.Base;
+using SharePointPnP.PowerShell.Core.Model;
 
 namespace SharePointPnP.PowerShell.Core.Helpers
 {

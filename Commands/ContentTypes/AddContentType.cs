@@ -52,13 +52,13 @@ namespace SharePointPnP.PowerShell.Core.ContentTypes
             }          
             if(MyInvocation.BoundParameters.ContainsKey("ParentContentType"))
             {
-                var parentCt = ParentContentType.GetContentType(CurrentContext, true);
+                var parentCt = ParentContentType.GetContentType(Context, true);
                 if(parentCt != null)
                 {
                     ct.Parent = parentCt;
                 }
             }
-            new RestRequest(CurrentContext, "Web/ContentTypes").Post(ct);
+            new RestRequest(Context, "Web/ContentTypes").Post(ct);
           
         }
 

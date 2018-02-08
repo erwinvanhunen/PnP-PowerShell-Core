@@ -58,7 +58,7 @@ namespace SharePointPnP.PowerShell.Core.Branding
             {
                 case NavigationType.QuickLaunch:
                     {
-                        new RestRequest(CurrentContext, "Web/Navigation/Quicklaunch").Post(new MetadataType("SP.NavigationNode"), dict);
+                        new RestRequest(Context, "Web/Navigation/Quicklaunch").Post(new MetadataType("SP.NavigationNode"), dict);
                         break;
                     }
             }

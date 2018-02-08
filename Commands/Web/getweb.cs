@@ -16,7 +16,7 @@ namespace SharePointPnP.PowerShell.Core.Web
     {
         protected override void ExecuteCmdlet()
         {
-            WriteObject(new RestRequest(CurrentContext, "Web").Expand("AllowAutomaticASPXPageIndexing", "AllowCreateDeclarativeWorkflowForCurrentUser", "RequestAccessEmail", "ServerRelativeUrl", "SiteLogoUrl").Get<Model.Web>());
+            WriteObject(new RestRequest(Context, "Web").Expand("AllowAutomaticASPXPageIndexing", "AllowCreateDeclarativeWorkflowForCurrentUser", "RequestAccessEmail", "ServerRelativeUrl", "SiteLogoUrl").Get<Model.Web>());
         }
     }
 }

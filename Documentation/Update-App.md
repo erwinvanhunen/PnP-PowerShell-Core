@@ -13,7 +13,6 @@ Updates an available app from the app catalog
 ### 
 ```powershell
 Update-App [-Identity <AppMetadataPipeBind>]
-           [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -32,18 +31,6 @@ This will update an already installed app if a new version is available. Retriev
 
 ```yaml
 Type: AppMetadataPipeBind
-Parameter Sets: 
-
-Required: False
-Position: 0
-Accept pipeline input: False
-```
-
-### -Context
-
-
-```yaml
-Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

@@ -32,12 +32,12 @@ namespace SharePointPnP.PowerShell.Core.ClientSidePages
         {
             if (Component == null)
             {
-                var allComponents = new RestRequest(CurrentContext, "Web/GetClientSideWebParts").Get<ResponseCollection<ClientSideComponent>>().Items.Where(c => c.ComponentType == 1);
+                var allComponents = new RestRequest(Context, "Web/GetClientSideWebParts").Get<ResponseCollection<ClientSideComponent>>().Items.Where(c => c.ComponentType == 1);
                 WriteObject(allComponents, true);
             }
             else
             {
-                WriteObject(Component.GetComponent(CurrentContext));
+                WriteObject(Component.GetComponent(Context));
             }
         }
     }

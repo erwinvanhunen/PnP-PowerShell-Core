@@ -25,18 +25,18 @@ namespace SharePointPnP.PowerShell.Core.ContentTypes
 
         protected override void ExecuteCmdlet()
         {
-            var list = List.GetList(CurrentContext);
+            var list = List.GetList(Context);
 
-            var ct = ContentType.GetContentType(CurrentContext, true);
+            var ct = ContentType.GetContentType(Context, true);
             if (ct == null)
             {
-                ct = ContentType.GetContentTypeFromList(CurrentContext, list);
+                ct = ContentType.GetContentTypeFromList(Context, list);
             }
 
             var ctToRemove = list.ContentTypes.FirstOrDefault(c => c.StringId == ct.StringId);
             if (ctToRemove != null)
             {
-                new RestRequest(CurrentContext, $"Web/Lists(guid'{list.Id}')/ContentTypes('{ctToRemove.StringId}')").Delete();
+                new RestRequest(Context, $"Web/Lists(guid'{list.Id}')/ContentTypes('{ctToRemove.StringId}')").Delete();
             }
         }
 

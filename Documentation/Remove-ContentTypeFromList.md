@@ -14,7 +14,6 @@ Removes a content type from a list
 ```powershell
 Remove-ContentTypeFromList [-List <ListPipeBind>]
                            [-ContentType <ContentTypePipeBind>]
-                           [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -45,18 +44,6 @@ Accept pipeline input: False
 
 ```yaml
 Type: ListPipeBind
-Parameter Sets: 
-
-Required: False
-Position: 0
-Accept pipeline input: False
-```
-
-### -Context
-
-
-```yaml
-Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

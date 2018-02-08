@@ -27,14 +27,14 @@ namespace SharePointPnP.PowerShell.Core.ContentTypes
 
         protected override void ExecuteCmdlet()
         {
-            ContentType ct = ContentType.GetContentType(CurrentContext, true);
-            List list = List.GetList(CurrentContext);
+            ContentType ct = ContentType.GetContentType(Context, true);
+            List list = List.GetList(Context);
             // make sure that the list supports contenttypes;
             list.ContentTypesEnabled = true;
             list.Update();
             if (ct != null)
             {
-                new RestRequest(CurrentContext, $"Web/Lists(guid'{list.Id}')/ContentTypes").Post(ct);
+                new RestRequest(Context, $"Web/Lists(guid'{list.Id}')/ContentTypes").Post(ct);
             }
         }
 

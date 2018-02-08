@@ -49,7 +49,7 @@ namespace SharePointPnP.PowerShell.Core.ContentTypes
                     ContentType ct = null;
                     if (Identity != null)
                     {
-                        ct = Identity.GetContentType(CurrentContext, InSiteHierarchy);
+                        ct = Identity.GetContentType(Context, InSiteHierarchy);
                     }
                     if (ct != null)
                     {
@@ -64,11 +64,11 @@ namespace SharePointPnP.PowerShell.Core.ContentTypes
                 }
                 else
                 {
-                    var list = List.GetList(CurrentContext);
+                    var list = List.GetList(Context);
 
                     if (!string.IsNullOrEmpty(Identity.Id))
                     {
-                        var cts = ExecuteGetRequest<ContentType>(CurrentContext, $"Web/Lists(guid'{list.Id}')/ContentTypes('{Identity.Id}')");
+                        var cts = ExecuteGetRequest<ContentType>(Context, $"Web/Lists(guid'{list.Id}')/ContentTypes('{Identity.Id}')");
                         if (cts != null)
                         {
                             WriteObject(cts, false);
@@ -80,10 +80,10 @@ namespace SharePointPnP.PowerShell.Core.ContentTypes
                     }
                     else if (!string.IsNullOrEmpty(Identity.Name))
                     {
-                        var cts = new RestRequest(CurrentContext, $"Web/Lists(guid'{list.Id}')/ContentTypes").Select("Name", "Id").Get<ResponseCollection<ContentType>>().Items.FirstOrDefault(c => c.Name == Identity.Name);
+                        var cts = new RestRequest(Context, $"Web/Lists(guid'{list.Id}')/ContentTypes").Select("Name", "Id").Get<ResponseCollection<ContentType>>().Items.FirstOrDefault(c => c.Name == Identity.Name);
                         if (cts != null)
                         {
-                            var ct = new RestRequest(CurrentContext, $"Web/Lists(guid'{list.Id}')/ContentTypes('{cts.Id.StringValue}')").Get<ContentType>();
+                            var ct = new RestRequest(Context, $"Web/Lists(guid'{list.Id}')/ContentTypes('{cts.Id.StringValue}')").Get<ContentType>();
                             WriteObject(ct, false);
                         }
                         else
@@ -100,18 +100,18 @@ namespace SharePointPnP.PowerShell.Core.ContentTypes
                     List<ContentType> cts = null;
                     if (InSiteHierarchy)
                     {
-                        cts = new RestRequest(CurrentContext, "Site/RootWeb/ContentTypes").Get<ResponseCollection<ContentType>>().Items;
+                        cts = new RestRequest(Context, "Site/RootWeb/ContentTypes").Get<ResponseCollection<ContentType>>().Items;
                     }
                     else
                     {
-                        cts = new RestRequest(CurrentContext, $"Web/ContentTypes").Get<ResponseCollection<ContentType>>().Items;
+                        cts = new RestRequest(Context, $"Web/ContentTypes").Get<ResponseCollection<ContentType>>().Items;
                     }
                     WriteObject(cts, true);
                 }
                 else
                 {
-                    var list = List.GetList(CurrentContext);
-                    var cts = new RestRequest(CurrentContext, $"Web/Lists(guid'{list.Id}')/ContentTypes").Get<ResponseCollection<ContentType>>().Items;
+                    var list = List.GetList(Context);
+                    var cts = new RestRequest(Context, $"Web/Lists(guid'{list.Id}')/ContentTypes").Get<ResponseCollection<ContentType>>().Items;
                     WriteObject(cts, true);
                 }
             }

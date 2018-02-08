@@ -13,21 +13,25 @@ namespace SharePointPnP.PowerShell.Core.Base
 {
     public class PnPCmdlet : PSCmdlet
     {
-        [Parameter(Mandatory = false, HelpMessage = "Optional connection to be used by cmdlet. Retrieve the value for this parameter by eiter specifying -ReturnConnection on Connect-PnPOnline or by executing Get-PnPConnection.")] // do not remove '#!#99'
-        [PnPParameter(Order = 99)]
-        public SPOnlineContext Context = null;
+        private SPOnlineContext _newContext;
 
-        public SPOnlineContext CurrentContext
+        [Parameter(Mandatory = false, HelpMessage = "Optional connection to be used by cmdlet. Retrieve the value for this parameter by eiter specifying -ReturnContext on Connect-PnPOnline or by executing Get-PnPContext.")] // do not remove '#!#99'
+        [PnPParameter(Order = 99)]
+        public SPOnlineContext Context
         {
             get
             {
-                return Context ?? SPOnlineContext.CurrentContext;
+                return _newContext ?? SPOnlineContext.CurrentContext;
+            }
+            set
+            {
+                _newContext = value;
             }
         }
 
         protected override void ProcessRecord()
         {
-            var cmdletConnection = CurrentContext ?? SPOnlineContext.CurrentContext;
+            var cmdletConnection = Context ?? SPOnlineContext.CurrentContext;
             if (cmdletConnection == null || string.IsNullOrEmpty(cmdletConnection.AccessToken))
             {
                 throw new PSInvalidOperationException("A connection is required. Use Connect-PnPOnline to connect first.");

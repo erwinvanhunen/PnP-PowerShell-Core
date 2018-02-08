@@ -30,14 +30,14 @@ namespace SharePointPnP.PowerShell.Core.ContentTypes
 
         protected override void ExecuteCmdlet()
         {
-            Field field = Field.GetSiteField(CurrentContext);
+            Field field = Field.GetSiteField(Context);
             if (field != null)
             {
-                var ct = ContentType.GetContentType(CurrentContext, true);
+                var ct = ContentType.GetContentType(Context, true);
                 var fieldLink = ct.FieldLinks.FirstOrDefault(fl => fl.Id == field.Id);
                 if(fieldLink != null)
                 {
-                    new RestRequest(CurrentContext, fieldLink.ObjectPath).Delete();
+                    new RestRequest(Context, fieldLink.ObjectPath).Delete();
                 }
             }
             else

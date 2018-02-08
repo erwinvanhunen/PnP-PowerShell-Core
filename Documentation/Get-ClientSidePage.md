@@ -3,41 +3,41 @@ external help file:
 applicable: SharePoint Online
 schema: 2.0.0
 ---
-# Get-AvailableClientSideComponents
+# Get-ClientSidePage
 
 ## SYNOPSIS
-Gets the available client side components on a particular page
+Gets a Client-Side Page
 
 ## SYNTAX 
 
 ### 
 ```powershell
-Get-AvailableClientSideComponents [-Component <ClientSideComponentPipeBind>]
+Get-ClientSidePage [-Identity <ClientSidePagePipeBind>]
 ```
 
 ## EXAMPLES
 
 ### ------------------EXAMPLE 1------------------
 ```powershell
-PS:> Get-PnPAvailableClientSideComponents
+PS:> Get-PnPClientSidePage -Identity "MyPage.aspx"
 ```
 
-Gets the list of available client side components on the page 'MyPage.aspx'
+Gets the Modern Page (Client-Side) named 'MyPage.aspx' in the current SharePoint site
 
 ### ------------------EXAMPLE 2------------------
 ```powershell
-PS:> Get-PnPAvailableClientSideComponents -ComponentName "HelloWorld"
+PS:> Get-PnPClientSidePage "MyPage"
 ```
 
-Gets the client side component 'HelloWorld'
+Gets the Modern Page (Client-Side) named 'MyPage.aspx' in the current SharePoint site
 
 ## PARAMETERS
 
-### -Component
+### -Identity
 
 
 ```yaml
-Type: ClientSideComponentPipeBind
+Type: ClientSidePagePipeBind
 Parameter Sets: 
 
 Required: False

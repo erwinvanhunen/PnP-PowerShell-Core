@@ -17,7 +17,7 @@ namespace SharePointPnP.PowerShell.Core.Admin
     {
         protected override void ExecuteCmdlet()
         {
-            WriteObject(AppManager.GetAppCatalogUrl(CurrentContext));
+            WriteObject(AppManager.GetAppCatalogUrl(Context));
         }
     }
 }

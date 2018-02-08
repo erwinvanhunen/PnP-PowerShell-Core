@@ -13,7 +13,6 @@ Installs an available app from the app catalog
 ### 
 ```powershell
 Install-App [-Identity <AppMetadataPipeBind>]
-            [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -39,18 +38,6 @@ This will install the given app into the site.
 
 ```yaml
 Type: AppMetadataPipeBind
-Parameter Sets: 
-
-Required: False
-Position: 0
-Accept pipeline input: False
-```
-
-### -Context
-
-
-```yaml
-Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

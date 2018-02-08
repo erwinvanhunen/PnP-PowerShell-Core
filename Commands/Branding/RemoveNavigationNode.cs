@@ -33,7 +33,7 @@ PS:>$nodes | Select-Object -First 1 | Remove-PnPNavigationNode -Force",
         {
             if (Force || ShouldContinue("Remove node?", "Confirm"))
             {
-                new RestRequest(CurrentContext, $"Web/Navigation/GetNodeById({Identity.Id})").Delete();
+                new RestRequest(Context, $"Web/Navigation/GetNodeById({Identity.Id})").Delete();
             }
         }
     }

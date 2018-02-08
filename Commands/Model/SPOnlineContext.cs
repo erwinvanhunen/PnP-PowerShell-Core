@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Net.Http;
 using System.Security;
 
-namespace SharePointPnP.PowerShell.Core.Base
+namespace SharePointPnP.PowerShell.Core.Model
 {
     public class SPOnlineContext
     {
@@ -33,7 +33,7 @@ namespace SharePointPnP.PowerShell.Core.Base
             }
         }
 
-        public DateTime ExpiresIn { get; set; }
+        public DateTime ExpiresOn { get; set; }
 
         public string Url { get; set; }
 
@@ -43,7 +43,7 @@ namespace SharePointPnP.PowerShell.Core.Base
         {
             get
             {
-                if (!string.IsNullOrEmpty(_accessToken) && DateTime.Now > ExpiresIn && !string.IsNullOrEmpty(RefreshToken))
+                if (!string.IsNullOrEmpty(_accessToken) && DateTime.Now > ExpiresOn && !string.IsNullOrEmpty(RefreshToken))
                 {
                     // Expired token
                     var client = new HttpClient();
@@ -57,9 +57,9 @@ namespace SharePointPnP.PowerShell.Core.Base
                     var tokens = JsonConvert.DeserializeObject<Dictionary<string, string>>(result.Content.ReadAsStringAsync().GetAwaiter().GetResult());
                     _accessToken = tokens["access_token"];
                     _refreshToken = tokens["refresh_token"];
-                    ExpiresIn = DateTime.Now.AddSeconds(int.Parse(tokens["expires_in"]));
+                    ExpiresOn = DateTime.Now.AddSeconds(int.Parse(tokens["expires_in"]));
                     var credmgr = new CredentialManager(_moduleBase);
-                    credmgr.Add(Url, _accessToken, _refreshToken, ExpiresIn);
+                    credmgr.Add(Url, _accessToken, _refreshToken, ExpiresOn);
                 }
                 return _accessToken;
             }

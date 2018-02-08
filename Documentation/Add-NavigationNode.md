@@ -18,7 +18,6 @@ Add-NavigationNode [-Location <NavigationType>]
                    [-Header <String>]
                    [-First [<SwitchParameter>]]
                    [-External [<SwitchParameter>]]
-                   [-Context <SPOnlineContext>]
 ```
 
 ## DESCRIPTION
@@ -121,18 +120,6 @@ Accept pipeline input: False
 
 ```yaml
 Type: String
-Parameter Sets: 
-
-Required: False
-Position: 0
-Accept pipeline input: False
-```
-
-### -Context
-
-
-```yaml
-Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

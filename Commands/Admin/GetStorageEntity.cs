@@ -34,7 +34,7 @@ namespace SharePointPnP.PowerShell.Core.Admin
         {
             if (MyInvocation.BoundParameters.ContainsKey("Key"))
             {
-                var entity = new RestRequest(CurrentContext, $"web/GetStorageEntity(Key='{Key}')").Get<StorageEntity>();
+                var entity = new RestRequest(Context, $"web/GetStorageEntity(Key='{Key}')").Get<StorageEntity>();
                 if (entity != null)
                 {
                     entity.Key = Key;
@@ -46,9 +46,9 @@ namespace SharePointPnP.PowerShell.Core.Admin
                 var appCatalogUrl = AppCatalogUrl;
                 if (string.IsNullOrEmpty(AppCatalogUrl))
                 {
-                    appCatalogUrl = AppManager.GetAppCatalogUrl(CurrentContext);
+                    appCatalogUrl = AppManager.GetAppCatalogUrl(Context);
                 }
-                var properties = new RestRequest(CurrentContext, $"{appCatalogUrl}/_api/Web/AllProperties").Get<ClientSideDictionary<string, string>>();
+                var properties = new RestRequest(Context, $"{appCatalogUrl}/_api/Web/AllProperties").Get<ClientSideDictionary<string, string>>();
                 if (properties.ContainsKey("storageentitiesindex"))
                 {
                     var storageEntitiesDict = JsonConvert.DeserializeObject<Dictionary<string, Dictionary<string, string>>>(properties["storageentitiesindex"]);
