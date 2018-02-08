@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SharePointPnP.PowerShell.Core.Enums;
+using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -14,5 +15,21 @@ namespace SharePointPnP.PowerShell.Core.Model
         public int Synchronization { get; set; }
         public int EventType { get; set; }
         public object ReceiverUrl { get; set; }
+
+        public EventReceiverType EventReceiverType
+        {
+            get
+            {
+                return (EventReceiverType)EventType;
+            }
+        }
+
+        public EventReceiverSynchronization EventReceiverSynchronization
+        {
+            get
+            {
+                return (EventReceiverSynchronization)Synchronization;
+            }
+        }
     }
 }

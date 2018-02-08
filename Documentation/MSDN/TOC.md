@@ -33,6 +33,7 @@
 ### [Remove-FieldFromContentType](Remove-FieldFromContentType.md)
 ### [Add-FieldToContentType](Add-FieldToContentType.md)
 ## [Event Receivers](EventReceivers-category.md)
+### [Add-EventReceiver](Add-EventReceiver.md)
 ### [Get-EventReceiver](Get-EventReceiver.md)
 ## [Features](Features-category.md)
 ### [Disable-Feature](Disable-Feature.md)

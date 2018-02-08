@@ -82,13 +82,11 @@ namespace SharePointPnP.PowerShell.Core.Model
         {
             get
             {
-                if(_web != null)
-                {
-                    return _web;
-                } else
-                {
-                    return new RestRequest(this, "Web").Get<Model.Web>();
+                if(_web == null)
+                { 
+                    _web = new RestRequest(this, "Web").Get<Model.Web>();
                 }
+                return _web;
             }
         }
     }

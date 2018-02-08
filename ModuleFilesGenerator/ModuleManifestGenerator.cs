@@ -95,7 +95,7 @@ namespace SharePointPnP.PowerShell.Core.ModuleFilesGenerator
     GUID = '0b0430ce-d799-4f3b-a565-f0dca1f31e17'
     Author = 'SharePoint Patterns and Practices'
     CompanyName = 'SharePoint Patterns and Practices'
-    PowerShellVersion = '6.0'
+    PowerShellVersion = '5.0'
     ProcessorArchitecture = 'None'
     FunctionsToExport = '*'
     CmdletsToExport = {cmdletsToExport}

@@ -1149,10 +1149,10 @@
                 <PropertyName>SequenceNumber</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>EventType</PropertyName>
+                <PropertyName>EventReceiverType</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <PropertyName>Synchronization</PropertyName>
+                <PropertyName>EventReceiverSynchronization</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

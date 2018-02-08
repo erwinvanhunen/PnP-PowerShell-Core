@@ -43,7 +43,6 @@ namespace SharePointPnP.PowerShell.Core.Model
         private ListItemAllFields pageListItem;
         private string sitePagesServerRelativeUrl;
         private bool securityInitialized = false;
-        private string accessToken;
         private System.Collections.Generic.List<CanvasSection> sections = new System.Collections.Generic.List<CanvasSection>(1);
         private System.Collections.Generic.List<CanvasControl> controls = new System.Collections.Generic.List<CanvasControl>(5);
         private ClientSidePageLayoutType layoutType;

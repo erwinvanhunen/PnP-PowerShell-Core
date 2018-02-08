@@ -23,6 +23,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             var uri = new Uri(url);
             var entryKey = $"PnPPS_{uri.Host}";
             ProcessStartInfo startInfo = new ProcessStartInfo();
+            startInfo.UseShellExecute = false;
             startInfo.CreateNoWindow = true;
             startInfo.FileName = System.IO.Path.Combine(path, "tools\\creds.exe");
             startInfo.Arguments = $"-s -t PnPPS_{uri.Host} -g";
