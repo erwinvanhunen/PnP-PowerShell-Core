@@ -1273,7 +1273,7 @@
     <View>
       <Name>ClientSideComponent</Name>
       <ViewSelectedBy>
-        <TypeName>OfficeDevPnP.Core.Pages.ClientSideComponent</TypeName>
+        <TypeName>SharePointPnP.PowerShell.Core.Model.ClientSideComponent</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

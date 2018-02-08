@@ -12,7 +12,7 @@ namespace SharePointPnP.PowerShell.Core.Branding
     {
         protected override void ExecuteCmdlet()
         {
-            var web = new RestRequest(Context, "Web").Select("MasterUrl", "CustomMasterUrl").Get<Model.Web>();
+            var web = new RestRequest(CurrentContext, "Web").Select("MasterUrl", "CustomMasterUrl").Get<Model.Web>();
 
             WriteObject(new { web.MasterUrl, web.CustomMasterUrl });
         }

@@ -8,13 +8,13 @@ namespace SharePointPnP.PowerShell.Core.Helpers
 {
     public static class ClientSvcHelper
     {
-        public static string Execute(SPOnlineConnection context, string payload, bool isAdmin = false)
+        public static string Execute(SPOnlineContext context, string payload, bool isAdmin = false)
         {
             var response = ExecuteInternalAsync(context, payload, isAdmin).GetAwaiter().GetResult();
             return response.Content.ReadAsStringAsync().GetAwaiter().GetResult();
         }
 
-        public static Task<HttpResponseMessage> ExecuteInternalAsync(SPOnlineConnection context, string payload, bool isAdmin)
+        public static Task<HttpResponseMessage> ExecuteInternalAsync(SPOnlineContext context, string payload, bool isAdmin)
         {
             var hostUrl = context.Url;
             if(isAdmin && !hostUrl.Contains("-admin.sharepoint."))

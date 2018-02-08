@@ -14,7 +14,7 @@ Returns navigation nodes for a web
 ```powershell
 Get-NavigationNode [-Location <NavigationType>]
                    [-Id <Int>]
-                   [-Connection <SPOnlineConnection>]
+                   [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -73,11 +73,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

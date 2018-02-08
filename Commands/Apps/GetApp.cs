@@ -35,7 +35,7 @@ namespace SharePointPnP.PowerShell.Core.Apps
             }
             else
             {
-                AppManager mgr = new AppManager(Context);
+                AppManager mgr = new AppManager(CurrentContext);
                 WriteObject(mgr.GetAvailable());
             }
         }

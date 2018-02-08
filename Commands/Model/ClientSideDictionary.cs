@@ -8,12 +8,12 @@ namespace SharePointPnP.PowerShell.Core.Model
 {
     public class ClientSideDictionary<TKey, TValue> : Dictionary<TKey, TValue>, IClientSideObject
     {
-        private SPOnlineConnection _context;
+        private SPOnlineContext _context;
 
         public ClientSideDictionary() : base() { }
         public ClientSideDictionary(int capacity) : base(capacity) { }
 
-        public SPOnlineConnection Context
+        public SPOnlineContext Context
         {
             get
             {

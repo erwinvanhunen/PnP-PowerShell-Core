@@ -26,7 +26,7 @@ namespace SharePointPnP.PowerShell.Core.Base
         public string AppId;
 
         [Parameter(Mandatory = false)]
-        public SwitchParameter ReturnConnection; 
+        public SwitchParameter ReturnContext; 
 
         protected override void ProcessRecord()
         {
@@ -34,12 +34,12 @@ namespace SharePointPnP.PowerShell.Core.Base
             var credManagerContext = credManager.Get(Url);
             if(credManagerContext != null)
             {
-                SPOnlineConnection.CurrentConnection = credManagerContext;
+                SPOnlineContext.CurrentContext = credManagerContext;
             } else { 
                 var connectionUri = new Uri(Url);
 
                 HttpClient client = new HttpClient();
-                var result = client.GetStringAsync($"https://login.microsoftonline.com/common/oauth2/devicecode?resource={connectionUri.Scheme}://{connectionUri.Host}&client_id={SPOnlineConnection.AppId}").GetAwaiter().GetResult();
+                var result = client.GetStringAsync($"https://login.microsoftonline.com/common/oauth2/devicecode?resource={connectionUri.Scheme}://{connectionUri.Host}&client_id={SPOnlineContext.AppId}").GetAwaiter().GetResult();
                 var returnData = JsonConvert.DeserializeObject<Dictionary<string, string>>(result);
 
                 WriteObject(returnData["message"]);
@@ -48,7 +48,7 @@ namespace SharePointPnP.PowerShell.Core.Base
 
                 //waiting for token
 
-                var body = new StringContent($"resource={connectionUri.Scheme}://{connectionUri.Host}&client_id={SPOnlineConnection.AppId}&grant_type=device_code&code={returnData["device_code"]}");
+                var body = new StringContent($"resource={connectionUri.Scheme}://{connectionUri.Host}&client_id={SPOnlineContext.AppId}&grant_type=device_code&code={returnData["device_code"]}");
                 body.Headers.ContentType.MediaType = "application/x-www-form-urlencoded";
 
                 var tokenResult = client.PostAsync("https://login.microsoftonline.com/common/oauth2/token", body).GetAwaiter().GetResult();
@@ -58,18 +58,18 @@ namespace SharePointPnP.PowerShell.Core.Base
                     tokenResult = client.PostAsync("https://login.microsoftonline.com/common/oauth2/token", body).GetAwaiter().GetResult();
                 }
                 var tokens = JsonConvert.DeserializeObject<Dictionary<string, string>>(tokenResult.Content.ReadAsStringAsync().GetAwaiter().GetResult());
-                var connection = new SPOnlineConnection(MyInvocation.MyCommand.Module.ModuleBase);
+                var connection = new SPOnlineContext(MyInvocation.MyCommand.Module.ModuleBase);
                 connection.AccessToken = tokens["access_token"];
                 connection.RefreshToken = tokens["refresh_token"];
                 connection.ExpiresIn = DateTime.Now.AddSeconds(int.Parse(tokens["expires_in"]));
                 connection.Url = Url;
                 credManager.Add(Url, connection.AccessToken, connection.RefreshToken, connection.ExpiresIn);
-                SPOnlineConnection.CurrentConnection = connection;
+                SPOnlineContext.CurrentContext = connection;
 
             }
-            if(ReturnConnection)
+            if(ReturnContext)
             {
-                WriteObject(SPOnlineConnection.CurrentConnection);
+                WriteObject(SPOnlineContext.CurrentContext);
             }
         }
 

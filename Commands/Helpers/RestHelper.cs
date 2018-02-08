@@ -11,7 +11,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
 {
     public static class RestHelper
     {
-        public static async Task<string> GetRequestDigest(SPOnlineConnection context, string url = null)
+        public static async Task<string> GetRequestDigest(SPOnlineContext context, string url = null)
         {
             if (url == null)
             {
@@ -49,17 +49,21 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             }
         }
 
-        public static T ExecuteGetRequest<T>(SPOnlineConnection context, string url, string select = null, string filter = null, string expand = null) where T : IClientSideObject
+        public static T ExecuteGetRequest<T>(SPOnlineContext context, string url, string select = null, string filter = null, string expand = null) where T : IClientSideObject
         {
             var returnValue = ExecuteGetRequest(context, url, select, filter, expand);
 
             dynamic returnObject = JsonConvert.DeserializeObject<T>(returnValue);
 
+
             if (returnObject.GetType().IsGenericType)
             {
-                foreach (var item in returnObject.Items)
+                if(returnObject.GetType().Name.StartsWith("ResponseCollection"))
                 {
-                    item.Context = context;
+                    foreach (var item in returnObject.Items)
+                    {
+                        item.Context = context;
+                    }
                 }
             }
             if (returnObject is ClientSideObject)
@@ -69,7 +73,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             return returnObject;
         }
 
-        public static string ExecuteGetRequest(SPOnlineConnection context, string endPointUrl, string select = null, string filter = null, string expand = null)
+        public static string ExecuteGetRequest(SPOnlineContext context, string endPointUrl, string select = null, string filter = null, string expand = null)
         {
             var url = endPointUrl;
             if (!url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
@@ -101,13 +105,13 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             return returnValue;
         }
 
-        public static T ExecutePostRequest<T>(SPOnlineConnection context, string url, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        public static T ExecutePostRequest<T>(SPOnlineContext context, string url, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
         {
             var returnValue = ExecutePostRequestInternal(context, url, null, select, filter, expand);
             return JsonConvert.DeserializeObject<T>(returnValue.Content.ReadAsStringAsync().GetAwaiter().GetResult());
         }
 
-        public static T ExecutePostRequest<T>(SPOnlineConnection context, string url, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = "application/json")
+        public static T ExecutePostRequest<T>(SPOnlineContext context, string url, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = "application/json")
         {
             HttpContent stringContent = new StringContent(content);
             if (contentType != null)
@@ -119,19 +123,19 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             return JsonConvert.DeserializeObject<T>(returnValue.Content.ReadAsStringAsync().GetAwaiter().GetResult());
         }
 
-        public static T ExecutePostRequest<T>(SPOnlineConnection context, string url, byte[] content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        public static T ExecutePostRequest<T>(SPOnlineContext context, string url, byte[] content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
         {
             var byteArrayContent = new ByteArrayContent(content);
             var returnValue = ExecutePostRequestInternal(context, url, byteArrayContent, select, filter, expand);
             return JsonConvert.DeserializeObject<T>(returnValue.Content.ReadAsStringAsync().GetAwaiter().GetResult());
         }
 
-        public static HttpResponseMessage ExecutePostRequest(SPOnlineConnection context, string endPointUrl, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        public static HttpResponseMessage ExecutePostRequest(SPOnlineContext context, string endPointUrl, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
         {
             return ExecutePostRequestInternal(context, endPointUrl, null, select, filter, expand, additionalHeaders);
         }
 
-        public static HttpResponseMessage ExecutePostRequest(SPOnlineConnection context, string endPointUrl, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = "application/json")
+        public static HttpResponseMessage ExecutePostRequest(SPOnlineContext context, string endPointUrl, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = "application/json")
         {
             HttpContent stringContent = null;
             if (!string.IsNullOrEmpty(content))
@@ -145,13 +149,13 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             return ExecutePostRequestInternal(context, endPointUrl, stringContent, select, filter, expand, additionalHeaders);
         }
 
-        public static HttpResponseMessage ExecutePostRequest(SPOnlineConnection context, string endPointUrl, byte[] content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        public static HttpResponseMessage ExecutePostRequest(SPOnlineContext context, string endPointUrl, byte[] content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
         {
             var byteArrayContent = new ByteArrayContent(content);
             return ExecutePostRequestInternal(context, endPointUrl, byteArrayContent, select, filter, expand, additionalHeaders);
         }
 
-        private static HttpResponseMessage ExecutePostRequestInternal(SPOnlineConnection context, string endPointUrl, HttpContent content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        private static HttpResponseMessage ExecutePostRequestInternal(SPOnlineContext context, string endPointUrl, HttpContent content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
         {
             var url = endPointUrl;
             if (!url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
@@ -194,7 +198,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
         }
 
         #region PUT
-        public static T ExecutePutRequest<T>(SPOnlineConnection context, string url, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = null)
+        public static T ExecutePutRequest<T>(SPOnlineContext context, string url, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = null)
         {
             HttpContent stringContent = new StringContent(content);
             if (contentType != null)
@@ -206,7 +210,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             return JsonConvert.DeserializeObject<T>(returnValue.Content.ReadAsStringAsync().GetAwaiter().GetResult());
         }
 
-        public static T ExecutePutRequest<T>(SPOnlineConnection context, string url, byte[] content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        public static T ExecutePutRequest<T>(SPOnlineContext context, string url, byte[] content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
         {
             var byteArrayContent = new ByteArrayContent(content);
             var returnValue = ExecutePutRequestInternal(context, url, byteArrayContent, select, filter, expand);
@@ -214,12 +218,12 @@ namespace SharePointPnP.PowerShell.Core.Helpers
         }
 
 
-        public static HttpResponseMessage ExecutePutRequest(SPOnlineConnection context, string endPointUrl, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        public static HttpResponseMessage ExecutePutRequest(SPOnlineContext context, string endPointUrl, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
         {
             return ExecutePutRequestInternal(context, endPointUrl, null, select, filter, expand, additionalHeaders);
         }
 
-        public static HttpResponseMessage ExecutePutRequest(SPOnlineConnection context, string endPointUrl, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = null)
+        public static HttpResponseMessage ExecutePutRequest(SPOnlineContext context, string endPointUrl, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = null)
         {
             HttpContent stringContent = new StringContent(content);
             if (contentType != null)
@@ -229,13 +233,13 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             return ExecutePutRequestInternal(context, endPointUrl, stringContent, select, filter, expand, additionalHeaders);
         }
 
-        public static HttpResponseMessage ExecutePutRequest(SPOnlineConnection context, string endPointUrl, byte[] content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        public static HttpResponseMessage ExecutePutRequest(SPOnlineContext context, string endPointUrl, byte[] content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
         {
             var byteArrayContent = new ByteArrayContent(content);
             return ExecutePutRequestInternal(context, endPointUrl, byteArrayContent, select, filter, expand, additionalHeaders);
         }
 
-        private static HttpResponseMessage ExecutePutRequestInternal(SPOnlineConnection context, string endPointUrl, HttpContent content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        private static HttpResponseMessage ExecutePutRequestInternal(SPOnlineContext context, string endPointUrl, HttpContent content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
         {
             var url = endPointUrl;
             if (!url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
@@ -279,7 +283,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
         #endregion
 
         #region MERGE
-        public static T ExecuteMergeRequest<T>(SPOnlineConnection context, string url, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = null)
+        public static T ExecuteMergeRequest<T>(SPOnlineContext context, string url, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = null)
         {
             HttpContent stringContent = new StringContent(content);
             if (contentType != null)
@@ -291,7 +295,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             return JsonConvert.DeserializeObject<T>(returnValue.Content.ReadAsStringAsync().GetAwaiter().GetResult());
         }
 
-        public static T ExecuteMergeRequest<T>(SPOnlineConnection context, string url, byte[] content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        public static T ExecuteMergeRequest<T>(SPOnlineContext context, string url, byte[] content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
         {
             var byteArrayContent = new ByteArrayContent(content);
             var returnValue = ExecuteMergeRequestInternal(context, url, byteArrayContent, select, filter, expand);
@@ -299,12 +303,12 @@ namespace SharePointPnP.PowerShell.Core.Helpers
         }
 
 
-        public static HttpResponseMessage ExecuteMergeRequest(SPOnlineConnection context, string endPointUrl, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        public static HttpResponseMessage ExecuteMergeRequest(SPOnlineContext context, string endPointUrl, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
         {
             return ExecuteMergeRequestInternal(context, endPointUrl, null, select, filter, expand, additionalHeaders);
         }
 
-        public static HttpResponseMessage ExecuteMergeRequest(SPOnlineConnection context, string endPointUrl, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = null)
+        public static HttpResponseMessage ExecuteMergeRequest(SPOnlineContext context, string endPointUrl, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = null)
         {
             HttpContent stringContent = new StringContent(content);
             if (contentType != null)
@@ -314,13 +318,13 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             return ExecuteMergeRequestInternal(context, endPointUrl, stringContent, select, filter, expand, additionalHeaders);
         }
 
-        public static HttpResponseMessage ExecuteMergeRequest(SPOnlineConnection context, string endPointUrl, byte[] content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        public static HttpResponseMessage ExecuteMergeRequest(SPOnlineContext context, string endPointUrl, byte[] content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
         {
             var byteArrayContent = new ByteArrayContent(content);
             return ExecuteMergeRequestInternal(context, endPointUrl, byteArrayContent, select, filter, expand, additionalHeaders);
         }
 
-        private static HttpResponseMessage ExecuteMergeRequestInternal(SPOnlineConnection context, string endPointUrl, HttpContent content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        private static HttpResponseMessage ExecuteMergeRequestInternal(SPOnlineContext context, string endPointUrl, HttpContent content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
         {
             var url = endPointUrl;
             if (!url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
@@ -366,12 +370,12 @@ namespace SharePointPnP.PowerShell.Core.Helpers
 
         #region DELETE
 
-        public static HttpResponseMessage ExecuteDeleteRequest(SPOnlineConnection context, string endPointUrl, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        public static HttpResponseMessage ExecuteDeleteRequest(SPOnlineContext context, string endPointUrl, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
         {
             return ExecuteDeleteRequestInternal(context, endPointUrl, select, filter, expand, additionalHeaders);
         }
 
-        private static HttpResponseMessage ExecuteDeleteRequestInternal(SPOnlineConnection context, string endPointUrl, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        private static HttpResponseMessage ExecuteDeleteRequestInternal(SPOnlineContext context, string endPointUrl, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
         {
             var url = endPointUrl;
             if (!url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))

@@ -27,7 +27,7 @@ namespace SharePointPnP.PowerShell.Core.Branding
                 {"WelcomePage",RootFolderRelativeUrl }
             };
 
-            new RestRequest(Context, "Web/RootFolder").Merge(new MetadataType("SP.Folder"), dict);
+            new RestRequest(CurrentContext, "Web/RootFolder").Merge(new MetadataType("SP.Folder"), dict);
         }
     }
 }

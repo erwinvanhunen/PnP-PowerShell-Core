@@ -38,5 +38,7 @@ namespace SharePointPnP.PowerShell.Core.Model
         public string Scope { get; set; }
         public bool Sealed { get; set; }
         public string StringId { get; set; }
+
+        public ContentType Parent { get; set; }
     }
 }

@@ -47,11 +47,11 @@ Add/uploads an available app to the app catalog</maml:para>
           <command:parameterValue required="false">SwitchParameter</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -101,13 +101,13 @@ Add/uploads an available app to the app catalog</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -211,11 +211,18 @@ Adds a new content type</maml:para>
           <command:parameterValue required="true">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>ParentContentType</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">ContentTypePipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Context</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -265,13 +272,24 @@ Adds a new content type</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>ParentContentType</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">ContentTypePipeBind</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>ContentTypePipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Context</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
+        <dev:type>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -352,11 +370,11 @@ Adds a new content type to a list</maml:para>
           <command:parameterValue required="false">SwitchParameter</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -395,13 +413,13 @@ Adds a new content type to a list</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -567,11 +585,11 @@ Adds a new content type to a list</maml:para>
           <command:parameterValue required="true">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -742,13 +760,13 @@ Adds a new content type to a list</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -846,11 +864,11 @@ Adds an existing site column to a content type</maml:para>
           <command:parameterValue required="false">SwitchParameter</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -900,13 +918,13 @@ Adds an existing site column to a content type</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -1009,11 +1027,11 @@ Adds an existing site column to a content type</maml:para>
           <command:parameterValue required="false">SwitchParameter</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -1085,13 +1103,13 @@ Adds an existing site column to a content type</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -1213,7 +1231,7 @@ Connects to your tenant</maml:para>
           <command:parameterValue required="true">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>ReturnConnection</maml:name>
+          <maml:name>ReturnContext</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
@@ -1234,7 +1252,7 @@ Connects to your tenant</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>ReturnConnection</maml:name>
+        <maml:name>ReturnContext</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
@@ -1308,11 +1326,11 @@ Disables a feature</maml:para>
           <command:parameterValue required="true">FeatureScope</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -1340,13 +1358,13 @@ Disables a feature</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -1436,11 +1454,11 @@ Enables a feature</maml:para>
           <command:parameterValue required="true">FeatureScope</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -1468,13 +1486,13 @@ Enables a feature</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -1557,11 +1575,11 @@ Returns the available apps from the app catalog</maml:para>
           <command:parameterValue required="true">GuidPipeBind</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -1578,13 +1596,13 @@ Returns the available apps from the app catalog</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -1643,6 +1661,116 @@ Returns the available apps from the app catalog</maml:para>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
+      <command:name>Get-AvailableClientSideComponents</command:name>
+      <maml:description>
+        <maml:para>* Supported in: SharePoint Online.
+
+Gets the available client side components on a particular page</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Get</command:verb>
+      <command:noun>AvailableClientSideComponents</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Get-AvailableClientSideComponents</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>Component</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ClientSideComponentPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Context</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Component</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ClientSideComponentPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>ClientSideComponentPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Context</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
+        <dev:type>
+          <maml:name>SPOnlineContext</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPAvailableClientSideComponents</dev:code>
+        <maml:remarks>
+          <maml:para>Gets the list of available client side components on the page 'MyPage.aspx'</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPAvailableClientSideComponents -ComponentName "HelloWorld"</dev:code>
+        <maml:remarks>
+          <maml:para>Gets the client side component 'HelloWorld'</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
       <command:name>Get-ContentType</command:name>
       <maml:description>
         <maml:para>* Supported in: .
@@ -1681,11 +1809,11 @@ Retrieves a content type</maml:para>
           <command:parameterValue required="false">SwitchParameter</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -1724,13 +1852,13 @@ Retrieves a content type</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -1852,11 +1980,11 @@ Retrieves custom actions</maml:para>
           <command:parameterValue required="true">CustomActionScope</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -1884,13 +2012,13 @@ Retrieves custom actions</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -1947,11 +2075,11 @@ Return registered eventreceivers</maml:para>
           <command:parameterValue required="true">EventReceiverPipeBind</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -1979,13 +2107,13 @@ Return registered eventreceivers</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -2139,11 +2267,11 @@ Returns all activated or a specific activated feature</maml:para>
           <command:parameterValue required="true">FeatureScope</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -2171,13 +2299,13 @@ Returns all activated or a specific activated feature</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -2306,11 +2434,11 @@ Returns a field from a list or site</maml:para>
           <command:parameterValue required="true">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -2349,13 +2477,13 @@ Returns a field from a list or site</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -2431,23 +2559,23 @@ Returns the URL to the page set as home page</maml:para>
       <command:syntaxItem>
         <maml:name>Get-HomePage</maml:name>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -2521,11 +2649,11 @@ Returns all or a specific custom action(s) with location type ScriptLink</maml:p
           <command:parameterValue required="true">CustomActionScope</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -2553,13 +2681,13 @@ Returns all or a specific custom action(s) with location type ScriptLink</maml:p
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -2690,11 +2818,11 @@ Returns a List object</maml:para>
           <command:parameterValue required="true">ListPipeBind</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -2711,13 +2839,13 @@ Returns a List object</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -2809,23 +2937,23 @@ Returns the URLs of the default Master Page and the custom Master Page.</maml:pa
       <command:syntaxItem>
         <maml:name>Get-MasterPage</maml:name>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -2882,11 +3010,11 @@ Returns navigation nodes for a web</maml:para>
           <command:parameterValue required="true">Int32</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -2914,13 +3042,13 @@ Returns navigation nodes for a web</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -3042,11 +3170,11 @@ Returns the property bag values.</maml:para>
           <command:parameterValue required="true">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -3074,13 +3202,13 @@ Returns the property bag values.</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -3204,23 +3332,23 @@ Returns the request access e-mail addresses</maml:para>
       <command:syntaxItem>
         <maml:name>Get-RequestAccessEmail</maml:name>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -3294,11 +3422,11 @@ Retrieve Storage Entities / Farm Properties.</maml:para>
           <command:parameterValue required="true">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -3326,13 +3454,13 @@ Retrieve Storage Entities / Farm Properties.</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -3415,11 +3543,11 @@ Returns the subwebs of the current web</maml:para>
           <command:parameterValue required="false">SwitchParameter</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -3436,13 +3564,13 @@ Returns the subwebs of the current web</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -3518,23 +3646,23 @@ Retrieves the url of the tenant scoped app catalog.</maml:para>
       <command:syntaxItem>
         <maml:name>Get-TenantAppCatalogUrl</maml:name>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -3608,11 +3736,11 @@ Returns one or all views from a list</maml:para>
           <command:parameterValue required="true">ViewPipeBind</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -3640,13 +3768,13 @@ Returns one or all views from a list</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -3738,23 +3866,23 @@ Returns the current web object</maml:para>
       <command:syntaxItem>
         <maml:name>Get-Web</maml:name>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -3831,11 +3959,11 @@ Returns the available web templates.</maml:para>
           <command:parameterValue required="true">Int32</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -3863,13 +3991,13 @@ Returns the available web templates.</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -3972,11 +4100,11 @@ Installs an available app from the app catalog</maml:para>
           <command:parameterValue required="true">AppMetadataPipeBind</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -3993,13 +4121,13 @@ Installs an available app from the app catalog</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -4085,11 +4213,11 @@ Creates a new site collection</maml:para>
           <command:parameterValue required="true">SiteType</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
       <command:syntaxItem>
@@ -4358,13 +4486,13 @@ Creates a new site collection</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -4569,11 +4697,11 @@ Creates a new subweb under the current web</maml:para>
           <command:parameterValue required="false">SwitchParameter</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -4656,13 +4784,13 @@ Creates a new subweb under the current web</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -4736,11 +4864,11 @@ Publishes/Deploys/Trusts an available app in the app catalog</maml:para>
           <command:parameterValue required="false">SwitchParameter</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -4768,13 +4896,13 @@ Publishes/Deploys/Trusts an available app in the app catalog</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -4841,11 +4969,11 @@ Removes an app from the app catalog</maml:para>
           <command:parameterValue required="true">AppMetadataPipeBind</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -4862,13 +4990,13 @@ Removes an app from the app catalog</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -4893,6 +5021,246 @@ Removes an app from the app catalog</maml:para>
         <dev:code>PS:&gt; Remove-PnPApp -Identity 99a00f6e-fb81-4dc7-8eac-e09c6f9132fe</dev:code>
         <maml:remarks>
           <maml:para>This will remove the specified app from the app catalog</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Remove-ContentType</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Removes a content type from a web</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Remove</command:verb>
+      <command:noun>ContentType</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-ContentType</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>Identity</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ContentTypePipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Context</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Identity</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ContentTypePipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>ContentTypePipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Context</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
+        <dev:type>
+          <maml:name>SPOnlineContext</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Remove-PnPContentType -Identity "Project Document"</dev:code>
+        <maml:remarks>
+          <maml:para>This will remove a content type called "Project Document" from the current web</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Remove-PnPContentType -Identity "Project Document" -Force</dev:code>
+        <maml:remarks>
+          <maml:para>This will remove a content type called "Project Document" from the current web with force</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Remove-ContentTypeFromList</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Removes a content type from a list</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Remove</command:verb>
+      <command:noun>ContentTypeFromList</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-ContentTypeFromList</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>List</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ListPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>ContentType</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ContentTypePipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Context</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>ContentType</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ContentTypePipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>ContentTypePipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>List</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ListPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>ListPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Context</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
+        <dev:type>
+          <maml:name>SPOnlineContext</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Remove-PnPContentTypeFromList -List "Documents" -ContentType "Project Document"</dev:code>
+        <maml:remarks>
+          <maml:para>This will remove a content type called "Project Document" from the "Documents" list</maml:para>
           <maml:para></maml:para>
         </maml:remarks>
         <command:commandLines>
@@ -4949,11 +5317,11 @@ Removes a custom action</maml:para>
           <command:parameterValue required="false">SwitchParameter</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -4992,13 +5360,13 @@ Removes a custom action</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -5089,6 +5457,152 @@ Removes a custom action</maml:para>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
+      <command:name>Remove-FieldFromContentType</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Removes a site column from a content type</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Remove</command:verb>
+      <command:noun>FieldFromContentType</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-FieldFromContentType</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>Field</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">FieldPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>ContentType</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ContentTypePipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>DoNotUpdateChildren</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Context</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>ContentType</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ContentTypePipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>ContentTypePipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>DoNotUpdateChildren</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Field</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">FieldPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>FieldPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Context</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
+        <dev:type>
+          <maml:name>SPOnlineContext</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Remove-PnPFieldFromContentType -Field "Project_Name" -ContentType "Project Document"</dev:code>
+        <maml:remarks>
+          <maml:para>This will remove the site column with an internal name of "Project_Name" from a content type called "Project Document"</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Remove-PnPFieldFromContentType -Field "Project_Name" -ContentType "Project Document" -DoNotUpdateChildren</dev:code>
+        <maml:remarks>
+          <maml:para>This will remove the site column with an internal name of "Project_Name" from a content type called "Project Document". It will not update content types that inherit from the "Project Document" content type.</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
       <command:name>Remove-NavigationNode</command:name>
       <maml:description>
         <maml:para>* Supported in: .
@@ -5113,15 +5627,33 @@ Returns navigation nodes for a web</maml:para>
           <command:parameterValue required="true">NavigationNodePipeBind</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Force</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Context</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
       <command:parameter required="false" position="named">
         <maml:name>Identity</maml:name>
         <maml:description>
@@ -5134,13 +5666,13 @@ Returns navigation nodes for a web</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -5162,9 +5694,9 @@ Returns navigation nodes for a web</maml:para>
         <maml:introduction>
           <maml:para />
         </maml:introduction>
-        <dev:code>PS:&gt; Get-PnPNavigationNode</dev:code>
+        <dev:code>PS:&gt; Remove-PnPNavigationNode -Identity 1032</dev:code>
         <maml:remarks>
-          <maml:para>Returns all navigation nodes in the quicklaunch navigation</maml:para>
+          <maml:para>Removes the navigation node with the specified id</maml:para>
           <maml:para></maml:para>
         </maml:remarks>
         <command:commandLines>
@@ -5178,41 +5710,10 @@ Returns navigation nodes for a web</maml:para>
         <maml:introduction>
           <maml:para />
         </maml:introduction>
-        <dev:code>PS:&gt; Get-PnPNavigationNode -QuickLaunch</dev:code>
+        <dev:code>PS:&gt; $nodes = Get-PnPNavigationNode -QuickLaunch
+PS:&gt;$nodes | Select-Object -First 1 | Remove-PnPNavigationNode -Force</dev:code>
         <maml:remarks>
-          <maml:para>Returns all navigation nodes in the quicklaunch navigation</maml:para>
-          <maml:para></maml:para>
-        </maml:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText />
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>------------------EXAMPLE 3---------------------</maml:title>
-        <maml:introduction>
-          <maml:para />
-        </maml:introduction>
-        <dev:code>PS:&gt; Get-PnPNavigationNode -TopNavigationBar</dev:code>
-        <maml:remarks>
-          <maml:para>Returns all navigation nodes in the top navigation bar</maml:para>
-          <maml:para></maml:para>
-        </maml:remarks>
-        <command:commandLines>
-          <command:commandLine>
-            <command:commandText />
-          </command:commandLine>
-        </command:commandLines>
-      </command:example>
-      <command:example>
-        <maml:title>------------------EXAMPLE 4---------------------</maml:title>
-        <maml:introduction>
-          <maml:para />
-        </maml:introduction>
-        <dev:code>PS:&gt; Get-PnPNavigationNode -Id 1025</dev:code>
-        <maml:remarks>
-          <maml:para>Returns the navigation node with id 1025</maml:para>
+          <maml:para>Retrieves all navigation nodes from the Quick Launch navigation, then removes the first node in the list and it will not ask for a confirmation</maml:para>
           <maml:para></maml:para>
         </maml:remarks>
         <command:commandLines>
@@ -5290,11 +5791,11 @@ Executes a REST request</maml:para>
           <command:parameterValue required="true">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -5366,13 +5867,13 @@ Executes a REST request</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -5422,11 +5923,11 @@ Sets the home page of the current web.</maml:para>
           <command:parameterValue required="true">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -5443,13 +5944,13 @@ Sets the home page of the current web.</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -5538,11 +6039,11 @@ Sets the home page of the current web.</maml:para>
           <command:parameterValue required="true">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -5592,13 +6093,13 @@ Sets the home page of the current web.</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -5721,11 +6222,11 @@ Sets the home page of the current web.</maml:para>
           <command:parameterValue required="false">SwitchParameter</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -5753,13 +6254,13 @@ Sets the home page of the current web.</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -5877,11 +6378,11 @@ Sets the home page of the current web.</maml:para>
           <command:parameterValue required="true">Boolean</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -5953,13 +6454,13 @@ Sets the home page of the current web.</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -6047,11 +6548,11 @@ Sets a property bag value</maml:para>
           <command:parameterValue required="true">String</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -6101,13 +6602,13 @@ Sets a property bag value</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -6206,11 +6707,11 @@ Uninstalls an available add-in from the site</maml:para>
           <command:parameterValue required="true">AppMetadataPipeBind</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -6227,13 +6728,13 @@ Uninstalls an available add-in from the site</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -6300,11 +6801,11 @@ Unpublishes/retracts an available add-in from the app catalog</maml:para>
           <command:parameterValue required="true">AppMetadataPipeBind</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -6321,13 +6822,13 @@ Unpublishes/retracts an available add-in from the app catalog</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -6394,11 +6895,11 @@ Updates an available app from the app catalog</maml:para>
           <command:parameterValue required="true">AppMetadataPipeBind</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Connection</maml:name>
+          <maml:name>Context</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">SPOnlineConnection</command:parameterValue>
+          <command:parameterValue required="true">SPOnlineContext</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
@@ -6415,13 +6916,13 @@ Updates an available app from the app catalog</maml:para>
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Connection</maml:name>
+        <maml:name>Context</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">SPOnlineConnection</command:parameterValue>
+        <command:parameterValue required="false">SPOnlineContext</command:parameterValue>
         <dev:type>
-          <maml:name>SPOnlineConnection</maml:name>
+          <maml:name>SPOnlineContext</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>

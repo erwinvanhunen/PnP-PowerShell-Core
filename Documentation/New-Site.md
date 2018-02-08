@@ -13,7 +13,7 @@ Creates a new site collection
 ### 
 ```powershell
 New-Site [-Type <SiteType>]
-         [-Connection <SPOnlineConnection>]
+         [-Context <SPOnlineContext>]
 ```
 
 ### Communication Site with Built-In Site Design
@@ -235,11 +235,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

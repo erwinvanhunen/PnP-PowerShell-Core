@@ -18,7 +18,7 @@ Send-RestRequest [-EndPoint <String>]
                  [-Expand <String>]
                  [-Method <HttpMethod>]
                  [-Content <String>]
-                 [-Connection <SPOnlineConnection>]
+                 [-Context <SPOnlineContext>]
 ```
 
 ## PARAMETERS
@@ -95,11 +95,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

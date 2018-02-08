@@ -31,7 +31,8 @@ namespace SharePointPnP.PowerShell.Core.Model
         [JsonProperty("Title")]
         private string _title { get; set; }
 
-        public List<ContentType> ContentTypes;
+        [JsonProperty("ContentTypes")]
+        private List<ContentType> _contentTypes { get; set; }
 
         public bool AllowContentTypes { get; set; }
         public int BaseTemplate { get; set; }
@@ -51,7 +52,21 @@ namespace SharePointPnP.PowerShell.Core.Model
             }
         }
 
-        public string DefaultViewUrl {get;set;}
+        [JsonIgnore]
+        public List<ContentType> ContentTypes
+        {
+            get
+            {
+                return _contentTypes;
+            }
+            set
+            {
+                _contentTypes = value;
+                base.ObjectProperties["ContentTypes"] = value;
+            }
+        }
+
+        public string DefaultViewUrl { get; set; }
         public Folder RootFolder { get; set; }
         public bool CrawlNonDefaultViews { get; set; }
         public DateTime Created { get; set; }
@@ -93,7 +108,7 @@ namespace SharePointPnP.PowerShell.Core.Model
         public int MajorWithMinorVersionsLimit { get; set; }
         public bool MultipleDataList { get; set; }
         public bool NoCrawl { get; set; }
-        public bool OnQuickLaunch {get;set;}
+        public bool OnQuickLaunch { get; set; }
         public ParentWebPath ParentWebPath { get; set; }
         public string ParentWebUrl { get; set; }
         public bool ParserDisabled { get; set; }

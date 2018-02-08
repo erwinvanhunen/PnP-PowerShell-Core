@@ -15,7 +15,7 @@ Returns a field from a list or site
 Get-Field [-List <ListPipeBind>]
           [-Identity <FieldPipeBind>]
           [-Group <String>]
-          [-Connection <SPOnlineConnection>]
+          [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -72,11 +72,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

@@ -14,7 +14,7 @@ Connects to your tenant
 ```powershell
 Connect-Online [-Url <String>]
                [-AppId <String>]
-               [-ReturnConnection [<SwitchParameter>]]
+               [-ReturnContext [<SwitchParameter>]]
 ```
 
 ## PARAMETERS
@@ -31,7 +31,7 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -ReturnConnection
+### -ReturnContext
 
 
 ```yaml

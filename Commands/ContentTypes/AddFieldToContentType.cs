@@ -35,16 +35,16 @@ namespace SharePointPnP.PowerShell.Core.ContentTypes
             {
                 if (Field.Id != Guid.Empty)
                 {
-                    field = new RestRequest(Context, $"Web/Fields(guid'{Field.Id}')").Get<Field>();
+                    field = new RestRequest(CurrentContext, $"Web/Fields(guid'{Field.Id}')").Get<Field>();
                 }
                 else if (!string.IsNullOrEmpty(Field.Name))
                 {
-                    field = new RestRequest(Context, $"Web/Fields/GetByInternalNameOrTitle('{Field.Name}')").Get<Field>();
+                    field = new RestRequest(CurrentContext, $"Web/Fields/GetByInternalNameOrTitle('{Field.Name}')").Get<Field>();
                 }
             }
             if (field != null)
             {
-                var ct = ContentType.GetContentType(Context, true);
+                var ct = ContentType.GetContentType(CurrentContext, true);
                 var fieldLink = new FieldLink()
                 {
                  //   FieldInternalName = field.InternalName,
@@ -53,7 +53,7 @@ namespace SharePointPnP.PowerShell.Core.ContentTypes
                     Required = Required,
                     Id = field.Id
                 };
-                new RestRequest(Context, $"Web/AvailableContentTypes('{ct.StringId}')/FieldLinks").Post(fieldLink);
+                new RestRequest(CurrentContext, $"Web/AvailableContentTypes('{ct.StringId}')/FieldLinks").Post(fieldLink);
             }
             else
             {

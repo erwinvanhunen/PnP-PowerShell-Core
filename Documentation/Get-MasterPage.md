@@ -12,16 +12,16 @@ Returns the URLs of the default Master Page and the custom Master Page.
 
 ### 
 ```powershell
-Get-MasterPage [-Connection <SPOnlineConnection>]
+Get-MasterPage [-Context <SPOnlineContext>]
 ```
 
 ## PARAMETERS
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

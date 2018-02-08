@@ -56,44 +56,46 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
 
         public ContentType ContentType => _contentType;
 
-        public ContentType GetContentType(SPOnlineConnection context, bool inSiteHierarchy)
+        public ContentType GetContentType(SPOnlineContext context, bool inSiteHierarchy)
         {
             if (ContentType != null)
             {
                 return ContentType;
             }
-            ContentType ct;
             if (!string.IsNullOrEmpty(Id))
             {
                 if (inSiteHierarchy)
                 {
-                    ct = new RestRequest(context, $"Web/AvailableContentTypes('{Id}')").Expand("FieldLinks").Get<ContentType>();
-                    //ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>(context, $"Web/AvailableContentTypes('{Id}')");
+                    return new RestRequest(context, $"Web/AvailableContentTypes('{Id}')").Expand("FieldLinks").Get<ContentType>();
                 }
                 else
                 {
-                    ct = new RestRequest(context, $"Web/ContentTypes('{Id}')").Expand("FieldLinks").Get<ContentType>();
-                    //ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>(context, $"Web/ContentTypes('{Id}')");
+                    return new RestRequest(context, $"Web/ContentTypes('{Id}')").Expand("FieldLinks").Get<ContentType>();
                 }
             }
             else
             {
                 if (inSiteHierarchy)
                 {
-                    //var cts = new RestRequest(context, $"Site/RootWeb/ContentTypes").Select("Name", "Id").Get<ResponseCollection<ContentType>>().Items.FirstOrDefault(c => c.Name == Name);
-                    ct = new RestRequest(context, $"Web/AvailableContentTypes").Filter($"Name eq '{Name}'").Expand("FieldLinks").Get<ResponseCollection<ContentType>>().Items.FirstOrDefault();
-                    //ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>(context, $"Web/AvailableContentTypes('{cts.Id.StringValue}')");
+                    return new RestRequest(context, $"Web/AvailableContentTypes").Filter($"Name eq '{Name}'").Expand("FieldLinks").Get<ResponseCollection<ContentType>>().Items.FirstOrDefault();
                 }
                 else
                 {
-                    ct = new RestRequest(context, $"Web/ContentTypes").Filter($"Name eq '{Name}'").Expand("FieldLinks").Get<ResponseCollection<ContentType>>().Items.FirstOrDefault();
-                    //var cts = new RestRequest(context, $"Web/ContentTypes").Select("Name", "Id").Get<ResponseCollection<ContentType>>().Items.FirstOrDefault(c => c.Name == Name);
-                    //ct = new RestRequest(context, $"Web/ContentTypes('{cts.Id.StringValue}')").Expand("FieldLinks").Get<ContentType>();
-                    //ct = Helpers.RestHelper.ExecuteGetRequest<ContentType>(context, $"Web/ContentTypes('{cts.Id.StringValue}')");
+                    return new RestRequest(context, $"Web/ContentTypes").Filter($"Name eq '{Name}'").Expand("FieldLinks").Get<ResponseCollection<ContentType>>().Items.FirstOrDefault();
                 }
             }
+        }
 
-            return ct;
+        public ContentType GetContentTypeFromList(SPOnlineContext context, List list)
+        {
+            if (!string.IsNullOrEmpty(Id))
+            {
+                return new RestRequest(context, $"Web/Lists(guid'{list.Id}')/ContentTypes('{Id}')").Expand("FieldLinks").Get<ContentType>();
+            }
+            else
+            {
+                return new RestRequest(context, $"Web/Lists(guid'{list.Id}')/ContentTypes").Filter($"Name eq '{Name}'").Expand("FieldLinks").Get<ResponseCollection<ContentType>>().Items.FirstOrDefault();
+            }
         }
     }
 }

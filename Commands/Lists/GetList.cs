@@ -41,11 +41,11 @@ namespace SharePointPnP.PowerShell.Core.Lists
         {
             if (MyInvocation.BoundParameters.ContainsKey("Identity"))
             {
-                WriteObject(Identity.GetList(Context));
+                WriteObject(Identity.GetList(CurrentContext));
             }
             else
             {
-                WriteObject(new RestRequest(Context, "Lists").Expand("RootFolder/ServerRelativeUrl", "OnQuickLaunch", "DefaultViewUrl").Get<ResponseCollection<List>>().Items, true);
+                WriteObject(new RestRequest(CurrentContext, "Lists").Expand("RootFolder/ServerRelativeUrl", "OnQuickLaunch", "DefaultViewUrl").Get<ResponseCollection<List>>().Items, true);
                 //WriteObject(ExecuteGetRequest<ListCollection>("Lists", expand:"RootFolder/ServerRelativeUrl,OnQuickLaunch,DefaultViewUrl").value,true);
             }
         }

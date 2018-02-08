@@ -12,7 +12,7 @@ Returns the URL to the page set as home page
 
 ### 
 ```powershell
-Get-HomePage [-Connection <SPOnlineConnection>]
+Get-HomePage [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -26,11 +26,11 @@ Will return the URL of the home page of the web.
 
 ## PARAMETERS
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

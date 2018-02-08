@@ -14,7 +14,7 @@ Publishes/Deploys/Trusts an available app in the app catalog
 ```powershell
 Publish-App [-Identity <AppMetadataPipeBind>]
             [-SkipFeatureDeployment [<SwitchParameter>]]
-            [-Connection <SPOnlineConnection>]
+            [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -52,11 +52,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

@@ -53,7 +53,7 @@ namespace SharePointPnP.PowerShell.Core.Admin
 		</Method>
 	</ObjectPaths>
 </Request>";
-            var result = ClientSvcHelper.Execute(Context, payload,true);
+            var result = ClientSvcHelper.Execute(CurrentContext, payload,true);
             var deserialized = JsonConvert.DeserializeObject<JArray>(result);
             foreach(var template in deserialized[6]["_Child_Items_"].ToObject<List<TenantWebTemplate>>())
             {

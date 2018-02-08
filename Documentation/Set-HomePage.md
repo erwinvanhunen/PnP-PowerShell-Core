@@ -13,7 +13,7 @@ Sets the home page of the current web.
 ### 
 ```powershell
 Set-HomePage [-RootFolderRelativeUrl <String>]
-             [-Connection <SPOnlineConnection>]
+             [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -39,11 +39,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

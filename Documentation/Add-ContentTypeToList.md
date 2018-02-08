@@ -15,7 +15,7 @@ Adds a new content type to a list
 Add-ContentTypeToList [-List <ListPipeBind>]
                       [-ContentType <ContentTypePipeBind>]
                       [-DefaultContentType [<SwitchParameter>]]
-                      [-Connection <SPOnlineConnection>]
+                      [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -65,11 +65,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

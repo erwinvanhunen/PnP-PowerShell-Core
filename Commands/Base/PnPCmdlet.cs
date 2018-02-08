@@ -15,19 +15,19 @@ namespace SharePointPnP.PowerShell.Core.Base
     {
         [Parameter(Mandatory = false, HelpMessage = "Optional connection to be used by cmdlet. Retrieve the value for this parameter by eiter specifying -ReturnConnection on Connect-PnPOnline or by executing Get-PnPConnection.")] // do not remove '#!#99'
         [PnPParameter(Order = 99)]
-        public SPOnlineConnection Connection = null;
+        public SPOnlineContext Context = null;
 
-        public SPOnlineConnection Context
+        public SPOnlineContext CurrentContext
         {
             get
             {
-                return Connection ?? SPOnlineConnection.CurrentConnection;
+                return Context ?? SPOnlineContext.CurrentContext;
             }
         }
 
         protected override void ProcessRecord()
         {
-            var cmdletConnection = Connection ?? SPOnlineConnection.CurrentConnection;
+            var cmdletConnection = CurrentContext ?? SPOnlineContext.CurrentContext;
             if (cmdletConnection == null || string.IsNullOrEmpty(cmdletConnection.AccessToken))
             {
                 throw new PSInvalidOperationException("A connection is required. Use Connect-PnPOnline to connect first.");
@@ -39,12 +39,12 @@ namespace SharePointPnP.PowerShell.Core.Base
         protected virtual void ExecuteCmdlet()
         { }
 
-        public T ExecuteGetRequest<T>(SPOnlineConnection context, string method, string select = null, string filter = null, string expand = null) where T : ClientSideObject
+        public T ExecuteGetRequest<T>(SPOnlineContext context, string method, string select = null, string filter = null, string expand = null) where T : ClientSideObject
         {
             return Helpers.RestHelper.ExecuteGetRequest<T>(context, method, select, filter, expand);
         }
 
-        public string ExecuteGetRequest(SPOnlineConnection context, string method, string select = null, string filter = null, string expand = null)
+        public string ExecuteGetRequest(SPOnlineContext context, string method, string select = null, string filter = null, string expand = null)
         {
             return Helpers.RestHelper.ExecuteGetRequest(context, method, select, filter, expand);
         }

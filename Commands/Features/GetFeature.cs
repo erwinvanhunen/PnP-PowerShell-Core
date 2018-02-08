@@ -47,7 +47,7 @@ namespace SharePointPnP.PowerShell.Core.Branding
                 baseUrl = $"{(Scope == FeatureScope.Web ? "Web" : "Site")}/Features";
             }
 
-            WriteObject(new RestRequest(Context, baseUrl).Expand("DisplayName").Get<ResponseCollection<Feature>>().Items, true);
+            WriteObject(new RestRequest(CurrentContext, baseUrl).Expand("DisplayName").Get<ResponseCollection<Feature>>().Items, true);
         }
 
     }

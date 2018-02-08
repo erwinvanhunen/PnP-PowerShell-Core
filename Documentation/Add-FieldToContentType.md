@@ -16,7 +16,7 @@ Add-FieldToContentType [-Field <FieldPipeBind>]
                        [-ContentType <ContentTypePipeBind>]
                        [-Required [<SwitchParameter>]]
                        [-Hidden [<SwitchParameter>]]
-                       [-Connection <SPOnlineConnection>]
+                       [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -78,11 +78,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

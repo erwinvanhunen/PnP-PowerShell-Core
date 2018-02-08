@@ -12,29 +12,29 @@ namespace SharePointPnP.PowerShell.Core.Branding
     [CmdletHelp(VerbsCommon.Remove, "NavigationNode", "Returns navigation nodes for a web",
         Category = CmdletHelpCategory.Branding)]
     [CmdletExample(
-        Code = @"PS:> Get-PnPNavigationNode",
-        Remarks = @"Returns all navigation nodes in the quicklaunch navigation",
+        Code = @"PS:> Remove-PnPNavigationNode -Identity 1032",
+        Remarks = @"Removes the navigation node with the specified id",
         SortOrder = 1)]
     [CmdletExample(
-        Code = @"PS:> Get-PnPNavigationNode -QuickLaunch",
-        Remarks = @"Returns all navigation nodes in the quicklaunch navigation",
+        Code = @"PS:> $nodes = Get-PnPNavigationNode -QuickLaunch
+PS:>$nodes | Select-Object -First 1 | Remove-PnPNavigationNode -Force",
+        Remarks = @"Retrieves all navigation nodes from the Quick Launch navigation, then removes the first node in the list and it will not ask for a confirmation",
         SortOrder = 2)]
-    [CmdletExample(
-        Code = @"PS:> Get-PnPNavigationNode -TopNavigationBar",
-        Remarks = @"Returns all navigation nodes in the top navigation bar",
-        SortOrder = 3)]
-    [CmdletExample(
-        Code = @"PS:> Get-PnPNavigationNode -Id 1025",
-        Remarks = @"Returns the navigation node with id 1025",
-        SortOrder = 4)]
+
     public class RemoveNavigationNode : PnPCmdlet
     {
-        [Parameter(Mandatory = true, HelpMessage = "The Id or node object to delete")]
+        [Parameter(Mandatory = true, ValueFromPipeline = true, Position = 0, HelpMessage = "The Id or node object to delete")]
         public NavigationNodePipeBind Identity;
+
+        [Parameter(Mandatory = false, HelpMessage = "Specifying the Force parameter will skip the confirmation question.", ParameterSetName = ParameterAttribute.AllParameterSets)]
+        public SwitchParameter Force;
 
         protected override void ExecuteCmdlet()
         {
-            new RestRequest(Context, $"Web/Navigation/GetNodeById({Identity.Id})").Delete();
+            if (Force || ShouldContinue("Remove node?", "Confirm"))
+            {
+                new RestRequest(CurrentContext, $"Web/Navigation/GetNodeById({Identity.Id})").Delete();
+            }
         }
     }
 }

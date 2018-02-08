@@ -6,7 +6,10 @@ namespace SharePointPnP.PowerShell.Core.Model
 {
     public abstract class ClientSideObject : IClientSideObject
     {
-        private SPOnlineConnection _context;
+        private SPOnlineContext _context;
+
+        [JsonProperty("odata.editLink")]
+        private string _editLink { get; set; }
 
         [JsonProperty("odata.type")]
         private string _objectType { set; get; }
@@ -29,13 +32,22 @@ namespace SharePointPnP.PowerShell.Core.Model
             _objectType = type;
         }
 
-        public ClientSideObject(SPOnlineConnection context)
+        public ClientSideObject(SPOnlineContext context)
         {
             _context = context;
         }
 
         [JsonIgnore]
-        public SPOnlineConnection Context
+        public string ObjectPath
+        {
+            get
+            {
+                return _editLink;
+            }
+        }
+
+        [JsonIgnore]
+        public SPOnlineContext Context
         {
             get
             {

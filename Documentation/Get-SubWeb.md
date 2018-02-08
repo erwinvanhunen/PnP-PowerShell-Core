@@ -13,7 +13,7 @@ Returns the subwebs of the current web
 ### 
 ```powershell
 Get-SubWeb [-Recurse [<SwitchParameter>]]
-           [-Connection <SPOnlineConnection>]
+           [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -46,11 +46,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

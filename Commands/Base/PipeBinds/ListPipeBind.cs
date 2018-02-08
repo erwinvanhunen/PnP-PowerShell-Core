@@ -45,7 +45,7 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
             return Title ?? Id.ToString();
         }
 
-        internal List GetList(SPOnlineConnection context)
+        internal List GetList(SPOnlineContext context)
         {
             List list = null;
             if (List != null)

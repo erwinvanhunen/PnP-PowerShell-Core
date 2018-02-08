@@ -42,21 +42,21 @@ namespace SharePointPnP.PowerShell.Core.Fields
             }
             if (List != null)
             {
-                var list = List.GetList(Context);
+                var list = List.GetList(CurrentContext);
 
                 if (list != null)
                 {
                     if (Identity.Id != Guid.Empty)
                     {
-                        WriteObject(new RestRequest(Context, $"Web/Lists(guid'{list.Id.ToString("D")}')/Fields(guid'{Identity.Id}')").Filter(groupFilter).Expand(expands).Get<Field>());
+                        WriteObject(new RestRequest(CurrentContext, $"Web/Lists(guid'{list.Id.ToString("D")}')/Fields(guid'{Identity.Id}')").Filter(groupFilter).Expand(expands).Get<Field>());
                     }
                     else if (!string.IsNullOrEmpty(Identity.Name))
                     {
-                        WriteObject(new RestRequest(Context, $"Web/Lists(guid'{list.Id.ToString("D")}')/Fields/GetByInternalNameOrTitle('{Identity.Name}')").Filter(groupFilter).Expand(expands).Get<Field>());
+                        WriteObject(new RestRequest(CurrentContext, $"Web/Lists(guid'{list.Id.ToString("D")}')/Fields/GetByInternalNameOrTitle('{Identity.Name}')").Filter(groupFilter).Expand(expands).Get<Field>());
                     }
                     else
                     {
-                        WriteObject(new RestRequest(Context, $"Web/Lists(guid'{list.Id.ToString("D")}')/Fields").Filter(groupFilter).Expand(expands).Get<ResponseCollection<Field>>().Items, true);
+                        WriteObject(new RestRequest(CurrentContext, $"Web/Lists(guid'{list.Id.ToString("D")}')/Fields").Filter(groupFilter).Expand(expands).Get<ResponseCollection<Field>>().Items, true);
                     }
                 }
 
@@ -66,18 +66,18 @@ namespace SharePointPnP.PowerShell.Core.Fields
 
                 if (Identity.Id == Guid.Empty && string.IsNullOrEmpty(Identity.Name))
                 {
-                    WriteObject(new RestRequest(Context, $"Web/Fields").Filter(groupFilter).Expand(expands).Get<ResponseCollection<Field>>().Items, true);
+                    WriteObject(new RestRequest(CurrentContext, $"Web/Fields").Filter(groupFilter).Expand(expands).Get<ResponseCollection<Field>>().Items, true);
                 }
                 else
                 {
                     if (Identity.Id != Guid.Empty)
                     {
-                        WriteObject(new RestRequest(Context, $"Web/Fields(guid'{Identity.Id}')").Filter(groupFilter).Expand(expands).Get<Field>());
+                        WriteObject(new RestRequest(CurrentContext, $"Web/Fields(guid'{Identity.Id}')").Filter(groupFilter).Expand(expands).Get<Field>());
 
                     }
                     else if (!string.IsNullOrEmpty(Identity.Name))
                     {
-                        WriteObject(new RestRequest(Context, $"Web/Fields/GetByInternalNameOrTitle('{Identity.Name}')").Filter(groupFilter).Expand(expands).Get<Field>());
+                        WriteObject(new RestRequest(CurrentContext, $"Web/Fields/GetByInternalNameOrTitle('{Identity.Name}')").Filter(groupFilter).Expand(expands).Get<Field>());
                     }
                 }
             }

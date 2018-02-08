@@ -18,7 +18,7 @@ Set-NavigationNode [-Identity <NavigationNodePipeBind>]
                    [-Url <String>]
                    [-IsVisible <Boolean>]
                    [-IsExternal <Boolean>]
-                   [-Connection <SPOnlineConnection>]
+                   [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -104,11 +104,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

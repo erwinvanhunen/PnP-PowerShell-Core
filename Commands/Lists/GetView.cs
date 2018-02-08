@@ -38,23 +38,23 @@ namespace SharePointPnP.PowerShell.Core.Lists
         protected override void ExecuteCmdlet()
         {
 
-            var list = List.GetList(Context);
+            var list = List.GetList(CurrentContext);
             if (list != null)
             {
                 if (Identity != null)
                 {
                     if (Identity.Id != Guid.Empty)
                     {
-                        WriteObject(new RestRequest(Context, $"Web/Lists/GetById(guid'{list.Id}')/Views(guid'{Identity.Id}')").Get<View>());
+                        WriteObject(new RestRequest(CurrentContext, $"Web/Lists/GetById(guid'{list.Id}')/Views(guid'{Identity.Id}')").Get<View>());
                     }
                     else if (!string.IsNullOrEmpty(Identity.Title))
                     {
-                        WriteObject(new RestRequest(Context, $"Web/Lists/GetById(guid'{list.Id}')/Views/GetByTitle('{Identity.Title}')").Get<View>());
+                        WriteObject(new RestRequest(CurrentContext, $"Web/Lists/GetById(guid'{list.Id}')/Views/GetByTitle('{Identity.Title}')").Get<View>());
                     }
                 }
                 else
                 {
-                    WriteObject(new RestRequest(Context, $"Web/Lists/GetById(guid'{list.Id}')/Views").Get<ResponseCollection<View>>().Items, true);
+                    WriteObject(new RestRequest(CurrentContext, $"Web/Lists/GetById(guid'{list.Id}')/Views").Get<ResponseCollection<View>>().Items, true);
                 }
             }
         }

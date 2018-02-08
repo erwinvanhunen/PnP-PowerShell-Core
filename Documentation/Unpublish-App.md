@@ -13,7 +13,7 @@ Unpublishes/retracts an available add-in from the app catalog
 ### 
 ```powershell
 Unpublish-App [-Identity <AppMetadataPipeBind>]
-              [-Connection <SPOnlineConnection>]
+              [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -39,11 +39,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

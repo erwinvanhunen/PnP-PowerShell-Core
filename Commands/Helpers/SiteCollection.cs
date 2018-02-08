@@ -24,7 +24,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
         /// <param name="clientContext">ClientContext object of a regular site</param>
         /// <param name="siteCollectionCreationInformation">information about the site to create</param>
         /// <returns>ClientContext object for the created site collection</returns>
-        public static async Task<string> CreateAsync(SPOnlineConnection context, CommunicationSiteCollectionCreationInformation siteCollectionCreationInformation)
+        public static async Task<string> CreateAsync(SPOnlineContext context, CommunicationSiteCollectionCreationInformation siteCollectionCreationInformation)
         {
             var accessToken = context.AccessToken;
             var responseUrl = "";
@@ -113,7 +113,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
         /// <param name="clientContext">ClientContext object of a regular site</param>
         /// <param name="siteCollectionCreationInformation">information about the site to create</param>
         /// <returns>ClientContext object for the created site collection</returns>
-        public static async Task<string> CreateAsync(SPOnlineConnection context, TeamSiteCollectionCreationInformation siteCollectionCreationInformation)
+        public static async Task<string> CreateAsync(SPOnlineContext context, TeamSiteCollectionCreationInformation siteCollectionCreationInformation)
         {
             var responseUrl = "";
             if (siteCollectionCreationInformation.Alias.Contains(" "))

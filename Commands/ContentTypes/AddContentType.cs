@@ -1,6 +1,7 @@
 ﻿using Newtonsoft.Json;
 using SharePointPnP.PowerShell.Core.Attributes;
 using SharePointPnP.PowerShell.Core.Base;
+using SharePointPnP.PowerShell.Core.Base.PipeBinds;
 using SharePointPnP.PowerShell.Core.Model;
 using System.Collections.Generic;
 using System.Management.Automation;
@@ -29,8 +30,8 @@ namespace SharePointPnP.PowerShell.Core.ContentTypes
         [Parameter(Mandatory = false, HelpMessage = "Specifies the group of the new content type")]
         public string Group;
 
-        //[Parameter(Mandatory = false, HelpMessage = "Specifies the parent of the new content type")]
-        //public Model.ContentType ParentContentType;
+        [Parameter(Mandatory = false, HelpMessage = "Specifies the parent of the new content type")]
+        public ContentTypePipeBind ParentContentType;
 
         protected override void ExecuteCmdlet()
         {
@@ -49,7 +50,15 @@ namespace SharePointPnP.PowerShell.Core.ContentTypes
             {
                 ct.Group = Group;
             }          
-            new RestRequest(Context, "Web/ContentTypes").Post(ct);
+            if(MyInvocation.BoundParameters.ContainsKey("ParentContentType"))
+            {
+                var parentCt = ParentContentType.GetContentType(CurrentContext, true);
+                if(parentCt != null)
+                {
+                    ct.Parent = parentCt;
+                }
+            }
+            new RestRequest(CurrentContext, "Web/ContentTypes").Post(ct);
           
         }
 

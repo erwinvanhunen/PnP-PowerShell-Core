@@ -13,7 +13,7 @@ Uninstalls an available add-in from the site
 ### 
 ```powershell
 Uninstall-App [-Identity <AppMetadataPipeBind>]
-              [-Connection <SPOnlineConnection>]
+              [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -39,11 +39,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

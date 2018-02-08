@@ -12,7 +12,7 @@ Returns the request access e-mail addresses
 
 ### 
 ```powershell
-Get-RequestAccessEmail [-Connection <SPOnlineConnection>]
+Get-RequestAccessEmail [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -26,11 +26,11 @@ This will return all the request access e-mail addresses for the current web
 
 ## PARAMETERS
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

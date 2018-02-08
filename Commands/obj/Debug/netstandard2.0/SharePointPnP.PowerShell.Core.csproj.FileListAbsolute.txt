@@ -38,3 +38,10 @@ C:\repos\PnP-PowerShell-Core\Commands\obj\Debug\netstandard2.0\SharePointPnP.Pow
 C:\repos\PnP-PowerShell-Core\Commands\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.pdb
 C:\repos\PnP-PowerShell-Core\Commands\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.Properties.Resources.resources
 C:\repos\PnP-PowerShell-Core\Commands\obj\Debug\netstandard2.0\SharePointPnP.PowerShell.Core.csproj.GenerateResource.Cache
+C:\repos\PnP-PowerShell-Core\Commands\bin\Debug\netstandard2.0\AngleSharp.dll
+C:\repos\PnP-PowerShell-Core\Commands\bin\Debug\netstandard2.0\System.Collections.Concurrent.dll
+C:\repos\PnP-PowerShell-Core\Commands\bin\Debug\netstandard2.0\System.Diagnostics.DiagnosticSource.dll
+C:\repos\PnP-PowerShell-Core\Commands\bin\Debug\netstandard2.0\System.Net.WebHeaderCollection.dll
+C:\repos\PnP-PowerShell-Core\Commands\bin\Debug\netstandard2.0\System.Runtime.Numerics.dll
+C:\repos\PnP-PowerShell-Core\Commands\bin\Debug\netstandard2.0\System.Security.Cryptography.OpenSsl.dll
+C:\repos\PnP-PowerShell-Core\Commands\bin\Debug\netstandard2.0\System.Security.Cryptography.Primitives.dll

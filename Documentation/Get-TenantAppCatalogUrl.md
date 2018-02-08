@@ -12,7 +12,7 @@ Retrieves the url of the tenant scoped app catalog.
 
 ### 
 ```powershell
-Get-TenantAppCatalogUrl [-Connection <SPOnlineConnection>]
+Get-TenantAppCatalogUrl [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -26,11 +26,11 @@ Returns the url of the tenant scoped app catalog site collection
 
 ## PARAMETERS
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

@@ -7,6 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="anglesharp" Version="0.9.9.1" />
     <PackageReference Include="newtonsoft.json" Version="10.0.3" />
     <PackageReference Include="PowerShellStandard.Library" Version="3.0.0-preview-01" />
   </ItemGroup>

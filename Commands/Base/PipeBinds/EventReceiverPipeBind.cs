@@ -48,7 +48,7 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
             return Name ?? Id.ToString();
         }
 
-        internal EventReceiver GetEventReceiverOnWeb(SPOnlineConnection context)
+        internal EventReceiver GetEventReceiverOnWeb(SPOnlineContext context)
         {
             if (_eventReceiver != null)
             {

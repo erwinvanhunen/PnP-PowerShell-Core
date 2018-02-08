@@ -13,40 +13,40 @@ Returns navigation nodes for a web
 ### 
 ```powershell
 Remove-NavigationNode [-Identity <NavigationNodePipeBind>]
-                      [-Connection <SPOnlineConnection>]
+                      [-Force [<SwitchParameter>]]
+                      [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
 
 ### ------------------EXAMPLE 1------------------
 ```powershell
-PS:> Get-PnPNavigationNode
+PS:> Remove-PnPNavigationNode -Identity 1032
 ```
 
-Returns all navigation nodes in the quicklaunch navigation
+Removes the navigation node with the specified id
 
 ### ------------------EXAMPLE 2------------------
 ```powershell
-PS:> Get-PnPNavigationNode -QuickLaunch
+PS:> $nodes = Get-PnPNavigationNode -QuickLaunch
+PS:>$nodes | Select-Object -First 1 | Remove-PnPNavigationNode -Force
 ```
 
-Returns all navigation nodes in the quicklaunch navigation
-
-### ------------------EXAMPLE 3------------------
-```powershell
-PS:> Get-PnPNavigationNode -TopNavigationBar
-```
-
-Returns all navigation nodes in the top navigation bar
-
-### ------------------EXAMPLE 4------------------
-```powershell
-PS:> Get-PnPNavigationNode -Id 1025
-```
-
-Returns the navigation node with id 1025
+Retrieves all navigation nodes from the Quick Launch navigation, then removes the first node in the list and it will not ask for a confirmation
 
 ## PARAMETERS
+
+### -Force
+
+
+```yaml
+Type: SwitchParameter
+Parameter Sets: 
+
+Required: False
+Position: 0
+Accept pipeline input: False
+```
 
 ### -Identity
 
@@ -60,11 +60,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

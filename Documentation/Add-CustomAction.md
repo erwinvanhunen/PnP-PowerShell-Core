@@ -27,7 +27,7 @@ Add-CustomAction [-Name <String>]
                  [-Scope <CustomActionScope>]
                  [-ClientSideComponentId <GuidPipeBind>]
                  [-ClientSideComponentProperties <String>]
-                 [-Connection <SPOnlineConnection>]
+                 [-Context <SPOnlineContext>]
 ```
 
 ## DESCRIPTION
@@ -226,11 +226,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

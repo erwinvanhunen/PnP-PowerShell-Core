@@ -42,22 +42,21 @@ namespace SharePointPnP.PowerShell.Core.Branding
 
             if (ParameterSetName == ParameterSet_ALLBYLOCATION)
             {
-                var requestUrl = "";
                 switch (Location)
                 {
                     case NavigationType.QuickLaunch:
                         {
-                            WriteObject(new RestRequest(Context, "Web/Navigation/Quicklaunch").Get<ResponseCollection<NavigationNode>>().Items);
+                            WriteObject(new RestRequest(CurrentContext, "Web/Navigation/Quicklaunch").Get<ResponseCollection<NavigationNode>>().Items);
                             break;
                         }
                     case NavigationType.TopNavigationBar:
                         {
-                            WriteObject(new RestRequest(Context, "Web/Navigation/TopNavigationBar").Get<ResponseCollection<NavigationNode>>().Items, true);
+                            WriteObject(new RestRequest(CurrentContext, "Web/Navigation/TopNavigationBar").Get<ResponseCollection<NavigationNode>>().Items, true);
                             break;
                         }
                     case NavigationType.SearchNav:
                         {
-                            WriteObject(new RestRequest(Context, "Web/Navigation/GetNodeById(1040)").Get<NavigationNode>(), true);
+                            WriteObject(new RestRequest(CurrentContext, "Web/Navigation/GetNodeById(1040)").Get<NavigationNode>(), true);
                             break;
                         }
                 }
@@ -65,7 +64,7 @@ namespace SharePointPnP.PowerShell.Core.Branding
             }
             if (MyInvocation.BoundParameters.ContainsKey("Id"))
             {
-                WriteObject(new RestRequest(Context, $"/Web/Navigation/GetNodeById({Id})").Expand("Children").Get<NavigationNode>());
+                WriteObject(new RestRequest(CurrentContext, $"/Web/Navigation/GetNodeById({Id})").Expand("Children").Get<NavigationNode>());
             }
         }
     }

@@ -13,7 +13,7 @@ Returns a List object
 ### 
 ```powershell
 Get-List [-Identity <ListPipeBind>]
-         [-Connection <SPOnlineConnection>]
+         [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -53,11 +53,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

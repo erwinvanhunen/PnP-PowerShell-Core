@@ -59,7 +59,7 @@ namespace SharePointPnP.PowerShell.Core.Branding
             {
                 dict.Add("IsExternal", IsExternal);
             }
-            new RestRequest(Context, $"Web/Navigation/GetNodeById({Identity.Id})").Merge(new MetadataType("SP.NavigationNode"), dict);
+            new RestRequest(CurrentContext, $"Web/Navigation/GetNodeById({Identity.Id})").Merge(new MetadataType("SP.NavigationNode"), dict);
 
 
         }

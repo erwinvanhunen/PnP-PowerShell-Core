@@ -7,8 +7,7 @@ namespace SharePointPnP.PowerShell.Core.Model
 {
     public class UpdatableClientSideObject : ClientSideObject
     {
-        [JsonProperty("odata.editLink")]
-        private string _editLink { get; set; }
+     
 
 
         [JsonIgnore]
@@ -28,7 +27,7 @@ namespace SharePointPnP.PowerShell.Core.Model
             this.ObjectProperties = new ConcurrentDictionary<string, object>();
         }
 
-        public UpdatableClientSideObject(SPOnlineConnection context) : base(context)
+        public UpdatableClientSideObject(SPOnlineContext context) : base(context)
         {
         }
 
@@ -37,7 +36,7 @@ namespace SharePointPnP.PowerShell.Core.Model
             var props = this.ObjectProperties;
             props["__metadata"] = metadataType;
             var content = JsonConvert.SerializeObject(props);
-            new RestRequest(Context, _editLink).Merge(content, contentType: "application/json;odata=verbose");
+            new RestRequest(Context, ObjectPath).Merge(content, contentType: "application/json;odata=verbose");
             props.Clear();
         }
     }

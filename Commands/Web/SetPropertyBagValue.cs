@@ -46,8 +46,8 @@ namespace SharePointPnP.PowerShell.Core
 
         protected override void ExecuteCmdlet()
         {
-            var web = new RestRequest(Context, "Web").Get<Model.Web>();
-            var site = new RestRequest(Context, "Site").Get<Site>();
+            var web = new RestRequest(CurrentContext, "Web").Get<Model.Web>();
+            var site = new RestRequest(CurrentContext, "Site").Get<Site>();
             if (web.IsNoScriptSite())
             {
                 ThrowTerminatingError(new ErrorRecord(new Exception("Site has NoScript enabled, and setting property bag values is not supported"), "NoScriptEnabled", ErrorCategory.InvalidOperation, this));
@@ -76,7 +76,7 @@ namespace SharePointPnP.PowerShell.Core
                         <Identity Id=""4"" Name=""e82e479e-4047-5000-d2b3-60e4a5a07d64|740c6a0b-85e2-48a0-a494-e0f1759d4aa7:site:{site.Id}:web:{web.Id}"" />
                     </ObjectPaths>
                 </Request>";
-                ClientSvcHelper.Execute(Context, payload);
+                ClientSvcHelper.Execute(CurrentContext, payload);
             }
             else
             {
@@ -84,7 +84,7 @@ namespace SharePointPnP.PowerShell.Core
 
                 var folderUrl = UrlUtility.Combine(serverRelativeUrl, Folder);
 
-                var folder = new RestRequest(Context, $"Web/GetFolderByServerRelativePath(decodedurl='/{folderUrl}')").Select("UniqueId").Get<Folder>();
+                var folder = new RestRequest(CurrentContext, $"Web/GetFolderByServerRelativePath(decodedurl='/{folderUrl}')").Select("UniqueId").Get<Folder>();
 
                 var payload = $@"<Request AddExpandoFieldTypeSuffix=""true"" SchemaVersion=""15.0.0.0"" LibraryVersion=""16.0.0.0"" ApplicationName=""SharePoint PnP PowerShell Core"" xmlns=""http://schemas.microsoft.com/sharepoint/clientquery/2009"">
                     <Actions>
@@ -101,7 +101,7 @@ namespace SharePointPnP.PowerShell.Core
                         <Identity Id=""4"" Name=""e82e479e-4047-5000-d2b3-60e4a5a07d64|740c6a0b-85e2-48a0-a494-e0f1759d4aa7:site:{site.Id}:web:{web.Id}:folder:{folder.UniqueId}"" />
                     </ObjectPaths>
                 </Request>";
-                ClientSvcHelper.Execute(Context, payload);
+                ClientSvcHelper.Execute(CurrentContext, payload);
             }
         }
     }

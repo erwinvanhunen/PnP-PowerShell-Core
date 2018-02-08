@@ -26,8 +26,8 @@ namespace SharePointPnP.PowerShell.Core.Admin
 
         protected override void ExecuteCmdlet()
         {
-            var appCatalogUrl = AppManager.GetAppCatalogUrl(Context);
-            new RestRequest(Context,$"{appCatalogUrl}/_api/Web/RemoveStorageEntity(key='{Key}')").Post();
+            var appCatalogUrl = AppManager.GetAppCatalogUrl(CurrentContext);
+            new RestRequest(CurrentContext,$"{appCatalogUrl}/_api/Web/RemoveStorageEntity(key='{Key}')").Post();
         }
     }
 }

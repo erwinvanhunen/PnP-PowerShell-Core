@@ -50,11 +50,11 @@ namespace SharePointPnP.PowerShell.Core.Branding
                 if (Scope == CustomActionScope.All || Scope == CustomActionScope.Web)
                 {
 
-                    actions.AddRange(new RestRequest(Context, "Web/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items);
+                    actions.AddRange(new RestRequest(CurrentContext, "Web/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items);
                 }
                 if (Scope == CustomActionScope.All || Scope == CustomActionScope.Site)
                 {
-                    actions.AddRange(new RestRequest(Context, "Site/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items);
+                    actions.AddRange(new RestRequest(CurrentContext, "Site/UserCustomActions").Get<ResponseCollection<UserCustomAction>>().Items);
                 }
 
                 if (Identity != null)
@@ -79,11 +79,11 @@ namespace SharePointPnP.PowerShell.Core.Branding
                 switch (action.Scope)
                 {
                     case CustomActionScope.Web:
-                        new RestRequest(Context, $"Web/UserCustomActions(guid'{action.Id}')").Delete();
+                        new RestRequest(CurrentContext, $"Web/UserCustomActions(guid'{action.Id}')").Delete();
                         break;
 
                     case CustomActionScope.Site:
-                        new RestRequest(Context, $"Site/UserCustomActions(guid'{action.Id}')").Delete();
+                        new RestRequest(CurrentContext, $"Site/UserCustomActions(guid'{action.Id}')").Delete();
                         break;
                 }
             }

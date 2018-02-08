@@ -98,7 +98,7 @@ namespace SharePointPnP.PowerShell.Core.Admin
             {
                 if (!MyInvocation.BoundParameters.ContainsKey("Lcid"))
                 {
-                    var web = new RestRequest(Context, "Web").Select("Language").Get<Model.Web>();
+                    var web = new RestRequest(CurrentContext, "Web").Select("Language").Get<Model.Web>();
                     _communicationSiteParameters.Lcid = web.Language;
                 }
                 var creationInformation = new CommunicationSiteCollectionCreationInformation();
@@ -116,7 +116,7 @@ namespace SharePointPnP.PowerShell.Core.Admin
                 {
                     creationInformation.SiteDesign = _communicationSiteParameters.SiteDesign;
                 }
-                var results = SiteCollection.CreateAsync(Context, creationInformation);
+                var results = SiteCollection.CreateAsync(CurrentContext, creationInformation);
                 var returnedUrl = results.GetAwaiter().GetResult();
                 WriteObject(returnedUrl);
             }
@@ -129,7 +129,7 @@ namespace SharePointPnP.PowerShell.Core.Admin
                 creationInformation.Description = _teamSiteParameters.Description;
                 creationInformation.IsPublic = _teamSiteParameters.IsPublic;
 
-                var results = SiteCollection.CreateAsync(Context, creationInformation);
+                var results = SiteCollection.CreateAsync(CurrentContext, creationInformation);
                 var returnedUrl = results.GetAwaiter().GetResult();
                 WriteObject(returnedUrl);
             }

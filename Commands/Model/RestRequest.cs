@@ -13,9 +13,9 @@ namespace SharePointPnP.PowerShell.Core.Model
         private List<string> _expands;
         private List<string> _selects;
         private string _filter;
-        private SPOnlineConnection _context;
+        private SPOnlineContext _context;
 
-        public RestRequest(SPOnlineConnection context)
+        public RestRequest(SPOnlineContext context)
         {
             _context = context;
             _expands = new List<string>();
@@ -23,7 +23,15 @@ namespace SharePointPnP.PowerShell.Core.Model
             _filter = "";
         }
 
-        public RestRequest(SPOnlineConnection context, string root)
+        public RestRequest(SPOnlineContext context , ClientSideObject clientSideObject)
+        {
+            _context = context;
+            _root = clientSideObject.ObjectPath;
+            _expands = new List<string>();
+            _selects = new List<string>();
+        }
+
+        public RestRequest(SPOnlineContext context, string root)
         {
             _context = context;
             _root = root;

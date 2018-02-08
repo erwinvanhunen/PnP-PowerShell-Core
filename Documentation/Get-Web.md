@@ -12,7 +12,7 @@ Returns the current web object
 
 ### 
 ```powershell
-Get-Web [-Connection <SPOnlineConnection>]
+Get-Web [-Context <SPOnlineContext>]
 ```
 
 ## EXAMPLES
@@ -26,11 +26,11 @@ This will return the current web
 
 ## PARAMETERS
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False

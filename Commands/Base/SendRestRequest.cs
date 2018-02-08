@@ -39,11 +39,11 @@ namespace SharePointPnP.PowerShell.Core.Base
         {
             if (Method == HttpMethod.Get)
             {
-                WriteObject(ExecuteGetRequest(Context, EndPoint, Select, Filter, Expand));
+                WriteObject(ExecuteGetRequest(CurrentContext, EndPoint, Select, Filter, Expand));
             }
             else
             {
-                new RestRequest(Context, EndPoint).Filter(Filter).Select(Select).Expand(Expand).Post(Content);
+                new RestRequest(CurrentContext, EndPoint).Filter(Filter).Select(Select).Expand(Expand).Post(Content);
             }
         }
     }

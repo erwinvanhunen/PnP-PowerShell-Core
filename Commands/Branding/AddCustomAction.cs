@@ -147,11 +147,11 @@ Add-PnPCustomAction -Name 'GetItemsCount' -Title 'Invoke GetItemsCount Action' -
             switch (Scope)
             {
                 case CustomActionScope.Web:
-                    new RestRequest(Context, "Web/UserCustomActions").Post(new MetadataType("SP.UserCustomAction"), dict);
+                    new RestRequest(CurrentContext, "Web/UserCustomActions").Post(new MetadataType("SP.UserCustomAction"), dict);
                     break;
 
                 case CustomActionScope.Site:
-                    new RestRequest(Context, "Site/UserCustomActions").Post(new MetadataType("SP.UserCustomAction"), dict);
+                    new RestRequest(CurrentContext, "Site/UserCustomActions").Post(new MetadataType("SP.UserCustomAction"), dict);
                     break;
 
                 case CustomActionScope.All:

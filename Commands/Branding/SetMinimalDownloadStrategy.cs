@@ -29,11 +29,11 @@ namespace SharePointPnP.PowerShell.Core.Branding
         {
             if (On)
             {
-                new RestRequest(Context,$"Web/Features/Add(guid'{Constants.FeatureId_Web_MinimalDownloadStrategy}')").Post();
+                new RestRequest(CurrentContext,$"Web/Features/Add(guid'{Constants.FeatureId_Web_MinimalDownloadStrategy}')").Post();
             }
             else
             {
-                new RestRequest(Context, $"Web/Features/Remove(guid'{Constants.FeatureId_Web_MinimalDownloadStrategy}')").Post();
+                new RestRequest(CurrentContext, $"Web/Features/Remove(guid'{Constants.FeatureId_Web_MinimalDownloadStrategy}')").Post();
             }
         }
     }

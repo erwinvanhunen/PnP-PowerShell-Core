@@ -47,7 +47,7 @@ namespace SharePointPnP.PowerShell.Core.Apps
 
             var bytes = System.IO.File.ReadAllBytes(Path);
 
-            var manager = new AppManager(Context);
+            var manager = new AppManager(CurrentContext);
 
             var result = manager.Add(bytes, fileInfo.Name, Overwrite);
 

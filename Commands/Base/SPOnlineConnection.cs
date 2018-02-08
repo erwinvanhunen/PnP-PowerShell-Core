@@ -1,5 +1,6 @@
 ﻿using Newtonsoft.Json;
 using SharePointPnP.PowerShell.Core.Helpers;
+using SharePointPnP.PowerShell.Core.Model;
 using System;
 using System.Collections.Generic;
 using System.Net.Http;
@@ -7,13 +8,14 @@ using System.Security;
 
 namespace SharePointPnP.PowerShell.Core.Base
 {
-    public class SPOnlineConnection
+    public class SPOnlineContext
     {
+        private Model.Web _web;
         private string _accessToken;
         private string _refreshToken;
         public const string AppId = "9bc3ab49-b65d-410a-85ad-de819febfddc";
         private string _moduleBase;
-        public SPOnlineConnection(string moduleBase)
+        public SPOnlineContext(string moduleBase)
         {
             _moduleBase = moduleBase;
         }
@@ -35,7 +37,7 @@ namespace SharePointPnP.PowerShell.Core.Base
 
         public string Url { get; set; }
 
-        public static SPOnlineConnection CurrentConnection { get; set; }
+        public static SPOnlineContext CurrentContext { get; set; }
 
         public string AccessToken
         {
@@ -47,7 +49,7 @@ namespace SharePointPnP.PowerShell.Core.Base
                     var client = new HttpClient();
                     var uri = new Uri(Url);
                     var url = $"{uri.Scheme}://{uri.Host}";
-                    var body = new StringContent($"resource={url}&client_id={SPOnlineConnection.AppId}&grant_type=refresh_token&refresh_token={_refreshToken}");
+                    var body = new StringContent($"resource={url}&client_id={SPOnlineContext.AppId}&grant_type=refresh_token&refresh_token={_refreshToken}");
                     body.Headers.ContentType.MediaType = "application/x-www-form-urlencoded";
                     client.DefaultRequestHeaders.Accept.Clear();
                     client.DefaultRequestHeaders.Accept.Add(new System.Net.Http.Headers.MediaTypeWithQualityHeaderValue("application/json"));
@@ -67,13 +69,27 @@ namespace SharePointPnP.PowerShell.Core.Base
             }
         }
 
-        public SPOnlineConnection Clone(string url)
+        public SPOnlineContext Clone(string url)
         {
-            var connection = new SPOnlineConnection(_moduleBase);
+            var connection = new SPOnlineContext(_moduleBase);
             connection.Url = url;
             connection.AccessToken = AccessToken;
             connection.RefreshToken = RefreshToken;
             return connection;
+        }
+
+        public Model.Web Web
+        {
+            get
+            {
+                if(_web != null)
+                {
+                    return _web;
+                } else
+                {
+                    return new RestRequest(this, "Web").Get<Model.Web>();
+                }
+            }
         }
     }
 }

@@ -38,5 +38,21 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
         public string Name => _name;
 
         public Field Field => _field;
+
+        public Field GetSiteField(SPOnlineContext context)
+        {
+            if(_field != null)
+            {
+                return _field;
+            }
+            if(_id != Guid.Empty)
+            {
+                return new RestRequest(context, $"Site/RootWeb/Fields(guid'{_id}')").Get<Field>();
+            } else if(!string.IsNullOrEmpty(_name))
+            {
+                return new RestRequest(context, $"Site/RootWeb/Fields/GetByInternalNameOrTitle('{_name}')").Get<Field>();
+            }
+            return null;
+        }
     }
 }

@@ -14,7 +14,7 @@ Activates or deactivates the minimal downloading strategy.
 ```powershell
 Set-MinimalDownloadStrategy [-On [<SwitchParameter>]]
                             [-Off [<SwitchParameter>]]
-                            [-Connection <SPOnlineConnection>]
+                            [-Context <SPOnlineContext>]
 ```
 
 ## DESCRIPTION
@@ -62,11 +62,11 @@ Position: 0
 Accept pipeline input: False
 ```
 
-### -Connection
+### -Context
 
 
 ```yaml
-Type: SPOnlineConnection
+Type: SPOnlineContext
 Parameter Sets: 
 
 Required: False
