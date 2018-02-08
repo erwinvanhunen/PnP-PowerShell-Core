@@ -41,7 +41,7 @@ namespace SharePointPnP.PowerShell.Core.Events
 
         protected override void ExecuteCmdlet()
         {
-            var receiver = new EventReceiver
+            var receiver = new EventReceiverDefinition()
             {
                 ReceiverUrl = Url,
                 ReceiverName = Name,
@@ -57,7 +57,7 @@ namespace SharePointPnP.PowerShell.Core.Events
             }
             else
             {
-                new RestRequest(Context, $"{Context.Web}/EventReceivers").Post(receiver);
+                new RestRequest(Context, $"{Context.Web.ObjectPath}/EventReceivers").Post(receiver);
             }
         }
     }

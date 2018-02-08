@@ -46,7 +46,6 @@ namespace SharePointPnP.PowerShell.Core.Lists
             else
             {
                 WriteObject(new RestRequest(Context, "Lists").Expand("RootFolder/ServerRelativeUrl", "OnQuickLaunch", "DefaultViewUrl").Get<ResponseCollection<List>>().Items, true);
-                //WriteObject(ExecuteGetRequest<ListCollection>("Lists", expand:"RootFolder/ServerRelativeUrl,OnQuickLaunch,DefaultViewUrl").value,true);
             }
         }
     }

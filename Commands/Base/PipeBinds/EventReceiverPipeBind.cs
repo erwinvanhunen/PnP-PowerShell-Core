@@ -8,7 +8,7 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
 {
     public sealed class EventReceiverPipeBind
     {
-        private readonly EventReceiver _eventReceiver;
+        private readonly EventReceiverDefinition _eventReceiver;
         private readonly Guid _id;
         private readonly string _name;
 
@@ -19,7 +19,7 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
             _name = string.Empty;
         }
 
-        public EventReceiverPipeBind(EventReceiver eventReceiver)
+        public EventReceiverPipeBind(EventReceiverDefinition eventReceiver)
         {
             _eventReceiver = eventReceiver;
         }
@@ -39,7 +39,7 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
 
         public Guid Id => _id;
 
-        public EventReceiver EventReceiver => _eventReceiver;
+        public EventReceiverDefinition EventReceiver => _eventReceiver;
 
         public string Name => _name;
 
@@ -48,7 +48,7 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
             return Name ?? Id.ToString();
         }
 
-        internal EventReceiver GetEventReceiverOnWeb(SPOnlineContext context)
+        internal EventReceiverDefinition GetEventReceiverOnWeb(SPOnlineContext context)
         {
             if (_eventReceiver != null)
             {
@@ -57,16 +57,16 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
 
             if (_id != Guid.Empty)
             {
-                return new RestRequest(context, $"Web/EventReceivers/GetById(guid'{_id}')").Get<EventReceiver>();
+                return new RestRequest(context, $"Web/EventReceivers/GetById(guid'{_id}')").Get<EventReceiverDefinition>();
                             }
             else if (!string.IsNullOrEmpty(Name))
             {
-                return new RestRequest(context, $"Web/EventReceivers").Get<ResponseCollection<EventReceiver>>().Items.FirstOrDefault(e => e.ReceiverName == Name);
+                return new RestRequest(context, $"Web/EventReceivers").Get<ResponseCollection<EventReceiverDefinition>>().Items.FirstOrDefault(e => e.ReceiverName == Name);
             }
             return null;
         }
 
-        internal EventReceiver GetEventReceiverOnList(List list)
+        internal EventReceiverDefinition GetEventReceiverOnList(List list)
         {
             if (_eventReceiver != null)
             {
@@ -75,11 +75,11 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
 
             if (_id != Guid.Empty)
             {
-                return new RestRequest(list.Context, $"Web/Lists/GetById(guid'{list.Id}')/EventReceivers/GetById(guid'{_id}')").Get<EventReceiver>();
+                return new RestRequest(list.Context, $"Web/Lists/GetById(guid'{list.Id}')/EventReceivers/GetById(guid'{_id}')").Get<EventReceiverDefinition>();
             }
             else if (!string.IsNullOrEmpty(Name))
             {
-                return new RestRequest(list.Context, $"Web/Lists/GetById(guid'{list.Id}')/EventReceivers')").Get<ResponseCollection<EventReceiver>>().Items.FirstOrDefault(e => e.ReceiverName == Name);
+                return new RestRequest(list.Context, $"Web/Lists/GetById(guid'{list.Id}')/EventReceivers')").Get<ResponseCollection<EventReceiverDefinition>>().Items.FirstOrDefault(e => e.ReceiverName == Name);
             }
             return null;
         }

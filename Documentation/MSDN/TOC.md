@@ -35,6 +35,7 @@
 ## [Event Receivers](EventReceivers-category.md)
 ### [Add-EventReceiver](Add-EventReceiver.md)
 ### [Get-EventReceiver](Get-EventReceiver.md)
+### [Remove-EventReceiver](Remove-EventReceiver.md)
 ## [Features](Features-category.md)
 ### [Disable-Feature](Disable-Feature.md)
 ### [Enable-Feature](Enable-Feature.md)

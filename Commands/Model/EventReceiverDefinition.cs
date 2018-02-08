@@ -1,11 +1,12 @@
-﻿using SharePointPnP.PowerShell.Core.Enums;
+﻿using Newtonsoft.Json;
+using SharePointPnP.PowerShell.Core.Enums;
 using System;
 using System.Collections.Generic;
 using System.Text;
 
 namespace SharePointPnP.PowerShell.Core.Model
 {
-    public class EventReceiver : ClientSideObject
+    public class EventReceiverDefinition : ClientSideObject
     {
         public string ReceiverAssembly { get; set; }
         public string ReceiverClass { get; set; }
@@ -16,6 +17,7 @@ namespace SharePointPnP.PowerShell.Core.Model
         public int EventType { get; set; }
         public object ReceiverUrl { get; set; }
 
+        [JsonIgnore]
         public EventReceiverType EventReceiverType
         {
             get
@@ -24,6 +26,7 @@ namespace SharePointPnP.PowerShell.Core.Model
             }
         }
 
+        [JsonIgnore]
         public EventReceiverSynchronization EventReceiverSynchronization
         {
             get
@@ -31,5 +34,8 @@ namespace SharePointPnP.PowerShell.Core.Model
                 return (EventReceiverSynchronization)Synchronization;
             }
         }
+
+        public EventReceiverDefinition() : base("SP.EventReceiverDefinition")
+        { }
     }
 }
