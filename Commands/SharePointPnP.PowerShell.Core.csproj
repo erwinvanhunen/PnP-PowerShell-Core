@@ -38,6 +38,9 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
   </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Helpers\ClientSidePages\" />
+  </ItemGroup>
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">   
     <Exec Command="dotnet &quot;$(ProjectDir)..\ModuleFilesGenerator\bin\$(ConfigurationName)\netcoreapp2.0\SharePointPnP.PowerShell.Core.ModuleFilesGenerator.dll&quot; &quot;$(TargetPath)&quot; &quot;$(ConfigurationName)&quot; &quot;$(ProjectDir)..\" />
     <Exec Command="&quot;C:\Program Files\PowerShell\6.0.0\pwsh.exe&quot; -ExecutionPolicy bypass -NoLogo -NonInteractive -Command .'$(ProjectDir)\PostBuild.ps1' -ProjectDir:'$(ProjectDir)' -ConfigurationName:'$(ConfigurationName)' -TargetDir:'$(TargetDir)' -TargetFileName:'$(TargetFileName)' -TargetName:'$(TargetName)' -SolutionDir:'$(SolutionDir)'" />

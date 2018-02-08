@@ -83,12 +83,6 @@
         [JsonExtensionData]
         public Dictionary<string, object> FieldValues { get; set; }
 
-        [JsonProperty("WikiField")]
-        public object WikiField { get; set; }
-
-        [JsonProperty("Title")]
-        public string Title { get; set; }
-
         [JsonProperty("ID")]
         public long Id { get; set; }
 

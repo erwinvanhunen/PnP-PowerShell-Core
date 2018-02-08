@@ -1479,7 +1479,7 @@
     <View>
       <Name>CanvasControl</Name>
       <ViewSelectedBy>
-        <TypeName>OfficeDevPnP.Core.Pages.CanvasControl</TypeName>
+        <TypeName>SharePointPnP.PowerShell.Core.Model.CanvasControl</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>

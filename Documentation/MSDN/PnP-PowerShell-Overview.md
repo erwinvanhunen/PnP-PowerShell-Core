@@ -167,6 +167,12 @@ Cmdlet|Description|Platform
 **[Get&#8209;WebTemplate](Get-WebTemplate.md)** |Returns the available web templates.|SharePoint Online
 
 
+### Web Parts 
+Cmdlet|Description|Platform
+:-----|:----------|:-------
+**[Get&#8209;ClientSideComponent](Get-ClientSideComponent.md)** |Retrieve one or more Client-Side components from a page|SharePoint Online
+
+
 ### Webs 
 Cmdlet|Description|Platform
 :-----|:----------|:-------

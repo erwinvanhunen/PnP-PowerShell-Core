@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace SharePointPnP.PowerShell.Core.ClientSidePages
+namespace SharePointPnP.PowerShell.Core.Model
 {
     #region Classes to support json (de-)serialization of control/webpart data
     #region Control data

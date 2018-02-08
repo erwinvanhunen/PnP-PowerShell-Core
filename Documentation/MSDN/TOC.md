@@ -51,6 +51,8 @@
 ### [Get-StorageEntity](Get-StorageEntity.md)
 ### [Get-TenantAppCatalogUrl](Get-TenantAppCatalogUrl.md)
 ### [Get-WebTemplate](Get-WebTemplate.md)
+## [Web Parts](WebParts-category.md)
+### [Get-ClientSideComponent](Get-ClientSideComponent.md)
 ## [Webs](Webs-category.md)
 ### [Get-Context](Get-Context.md)
 ### [Get-PropertyBag](Get-PropertyBag.md)

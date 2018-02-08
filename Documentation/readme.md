@@ -75,6 +75,10 @@ Cmdlet|Description|Platforms
 **[Get&#8209;StorageEntity](Get-StorageEntity.md)** |Retrieve Storage Entities / Farm Properties.|SharePoint Online
 **[Get&#8209;TenantAppCatalogUrl](Get-TenantAppCatalogUrl.md)** |Retrieves the url of the tenant scoped app catalog.|SharePoint Online
 **[Get&#8209;WebTemplate](Get-WebTemplate.md)** |Returns the available web templates.|SharePoint Online
+## Web Parts
+Cmdlet|Description|Platforms
+:-----|:----------|:--------
+**[Get&#8209;ClientSideComponent](Get-ClientSideComponent.md)** |Retrieve one or more Client-Side components from a page|SharePoint Online
 ## Webs
 Cmdlet|Description|Platforms
 :-----|:----------|:--------
