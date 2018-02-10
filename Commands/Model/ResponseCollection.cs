@@ -8,5 +8,8 @@ namespace SharePointPnP.PowerShell.Core.Model
     {
         [JsonProperty("value")]
         public List<T> Items { get; set; }
+
+        [JsonProperty("odata.nextLink")]
+        public string NextLink { get; set; }
     }
 }

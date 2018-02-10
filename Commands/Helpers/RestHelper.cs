@@ -49,7 +49,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             }
         }
 
-        public static T ExecuteGetRequest<T>(SPOnlineContext context, string url, string select = null, string filter = null, string expand = null) where T : IClientSideObject
+        public static T ExecuteGetRequest<T>(SPOnlineContext context, string url, string select = null, string filter = null, string expand = null, uint? top = null) where T : IClientSideObject
         {
             var returnValue = ExecuteGetRequest(context, url, select, filter, expand);
 
@@ -58,7 +58,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
 
             if (returnObject.GetType().IsGenericType)
             {
-                if(returnObject.GetType().Name.StartsWith("ResponseCollection"))
+                if (returnObject.GetType().Name.StartsWith("ResponseCollection"))
                 {
                     foreach (var item in returnObject.Items)
                     {
@@ -73,7 +73,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             return returnObject;
         }
 
-        public static string ExecuteGetRequest(SPOnlineContext context, string endPointUrl, string select = null, string filter = null, string expand = null)
+        public static string ExecuteGetRequest(SPOnlineContext context, string endPointUrl, string select = null, string filter = null, string expand = null, uint? top = null)
         {
             var url = endPointUrl;
             if (!url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
@@ -93,6 +93,10 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             {
                 restparams.Add($"$expand={expand}");
             }
+            if (top.HasValue)
+            {
+                restparams.Add($"$top={top}");
+            }
             if (restparams.Any())
             {
                 url += $"?{string.Join("&", restparams)}";
@@ -111,7 +115,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             return JsonConvert.DeserializeObject<T>(returnValue.Content.ReadAsStringAsync().GetAwaiter().GetResult());
         }
 
-        public static T ExecutePostRequest<T>(SPOnlineContext context, string url, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = "application/json")
+        public static T ExecutePostRequest<T>(SPOnlineContext context, string url, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = "application/json", uint? top = null)
         {
             HttpContent stringContent = new StringContent(content);
             if (contentType != null)
@@ -119,23 +123,23 @@ namespace SharePointPnP.PowerShell.Core.Helpers
                 stringContent.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse(contentType);
             }
 
-            var returnValue = ExecutePostRequestInternal(context, url, stringContent, select, filter, expand);
+            var returnValue = ExecutePostRequestInternal(context, url, stringContent, select, filter, expand, additionalHeaders, top);
             return JsonConvert.DeserializeObject<T>(returnValue.Content.ReadAsStringAsync().GetAwaiter().GetResult());
         }
 
-        public static T ExecutePostRequest<T>(SPOnlineContext context, string url, byte[] content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        public static T ExecutePostRequest<T>(SPOnlineContext context, string url, byte[] content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, uint? top = null)
         {
             var byteArrayContent = new ByteArrayContent(content);
-            var returnValue = ExecutePostRequestInternal(context, url, byteArrayContent, select, filter, expand);
+            var returnValue = ExecutePostRequestInternal(context, url, byteArrayContent, select, filter, expand, additionalHeaders, top);
             return JsonConvert.DeserializeObject<T>(returnValue.Content.ReadAsStringAsync().GetAwaiter().GetResult());
         }
 
-        public static HttpResponseMessage ExecutePostRequest(SPOnlineContext context, string endPointUrl, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        public static HttpResponseMessage ExecutePostRequest(SPOnlineContext context, string endPointUrl, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, uint? top = null)
         {
-            return ExecutePostRequestInternal(context, endPointUrl, null, select, filter, expand, additionalHeaders);
+            return ExecutePostRequestInternal(context, endPointUrl, null, select, filter, expand, additionalHeaders, top);
         }
 
-        public static HttpResponseMessage ExecutePostRequest(SPOnlineContext context, string endPointUrl, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = "application/json")
+        public static HttpResponseMessage ExecutePostRequest(SPOnlineContext context, string endPointUrl, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = "application/json", uint? top = null)
         {
             HttpContent stringContent = null;
             if (!string.IsNullOrEmpty(content))
@@ -146,7 +150,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             {
                 stringContent.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse(contentType);
             }
-            return ExecutePostRequestInternal(context, endPointUrl, stringContent, select, filter, expand, additionalHeaders);
+            return ExecutePostRequestInternal(context, endPointUrl, stringContent, select, filter, expand, additionalHeaders, top);
         }
 
         public static HttpResponseMessage ExecutePostRequest(SPOnlineContext context, string endPointUrl, byte[] content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
@@ -155,7 +159,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             return ExecutePostRequestInternal(context, endPointUrl, byteArrayContent, select, filter, expand, additionalHeaders);
         }
 
-        private static HttpResponseMessage ExecutePostRequestInternal(SPOnlineContext context, string endPointUrl, HttpContent content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null)
+        private static HttpResponseMessage ExecutePostRequestInternal(SPOnlineContext context, string endPointUrl, HttpContent content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, uint? top = null)
         {
             var url = endPointUrl;
             if (!url.StartsWith("https://", StringComparison.OrdinalIgnoreCase))
@@ -174,6 +178,10 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             if (!string.IsNullOrEmpty(expand))
             {
                 restparams.Add($"$expand={expand}");
+            }
+            if (top.HasValue)
+            {
+                restparams.Add($"$top={top}");
             }
             if (restparams.Any())
             {

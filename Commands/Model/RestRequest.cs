@@ -14,6 +14,7 @@ namespace SharePointPnP.PowerShell.Core.Model
         private List<string> _selects;
         private string _filter;
         private SPOnlineContext _context;
+        private uint? _top = null;
 
         public RestRequest(SPOnlineContext context)
         {
@@ -51,6 +52,12 @@ namespace SharePointPnP.PowerShell.Core.Model
             return this;
         }
 
+        public RestRequest Top(uint count)
+        {
+            _top = count;
+            return this;
+        }
+
         public RestRequest Expand(params string[] expand)
         {
             _expands.AddRange(expand);
@@ -67,7 +74,7 @@ namespace SharePointPnP.PowerShell.Core.Model
         {
             var select = _selects.Any() ? string.Join(",", _selects) : null;
             var expands = _expands.Any() ? string.Join(",", _expands) : null;
-            return Helpers.RestHelper.ExecuteGetRequest<T>(_context, _root, select, _filter, expands);
+            return Helpers.RestHelper.ExecuteGetRequest<T>(_context, _root, select, _filter, expands,_top);
         }
 
 
@@ -75,7 +82,7 @@ namespace SharePointPnP.PowerShell.Core.Model
         {
             var select = _selects.Any() ? string.Join(",", _selects) : null;
             var expands = _expands.Any() ? string.Join(",", _expands) : null;
-            return Helpers.RestHelper.ExecuteGetRequest(_context, _root, select, _filter, expands);
+            return Helpers.RestHelper.ExecuteGetRequest(_context, _root, select, _filter, expands, _top);
         }
 
         public T Post<T>(string content = null, string contentType = "application/json;odata=verbose")

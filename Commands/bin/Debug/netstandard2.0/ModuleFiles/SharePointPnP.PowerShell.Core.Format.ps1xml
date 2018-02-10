@@ -424,7 +424,7 @@
     <View>
       <Name>ListItem</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.SharePoint.Client.ListItem</TypeName>
+        <TypeName>SharePointPnP.PowerShell.Core.Model.ListItem</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -450,10 +450,10 @@
                 <PropertyName>Id</PropertyName>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_["Title"]</ScriptBlock>
+                <ScriptBlock>$_.FieldValues["Title"]</ScriptBlock>
               </TableColumnItem>
               <TableColumnItem>
-                <ScriptBlock>$_["GUID"]</ScriptBlock>
+                <ScriptBlock>$_.FieldValues["GUID"]</ScriptBlock>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>
@@ -657,7 +657,7 @@
     <View>
       <Name>Folder</Name>
       <ViewSelectedBy>
-        <TypeName>Microsoft.SharePoint.Client.Folder</TypeName>
+        <TypeName>SharePointPnP.PowerShell.Core.Model.Folder</TypeName>
       </ViewSelectedBy>
       <TableControl>
         <TableHeaders>
@@ -666,12 +666,33 @@
             <Width>30</Width>
             <Alignment>left</Alignment>
           </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Items</Label>
+            <Alignment>left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Created</Label>
+            <Alignment>left</Alignment>
+          </TableColumnHeader>
+          <TableColumnHeader>
+            <Label>Modified</Label>
+            <Alignment>left</Alignment>
+          </TableColumnHeader>
         </TableHeaders>
         <TableRowEntries>
           <TableRowEntry>
             <TableColumnItems>
               <TableColumnItem>
                 <PropertyName>Name</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>ItemCount</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TimeCreated</PropertyName>
+              </TableColumnItem>
+              <TableColumnItem>
+                <PropertyName>TimeLastModified</PropertyName>
               </TableColumnItem>
             </TableColumnItems>
           </TableRowEntry>

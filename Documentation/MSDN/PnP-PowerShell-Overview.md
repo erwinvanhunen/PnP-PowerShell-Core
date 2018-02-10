@@ -154,10 +154,17 @@ Cmdlet|Description|Platform
 **[Add&#8209;FieldFromXml](Add-FieldFromXml.md)** |Adds a field to a list or as a site column based upon a CAML/XML field definition|
 
 
+### Files and Folders 
+Cmdlet|Description|Platform
+:-----|:----------|:-------
+**[Get&#8209;Folder](Get-Folder.md)** |Return a folder object|
+
+
 ### Lists 
 Cmdlet|Description|Platform
 :-----|:----------|:-------
 **[Get&#8209;List](Get-List.md)** |Returns a List object|
+**[Get&#8209;ListItem](Get-ListItem.md)** |Retrieves list items|
 **[Get&#8209;View](Get-View.md)** |Returns one or all views from a list|
 
 
