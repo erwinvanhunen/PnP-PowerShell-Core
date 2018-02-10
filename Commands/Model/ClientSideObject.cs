@@ -58,5 +58,9 @@ namespace SharePointPnP.PowerShell.Core.Model
                 _context = value;
             }
         }
+
+        public bool ShouldSerialize_editLink() => false;
+
+        public bool ShouldSerialize_objectType() => false;
     }
 }

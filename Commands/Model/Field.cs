@@ -1,10 +1,15 @@
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using SharePointPnP.PowerShell.Core.Enums;
 using System;
 using System.Collections.Generic;
 
 namespace SharePointPnP.PowerShell.Core.Model
 {
-    public class Field : ClientSideObject
+    public class Field : ClientSideObject, IClientSideObjectCustomSerializer
     {
+        private FieldType _fieldType;
+
         public Field() : base("SP.Field")
         { }
 
@@ -37,7 +42,17 @@ namespace SharePointPnP.PowerShell.Core.Model
         public bool Sortable { get; set; }
         public string StaticName { get; set; }
         public string Title { get; set; }
-        public int FieldTypeKind { get; set; }
+        public FieldType FieldTypeKind
+        {
+            get
+            {
+                return _fieldType;
+            }
+            set
+            {
+                this._fieldType = (FieldType)value;
+            }
+        }
         public string TypeAsString { get; set; }
         public string TypeDisplayName { get; set; }
         public string TypeShortDescription { get; set; }
@@ -91,5 +106,28 @@ namespace SharePointPnP.PowerShell.Core.Model
         public int? DateFormat { get; set; }
         public string Formula { get; set; }
         public int? OutputType { get; set; }
+
+        public string GetJson()
+        {
+            
+            var json = JsonConvert.SerializeObject(this, Newtonsoft.Json.Formatting.None,
+                                new JsonSerializerSettings
+                                {
+                                    NullValueHandling = NullValueHandling.Ignore
+                                });
+            if (this.FieldTypeKind == FieldType.Choice)
+            {
+                var jsonObject = JsonConvert.DeserializeObject<JObject>(json);
+                jsonObject.Remove("MaxLength");
+                json = jsonObject.ToString(Formatting.None);
+            }
+            return json;
+
+        }
+
+        //public string IClientSideObjectCustomSerializer.GetJson()
+        //{
+        //    throw new NotImplementedException();
+        //}
     }
 }

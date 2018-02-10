@@ -61,6 +61,7 @@ Cmdlet|Description|Platforms
 ## Fields
 Cmdlet|Description|Platforms
 :-----|:----------|:--------
+**[Add&#8209;Field](Add-Field.md)** |Add a field|All
 **[Get&#8209;Field](Get-Field.md)** |Returns a field from a list or site|
 ## Lists
 Cmdlet|Description|Platforms

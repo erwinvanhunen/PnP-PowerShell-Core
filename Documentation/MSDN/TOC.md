@@ -41,6 +41,7 @@
 ### [Enable-Feature](Enable-Feature.md)
 ### [Get-Feature](Get-Feature.md)
 ## [Fields](Fields-category.md)
+### [Add-Field](Add-Field.md)
 ### [Get-Field](Get-Field.md)
 ## [Lists](Lists-category.md)
 ### [Get-List](Get-List.md)
