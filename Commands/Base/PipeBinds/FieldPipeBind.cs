@@ -64,11 +64,23 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
             }
             if (_id != Guid.Empty)
             {
-                return new RestRequest(context, $"tWeb/Fields(guid'{_id}')").Get<Field>();
+                return new RestRequest(context, $"Web/Fields(guid'{_id}')").Get<Field>();
             }
             else if (!string.IsNullOrEmpty(_name))
             {
                 return new RestRequest(context, $"Web/Fields/GetByInternalNameOrTitle('{_name}')").Get<Field>();
+            }
+            return null;
+        }
+
+        public Field GetListField(SPOnlineContext context, List list)
+        {
+            if(_id != Guid.Empty)
+            {
+                return new RestRequest(context, $"{list.ObjectPath}/Fields(guid'{_id}')").Get<Field>();
+            } else if (!string.IsNullOrEmpty(_name))
+            {
+                return new RestRequest(context, $"{list.ObjectPath}/Fields/GetByInternalNameOrTitle('{_name}')").Get<Field>();
             }
             return null;
         }
