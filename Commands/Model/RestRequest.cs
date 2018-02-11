@@ -122,6 +122,29 @@ namespace SharePointPnP.PowerShell.Core.Model
             Helpers.RestHelper.ExecutePostRequest(_context, _root, content, select, _filter, expands, null, contentType: "application/json;odata=verbose");
         }
 
+        public T Post<T>(ClientSideObject clientSideObject)
+        {
+            string content = null;
+            if (clientSideObject != null)
+            {
+                if (clientSideObject.GetType().GetInterfaces().Contains(typeof(IClientSideObjectCustomSerializer)))
+                {
+                    content = ((IClientSideObjectCustomSerializer)clientSideObject).GetJson();
+                }
+                else
+                {
+                    content = JsonConvert.SerializeObject(clientSideObject, Newtonsoft.Json.Formatting.None,
+                                    new JsonSerializerSettings
+                                    {
+                                        NullValueHandling = NullValueHandling.Ignore
+                                    });
+                }
+            }
+            var select = _selects.Any() ? string.Join(",", _selects) : null;
+            var expands = _expands.Any() ? string.Join(",", _expands) : null;
+            return Helpers.RestHelper.ExecutePostRequest<T>(_context, _root, content, select, _filter, expands, null, contentType: "application/json;odata=verbose");
+        }
+
         public void Post(MetadataType metadataType, Dictionary<string, object> properties, string contentType = "application/json; odata=verbose")
         {
             var select = _selects.Any() ? string.Join(",", _selects) : null;
@@ -171,7 +194,7 @@ namespace SharePointPnP.PowerShell.Core.Model
             var expands = _expands.Any() ? string.Join(",", _expands) : null;
             properties["__metadata"] = metadataType;
             var content = JsonConvert.SerializeObject(properties);
-            return Helpers.RestHelper.ExecutePostRequest<T>(_context, _root, content, select, _filter, expands, contentType: contentType);
+            return Helpers.RestHelper.ExecuteMergeRequest<T>(_context, _root, content, select, _filter, expands, contentType: contentType);
         }
 
         public void Merge(MetadataType metadataType, Dictionary<string, object> properties, string contentType = "application/json;odata=verbose")

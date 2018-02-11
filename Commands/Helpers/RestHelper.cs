@@ -117,10 +117,14 @@ namespace SharePointPnP.PowerShell.Core.Helpers
 
         public static T ExecutePostRequest<T>(SPOnlineContext context, string url, string content, string select = null, string filter = null, string expand = null, Dictionary<string, string> additionalHeaders = null, string contentType = "application/json", uint? top = null)
         {
-            HttpContent stringContent = new StringContent(content);
-            if (contentType != null)
+            HttpContent stringContent = null;
+            if (content != null)
             {
-                stringContent.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse(contentType);
+                stringContent = new StringContent(content);
+                if (contentType != null)
+                {
+                    stringContent.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse(contentType);
+                }
             }
 
             var returnValue = ExecutePostRequestInternal(context, url, stringContent, select, filter, expand, additionalHeaders, top);
@@ -146,7 +150,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
             {
                 stringContent = new StringContent(content);
             }
-            if (contentType != null)
+            if (stringContent != null && contentType != null)
             {
                 stringContent.Headers.ContentType = System.Net.Http.Headers.MediaTypeHeaderValue.Parse(contentType);
             }
@@ -202,6 +206,7 @@ namespace SharePointPnP.PowerShell.Core.Helpers
                 }
             }
             var returnValue = client.PostAsync(url, content).GetAwaiter().GetResult();
+            returnValue.EnsureSuccessStatusCode();
             return returnValue;
         }
 

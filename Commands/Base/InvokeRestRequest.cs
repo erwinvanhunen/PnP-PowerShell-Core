@@ -14,9 +14,9 @@ namespace SharePointPnP.PowerShell.Core.Base
     ///     A simple Cmdlet that outputs a greeting to the pipeline.
     /// </summary>
 	[OutputType(typeof(string))]
-    [Cmdlet(VerbsCommunications.Send, "RestRequest")]
-    [CmdletHelp(VerbsCommunications.Send, "RestRequest", "Executes a REST request")]
-    public class SendRestRequest : PnPCmdlet
+    [Cmdlet(VerbsLifecycle.Invoke, "RestRequest")]
+    [CmdletHelp(VerbsLifecycle.Invoke, "RestRequest", "Executes a REST request")]
+    public class InvokeRestRequest : PnPCmdlet
     {
         [Parameter(Mandatory = true, Position = 0)]
         public string EndPoint;

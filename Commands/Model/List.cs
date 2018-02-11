@@ -1,4 +1,5 @@
 using Newtonsoft.Json;
+using SharePointPnP.PowerShell.Core.Enums;
 using System;
 using System.Collections.Generic;
 
@@ -34,10 +35,20 @@ namespace SharePointPnP.PowerShell.Core.Model
         [JsonProperty("ContentTypes")]
         private List<ContentType> _contentTypes { get; set; }
 
+        [JsonProperty("BaseType")]
+        private int _baseType { get; set; }
+
         public bool AllowContentTypes { get; set; }
         public int BaseTemplate { get; set; }
-        public int BaseType { get; set; }
 
+        [JsonIgnore]
+        public BaseType BaseType
+        {
+            get
+            {
+                return (BaseType)_baseType;
+            }
+        }
         [JsonIgnore]
         public bool ContentTypesEnabled
         {

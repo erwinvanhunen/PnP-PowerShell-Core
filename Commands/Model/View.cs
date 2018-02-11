@@ -1,7 +1,20 @@
+using Newtonsoft.Json;
+using SharePointPnP.PowerShell.Core.Enums;
+using System;
+using System.Collections.Generic;
+
 namespace SharePointPnP.PowerShell.Core.Model
 {
     public class View : ClientSideObject
     {
+        public View() : base("SP.View")
+        { }
+
+        [JsonProperty("ViewType")]
+        private string _viewType { get; set; }
+
+        [JsonProperty("ViewFields")]
+        private ViewFields _viewFields { get; set; }
         public object Aggregations { get; set; }
         public object AggregationsStatus { get; set; }
         public string BaseViewId { get; set; }
@@ -40,9 +53,53 @@ namespace SharePointPnP.PowerShell.Core.Model
         public string Title { get; set; }
         public string Toolbar { get; set; }
         public object ToolbarTemplateName { get; set; }
-        public string ViewType { get; set; }
+
+        [JsonIgnore]
+        public ViewType ViewType
+        {
+            get
+            {
+                return (ViewType)Enum.Parse(typeof(ViewType), _viewType);
+            }
+            set
+            {
+                _viewType = value.ToString();
+            }
+        }
+
+        [JsonIgnore]
+        public List<string> ViewFields
+        {
+            get
+            {
+                if (_viewFields != null)
+                {
+                    return _viewFields.Items;
+                }
+                return null;
+            }
+        }
+
         public object ViewData { get; set; }
         public object VisualizationInfo { get; set; }
+    }
+
+    internal class ViewFields
+    {
+        [JsonProperty("odata.type")]
+        public string OdataType { get; set; }
+
+        [JsonProperty("odata.id")]
+        public string OdataId { get; set; }
+
+        [JsonProperty("odata.editLink")]
+        public string OdataEditLink { get; set; }
+
+        [JsonProperty("SchemaXml")]
+        public string SchemaXml { get; set; }
+
+        [JsonProperty("Items")]
+        public List<string> Items { get; set; }
     }
 
 }

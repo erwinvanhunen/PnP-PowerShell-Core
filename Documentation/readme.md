@@ -66,6 +66,7 @@ Cmdlet|Description|Platforms
 **[Remove&#8209;Field](Remove-Field.md)** |Removes a field from a list or a site|
 **[Set&#8209;Field](Set-Field.md)** |Changes one or more properties of a field in a specific list or for the whole web|
 **[Add&#8209;FieldFromXml](Add-FieldFromXml.md)** |Adds a field to a list or as a site column based upon a CAML/XML field definition|
+**[Set&#8209;View](Set-View.md)** |Change view properties|
 ## Files and Folders
 Cmdlet|Description|Platforms
 :-----|:----------|:--------
@@ -74,17 +75,22 @@ Cmdlet|Description|Platforms
 Cmdlet|Description|Platforms
 :-----|:----------|:--------
 **[Get&#8209;List](Get-List.md)** |Returns a List object|
+**[Remove&#8209;List](Remove-List.md)** |Deletes a list|
+**[Set&#8209;List](Set-List.md)** |Updates list settings|
 **[Get&#8209;ListItem](Get-ListItem.md)** |Retrieves list items|
+**[Set&#8209;ListPermission](Set-ListPermission.md)** |Sets list permissions|
 **[Get&#8209;View](Get-View.md)** |Returns one or all views from a list|
+**[Remove&#8209;View](Remove-View.md)** |Deletes a view from a list|
 ## Tenant Administration
 Cmdlet|Description|Platforms
 :-----|:----------|:--------
 **[Get&#8209;CustomAction](Get-CustomAction.md)** |Retrieves custom actions|
 **[Connect&#8209;Online](Connect-Online.md)** |Connects to your tenant|
-**[Send&#8209;RestRequest](Send-RestRequest.md)** |Executes a REST request|
+**[Invoke&#8209;RestRequest](Invoke-RestRequest.md)** |Executes a REST request|
 **[New&#8209;Site](New-Site.md)** |Creates a new site collection|SharePoint Online
 **[Get&#8209;StorageEntity](Get-StorageEntity.md)** |Retrieve Storage Entities / Farm Properties.|SharePoint Online
 **[Get&#8209;TenantAppCatalogUrl](Get-TenantAppCatalogUrl.md)** |Retrieves the url of the tenant scoped app catalog.|SharePoint Online
+**[Add&#8209;View](Add-View.md)** |Adds a view to a list|
 **[Get&#8209;WebTemplate](Get-WebTemplate.md)** |Returns the available web templates.|SharePoint Online
 ## Web Parts
 Cmdlet|Description|Platforms

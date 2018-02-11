@@ -3,7 +3,7 @@ external help file:
 applicable: 
 schema: 2.0.0
 ---
-# Send-RestRequest
+# Invoke-RestRequest
 
 ## SYNOPSIS
 Executes a REST request
@@ -12,12 +12,12 @@ Executes a REST request
 
 ### 
 ```powershell
-Send-RestRequest [-EndPoint <String>]
-                 [-Select <String>]
-                 [-Filter <String>]
-                 [-Expand <String>]
-                 [-Method <HttpMethod>]
-                 [-Content <String>]
+Invoke-RestRequest [-EndPoint <String>]
+                   [-Select <String>]
+                   [-Filter <String>]
+                   [-Expand <String>]
+                   [-Method <HttpMethod>]
+                   [-Content <String>]
 ```
 
 ## PARAMETERS

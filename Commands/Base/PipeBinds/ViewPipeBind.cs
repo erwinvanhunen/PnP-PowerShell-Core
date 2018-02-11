@@ -39,5 +39,22 @@ namespace SharePointPnP.PowerShell.Core.Base.PipeBinds
         public View View => _view;
 
         public string Title => _name;
+
+        public View GetView(SPOnlineContext context, List list)
+        {
+            if(_view != null)
+            {
+                return _view;
+            }
+            if(_id != Guid.Empty)
+            {
+                return new RestRequest(context, $"{list.ObjectPath}/views/getbyid('{_id}')").Get<View>();
+            }
+            if(!string.IsNullOrEmpty(_name))
+            {
+                return new RestRequest(context, $"{list.ObjectPath}/views/getbytitle('{_name}')").Get<View>();
+            }
+            return null;
+        }
     }
 }

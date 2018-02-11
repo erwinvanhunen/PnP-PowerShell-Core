@@ -45,16 +45,16 @@ namespace SharePointPnP.PowerShell.Core.Lists
                 {
                     if (Identity.Id != Guid.Empty)
                     {
-                        WriteObject(new RestRequest(Context, $"Web/Lists/GetById(guid'{list.Id}')/Views(guid'{Identity.Id}')").Get<View>());
+                        WriteObject(new RestRequest(Context, $"Web/Lists/GetById(guid'{list.Id}')/Views(guid'{Identity.Id}')").Expand("ViewFields").Get<View>());
                     }
                     else if (!string.IsNullOrEmpty(Identity.Title))
                     {
-                        WriteObject(new RestRequest(Context, $"Web/Lists/GetById(guid'{list.Id}')/Views/GetByTitle('{Identity.Title}')").Get<View>());
+                        WriteObject(new RestRequest(Context, $"Web/Lists/GetById(guid'{list.Id}')/Views/GetByTitle('{Identity.Title}')").Expand("ViewFields").Get<View>());
                     }
                 }
                 else
                 {
-                    WriteObject(new RestRequest(Context, $"Web/Lists/GetById(guid'{list.Id}')/Views").Get<ResponseCollection<View>>().Items, true);
+                    WriteObject(new RestRequest(Context, $"Web/Lists/GetById(guid'{list.Id}')/Views").Expand("ViewFields").Get<ResponseCollection<View>>().Items, true);
                 }
             }
         }

@@ -1712,6 +1712,242 @@ Adds an existing site column to a content type</maml:para>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
+      <command:name>Add-View</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Adds a view to a list</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Add</command:verb>
+      <command:noun>View</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Add-View</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>List</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ListPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Title</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Query</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Fields</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>ViewType</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ViewType</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>RowLimit</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">UInt32</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Personal</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>SetAsDefault</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Paged</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Fields</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>List</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ListPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>ListPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Paged</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Personal</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Query</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>RowLimit</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">UInt32</command:parameterValue>
+        <dev:type>
+          <maml:name>UInt32</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>SetAsDefault</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Title</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>ViewType</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ViewType</command:parameterValue>
+        <dev:type>
+          <maml:name>ViewType</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>Add-PnPView -List "Demo List" -Title "Demo View" -Fields "Title","Address"</dev:code>
+        <maml:remarks>
+          <maml:para>Adds a view named "Demo view" to the "Demo List" list.</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>Add-PnPView -List "Demo List" -Title "Demo View" -Fields "Title","Address" -Paged</dev:code>
+        <maml:remarks>
+          <maml:para>Adds a view named "Demo view" to the "Demo List" list and makes sure there's paging on this view.</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
       <command:name>Connect-Online</command:name>
       <maml:description>
         <maml:para>* Supported in: .
@@ -4893,6 +5129,155 @@ Installs an available app from the app catalog</maml:para>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
+      <command:name>Invoke-RestRequest</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Executes a REST request</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Invoke</command:verb>
+      <command:noun>RestRequest</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Invoke-RestRequest</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>EndPoint</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Select</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Filter</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Expand</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Method</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">HttpMethod</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Content</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Content</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>EndPoint</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Expand</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Filter</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Method</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">HttpMethod</command:parameterValue>
+        <dev:type>
+          <maml:name>HttpMethod</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Select</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples />
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
       <command:name>New-Site</command:name>
       <maml:description>
         <maml:para>* Supported in: SharePoint Online.
@@ -6487,6 +6872,150 @@ Removes a site column from a content type</maml:para>
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
+      <command:name>Remove-List</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Deletes a list</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Remove</command:verb>
+      <command:noun>List</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Remove-List</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>Identity</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ListPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Recycle</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Force</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Force</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Identity</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ListPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>ListPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Recycle</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Remove-PnPList -Identity Announcements</dev:code>
+        <maml:remarks>
+          <maml:para>Removes the list named 'Announcements'. Asks for confirmation.</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Remove-PnPList -Identity Announcements -Force</dev:code>
+        <maml:remarks>
+          <maml:para>Removes the list named 'Announcements' without asking for confirmation.</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 3---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Remove-PnPList -Title Announcements -Recycle</dev:code>
+        <maml:remarks>
+          <maml:para>Removes the list named 'Announcements' and saves to the Recycle Bin</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
       <command:name>Remove-NavigationNode</command:name>
       <maml:description>
         <maml:para>* Supported in: .
@@ -6598,130 +7127,76 @@ PS:&gt;$nodes | Select-Object -First 1 | Remove-PnPNavigationNode -Force</dev:co
   </command:command>
   <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
     <command:details>
-      <command:name>Send-RestRequest</command:name>
+      <command:name>Remove-View</command:name>
       <maml:description>
         <maml:para>* Supported in: .
 
-Executes a REST request</maml:para>
+Deletes a view from a list</maml:para>
       </maml:description>
       <maml:copyright>
         <maml:para />
       </maml:copyright>
-      <command:verb>Send</command:verb>
-      <command:noun>RestRequest</command:noun>
+      <command:verb>Remove</command:verb>
+      <command:noun>View</command:noun>
       <dev:version />
     </command:details>
     <command:syntax>
       <command:syntaxItem>
-        <maml:name>Send-RestRequest</maml:name>
+        <maml:name>Remove-View</maml:name>
         <command:parameter required="false" position="named">
-          <maml:name>EndPoint</maml:name>
+          <maml:name>Identity</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">String</command:parameterValue>
+          <command:parameterValue required="true">ViewPipeBind</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Select</maml:name>
+          <maml:name>List</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">String</command:parameterValue>
+          <command:parameterValue required="true">ListPipeBind</command:parameterValue>
         </command:parameter>
         <command:parameter required="false" position="named">
-          <maml:name>Filter</maml:name>
+          <maml:name>Force</maml:name>
           <maml:description>
             <maml:para />
           </maml:description>
-          <command:parameterValue required="true">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" position="named">
-          <maml:name>Expand</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true">String</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" position="named">
-          <maml:name>Method</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true">HttpMethod</command:parameterValue>
-        </command:parameter>
-        <command:parameter required="false" position="named">
-          <maml:name>Content</maml:name>
-          <maml:description>
-            <maml:para />
-          </maml:description>
-          <command:parameterValue required="true">String</command:parameterValue>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
         </command:parameter>
       </command:syntaxItem>
     </command:syntax>
     <command:parameters>
       <command:parameter required="false" position="named">
-        <maml:name>Content</maml:name>
+        <maml:name>Force</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">String</command:parameterValue>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
         <dev:type>
-          <maml:name>String</maml:name>
+          <maml:name>SwitchParameter</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>EndPoint</maml:name>
+        <maml:name>Identity</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">String</command:parameterValue>
+        <command:parameterValue required="false">ViewPipeBind</command:parameterValue>
         <dev:type>
-          <maml:name>String</maml:name>
+          <maml:name>ViewPipeBind</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
       <command:parameter required="false" position="named">
-        <maml:name>Expand</maml:name>
+        <maml:name>List</maml:name>
         <maml:description>
           <maml:para />
         </maml:description>
-        <command:parameterValue required="false">String</command:parameterValue>
+        <command:parameterValue required="false">ListPipeBind</command:parameterValue>
         <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-      </command:parameter>
-      <command:parameter required="false" position="named">
-        <maml:name>Filter</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
-          <maml:uri />
-        </dev:type>
-      </command:parameter>
-      <command:parameter required="false" position="named">
-        <maml:name>Method</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="false">HttpMethod</command:parameterValue>
-        <dev:type>
-          <maml:name>HttpMethod</maml:name>
-          <maml:uri />
-        </dev:type>
-      </command:parameter>
-      <command:parameter required="false" position="named">
-        <maml:name>Select</maml:name>
-        <maml:description>
-          <maml:para />
-        </maml:description>
-        <command:parameterValue required="false">String</command:parameterValue>
-        <dev:type>
-          <maml:name>String</maml:name>
+          <maml:name>ListPipeBind</maml:name>
           <maml:uri />
         </dev:type>
       </command:parameter>
@@ -6737,7 +7212,24 @@ Executes a REST request</maml:para>
         </dev:type>
       </command:returnValue>
     </command:returnValues>
-    <command:examples />
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Remove-PnPView -List "Demo List" -Identity "All Items"</dev:code>
+        <maml:remarks>
+          <maml:para>Removes the view with title "All Items" from the "Demo List" list.</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
     <maml:relatedLinks>
       <maml:navigationLink>
         <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
@@ -6967,6 +7459,490 @@ Sets the home page of the current web.</maml:para>
         <dev:code>PS:&gt; Set-PnPHomePage -RootFolderRelativeUrl SitePages/Home.aspx</dev:code>
         <maml:remarks>
           <maml:para>Sets the home page to the home.aspx file which resides in the SitePages library</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Set-List</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Updates list settings</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Set</command:verb>
+      <command:noun>List</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Set-List</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>Identity</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ListPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>EnableContentTypes</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">Boolean</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>BreakRoleInheritance</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>CopyRoleAssignments</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>ClearSubscopes</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Title</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Hidden</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">Boolean</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>EnableVersioning</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">Boolean</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>EnableMinorVersions</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">Boolean</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>MajorVersions</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">UInt32</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>MinorVersions</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">UInt32</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>BreakRoleInheritance</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>ClearSubscopes</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>CopyRoleAssignments</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>EnableContentTypes</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">Boolean</command:parameterValue>
+        <dev:type>
+          <maml:name>Boolean</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>EnableMinorVersions</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">Boolean</command:parameterValue>
+        <dev:type>
+          <maml:name>Boolean</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>EnableVersioning</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">Boolean</command:parameterValue>
+        <dev:type>
+          <maml:name>Boolean</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Hidden</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">Boolean</command:parameterValue>
+        <dev:type>
+          <maml:name>Boolean</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Identity</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ListPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>ListPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>MajorVersions</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">UInt32</command:parameterValue>
+        <dev:type>
+          <maml:name>UInt32</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>MinorVersions</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">UInt32</command:parameterValue>
+        <dev:type>
+          <maml:name>UInt32</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Title</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>Set-PnPList -Identity "Demo List" -EnableContentTypes $true</dev:code>
+        <maml:remarks>
+          <maml:para>Switches the Enable Content Type switch on the list</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>Set-PnPList -Identity "Demo List" -Hidden $true</dev:code>
+        <maml:remarks>
+          <maml:para>Hides the list from the SharePoint UI.</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 3---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>Set-PnPList -Identity "Demo List" -EnableVersioning $true</dev:code>
+        <maml:remarks>
+          <maml:para>Turns on major versions on a list</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 4---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>Set-PnPList -Identity "Demo List" -EnableVersioning $true -MajorVersions 20</dev:code>
+        <maml:remarks>
+          <maml:para>Turns on major versions on a list and sets the maximum number of Major Versions to keep to 20.</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 5---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>Set-PnPList -Identity "Demo Library" -EnableVersioning $true -EnableMinorVersions $true -MajorVersions 20 -MinorVersions 5</dev:code>
+        <maml:remarks>
+          <maml:para>Turns on major versions on a document library and sets the maximum number of Major versions to keep to 20 and sets the maximum of Minor versions to 5.</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Set-ListPermission</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Sets list permissions</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Set</command:verb>
+      <command:noun>ListPermission</command:noun>
+      <dev:version />
+    </command:details>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Set-ListPermission</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>Identity</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ListPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Group</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">GroupPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>User</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>AddRole</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>RemoveRole</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>AddRole</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Group</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">GroupPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>GroupPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Identity</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ListPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>ListPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>RemoveRole</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>User</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name></maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Set-PnPListPermission -Identity 'Documents' -User 'user@contoso.com' -AddRole 'Contribute'</dev:code>
+        <maml:remarks>
+          <maml:para>Adds the 'Contribute' permission to the user 'user@contoso.com' for the list 'Documents'</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Set-PnPListPermission -Identity 'Documents' -User 'user@contoso.com' -RemoveRole 'Contribute'</dev:code>
+        <maml:remarks>
+          <maml:para>Removes the 'Contribute' permission to the user 'user@contoso.com' for the list 'Documents'</maml:para>
           <maml:para></maml:para>
         </maml:remarks>
         <command:commandLines>
@@ -7585,6 +8561,281 @@ Sets a property bag value</maml:para>
         <dev:code>PS:&gt; Set-PnPPropertyBagValue -Key MyKey -Value MyValue -Folder /MyFolder</dev:code>
         <maml:remarks>
           <maml:para>This sets or adds a value to the folder MyFolder which is located in the root folder of the current web</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+    </command:examples>
+    <maml:relatedLinks>
+      <maml:navigationLink>
+        <maml:linkText>SharePoint Developer Patterns and Practices:</maml:linkText>
+        <maml:uri>http://aka.ms/sppnp</maml:uri>
+      </maml:navigationLink>
+    </maml:relatedLinks>
+  </command:command>
+  <command:command xmlns:maml="http://schemas.microsoft.com/maml/2004/10" xmlns:command="http://schemas.microsoft.com/maml/dev/command/2004/10" xmlns:dev="http://schemas.microsoft.com/maml/dev/2004/10">
+    <command:details>
+      <command:name>Set-View</command:name>
+      <maml:description>
+        <maml:para>* Supported in: .
+
+Change view properties</maml:para>
+      </maml:description>
+      <maml:copyright>
+        <maml:para />
+      </maml:copyright>
+      <command:verb>Set</command:verb>
+      <command:noun>View</command:noun>
+      <dev:version />
+    </command:details>
+    <maml:description>
+      <maml:para>Sets one or more properties of an existing view.</maml:para>
+    </maml:description>
+    <command:syntax>
+      <command:syntaxItem>
+        <maml:name>Set-View</maml:name>
+        <command:parameter required="false" position="named">
+          <maml:name>List</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ListPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Identity</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ViewPipeBind</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Title</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Query</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Fields</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">String[]</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>ViewType</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">ViewType</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>RowLimit</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">UInt32</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Personal</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>SetAsDefault</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Paged</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        </command:parameter>
+        <command:parameter required="false" position="named">
+          <maml:name>Values</maml:name>
+          <maml:description>
+            <maml:para />
+          </maml:description>
+          <command:parameterValue required="true">Hashtable</command:parameterValue>
+        </command:parameter>
+      </command:syntaxItem>
+    </command:syntax>
+    <command:parameters>
+      <command:parameter required="false" position="named">
+        <maml:name>Fields</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String[]</command:parameterValue>
+        <dev:type>
+          <maml:name>String[]</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Identity</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ViewPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>ViewPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>List</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ListPipeBind</command:parameterValue>
+        <dev:type>
+          <maml:name>ListPipeBind</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Paged</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Personal</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Query</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>RowLimit</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">UInt32</command:parameterValue>
+        <dev:type>
+          <maml:name>UInt32</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>SetAsDefault</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">SwitchParameter</command:parameterValue>
+        <dev:type>
+          <maml:name>SwitchParameter</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Title</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">String</command:parameterValue>
+        <dev:type>
+          <maml:name>String</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>Values</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">Hashtable</command:parameterValue>
+        <dev:type>
+          <maml:name>Hashtable</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+      <command:parameter required="false" position="named">
+        <maml:name>ViewType</maml:name>
+        <maml:description>
+          <maml:para />
+        </maml:description>
+        <command:parameterValue required="false">ViewType</command:parameterValue>
+        <dev:type>
+          <maml:name>ViewType</maml:name>
+          <maml:uri />
+        </dev:type>
+      </command:parameter>
+    </command:parameters>
+    <command:returnValues>
+      <command:returnValue>
+        <dev:type>
+          <maml:name>SharePointPnP.PowerShell.Core.Model.Field</maml:name>
+          <maml:uri />
+          <maml:description>
+            <maml:para></maml:para>
+          </maml:description>
+        </dev:type>
+      </command:returnValue>
+    </command:returnValues>
+    <command:examples>
+      <command:example>
+        <maml:title>------------------EXAMPLE 1---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Set-PnPView -List "Tasks" -Identity "All Tasks" -Values @{JSLink="hierarchytaskslist.js|customrendering.js";Title="My view"}</dev:code>
+        <maml:remarks>
+          <maml:para>Updates the "All Tasks" view on list "Tasks" to use hierarchytaskslist.js and customrendering.js for the JSLink and changes the title of the view to "My view"</maml:para>
+          <maml:para></maml:para>
+        </maml:remarks>
+        <command:commandLines>
+          <command:commandLine>
+            <command:commandText />
+          </command:commandLine>
+        </command:commandLines>
+      </command:example>
+      <command:example>
+        <maml:title>------------------EXAMPLE 2---------------------</maml:title>
+        <maml:introduction>
+          <maml:para />
+        </maml:introduction>
+        <dev:code>PS:&gt; Get-PnPList -Identity "Tasks" | Get-PnPView | Set-PnPView -Values @{JSLink="hierarchytaskslist.js|customrendering.js"}</dev:code>
+        <maml:remarks>
+          <maml:para>Updates all views on list "Tasks" to use hierarchytaskslist.js and customrendering.js for the JSLink</maml:para>
           <maml:para></maml:para>
         </maml:remarks>
         <command:commandLines>
